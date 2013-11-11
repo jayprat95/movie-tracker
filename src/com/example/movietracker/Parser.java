@@ -1,12 +1,11 @@
 package com.example.movietracker;
 
-import java.io.IOException;
 import org.apache.http.ParseException;
 import java.lang.Object;
 import java.lang.String;
 import org.json.*;
 import org.json.simple.parser.*;
-import java.io.FileReader;
+import java.io.*;
 
 // Import Exceptions.
 import java.io.FileNotFoundException;
@@ -30,10 +29,22 @@ public class Parser
 
 
     public JSONObject pullJSONDataToJSONObject(String fileLocation) {
-        JSONParser parser = new JSONParser();
+        org.json.simple.parser.JSONParser parser = new JSONParser();
+        BufferedReader bufferedReader = null;
 
         try {
-            FileReader fileReader = new FileReader("C:\\Users\\Oliver\\Dropbox\\Documents\\GitHub\\movie-tracker\\src\\com\\example\\movietracker\\drive.json");
+
+            bufferedReader = new BufferedReader(new InputStreamReader(getAssets().open("drive.json")));
+            //fileReader = new FileReader("drive.json");
+        }
+        catch (FileNotFoundException exception5) {
+            exception5.printStackTrace();
+        }
+
+        System.out.println(fileReader);
+
+        try {
+
             this.jsonObject = (JSONObject) parser.parse(fileReader);
 
         }
