@@ -15,7 +15,7 @@ public class ParserTest
         parser = new Parser();
     }
 
-    private void testPullJSONDataToJSONObject() {
+    public void testPullJSONDataToJSONObject() {
         System.out.println("hello");
         org.json.JSONObject testObject = parser.pullJSONDataToJSONObject("drive.json");
         System.out.println(testObject == null);
