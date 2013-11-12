@@ -1,5 +1,9 @@
 package com.example.movietracker;
 
+import java.io.IOException;
+import org.json.JSONException;
+import org.json.JSONArray;
+import android.app.Activity;
 import org.apache.http.ParseException;
 import java.lang.Object;
 import java.lang.String;
@@ -10,7 +14,7 @@ import java.io.*;
 // Import Exceptions.
 import java.io.FileNotFoundException;
 
-public class Parser
+public class Parser extends Activity
 {
 
     //~Fields--------------------------------------------------------
@@ -28,39 +32,33 @@ public class Parser
     }
 
 
-    public JSONObject pullJSONDataToJSONObject(String fileLocation) {
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @param fileLocation
+     * @return
+     * @throws JSONException
+     * @throws IOException
+     */
+    public JSONObject pullJSONDataToJSONObject(String fileLocation) throws JSONException, IOException {
         org.json.simple.parser.JSONParser parser = new JSONParser();
         BufferedReader bufferedReader = null;
 
-        try {
-
-            bufferedReader = new BufferedReader(new InputStreamReader(getAssets().open("drive.json")));
-            //fileReader = new FileReader("drive.json");
-        }
-        catch (FileNotFoundException exception5) {
-            exception5.printStackTrace();
-        }
-
-        System.out.println(fileReader);
+        InputStream is = getAssets().open("drive.json");
+        int size = is.available();
+        byte[] buffer = new byte[size];
+        is.read(buffer);
+        is.close();
+        String bufferString = new String(buffer);
 
         try {
+            JSONArray jsonArray = new JSONArray(bufferString);
+            JSONObject obj = jsonArray.optJSONObject(0);
+            this.jsonObject = obj;
 
-            this.jsonObject = (JSONObject) parser.parse(fileReader);
-
-        }
-        catch (FileNotFoundException exception1) {
-                exception1.printStackTrace();
         }
         catch (ParseException exception2) {
             exception2.printStackTrace();
-        }
-        catch (IOException exception3)
-        {
-            exception3.printStackTrace();
-        }
-        catch (org.json.simple.parser.ParseException exception4)
-        {
-            exception4.printStackTrace();
         }
 
         return this.jsonObject;
