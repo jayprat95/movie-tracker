@@ -1,5 +1,9 @@
 package com.example.movietracker;
 
+import android.content.res.AssetManager;
+import java.io.File;
+import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.io.InputStreamReader;
@@ -7,20 +11,45 @@ import android.util.JsonReader;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import java.io.*;
 
-public class MainMovieView
-    extends Activity
+
+import java.util.HashMap;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.ListView;
+
+// -------------------------------------------------------------------------
+/**
+ *  Write a one-sentence summary of your class here.
+ *  Follow it with additional details about its purpose, what abstraction
+ *  it represents, and how to use it.
+ *
+ *  @author jayanth
+ *  @version Nov 14, 2013
+ */
+public class MainMovieView extends Activity
 {
 
+    JSONObject jsonObject;
+    InputStream is = null;
+    String result = "";
+    JSONObject jArray = null;
+    AssetManager assetManager;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        assetManager = getAssets();
         try
         {
-            testMovieJsonReader();
+            testGetJsonFromAssets();
         }
-        catch (IOException e)
+        catch (JSONException e)
         {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -38,32 +67,54 @@ public class MainMovieView
     }
 
 
+
+
     // ----------------------------------------------------------
     /**
      * Place a description of your method here.
-     *
-     * @throws IOException
+     * @param fileName
+     * @return
      */
-    public void testMovieJsonReader()
-        throws IOException
+    public JSONObject getJsonFromAssets(String fileName)
     {
-        MovieJsonReader test = new MovieJsonReader();
-
-        JsonReader reader =
-            new JsonReader(new InputStreamReader(
-                getAssets().open("drive.json"),
-                "UTF-8"));
         try
         {
-            ArrayList<Movie> list = test.getMovieFromStream(reader);
-            Movie i = list.get(0);
-            System.out.println(i.getActor());
-
+            is = assetManager.open(fileName);
         }
-        finally
+        catch (IOException e1)
         {
-            reader.close();
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
         }
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(
+                    is, "iso-8859-1"), 8);
+            StringBuilder sb = new StringBuilder();
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line + "\n");
+            }
+            is.close();
+            result = sb.toString();
+        } catch (Exception e) {
+            Log.e("log_tag", "Error converting result " + e.toString());
+        }
+
+        try {
+
+            jArray = new JSONObject(result);
+        } catch (JSONException e) {
+            Log.e("log_tag", "Error parsing data " + e.toString());
+        }
+
+        return jArray;
+
+    }
+
+    public void testGetJsonFromAssets() throws JSONException
+    {
+        JSONObject obj = getJsonFromAssets("drive.json");
+        System.out.println(obj.getString("rating_count"));
     }
 
 }
