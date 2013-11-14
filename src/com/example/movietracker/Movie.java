@@ -17,8 +17,9 @@ public class Movie
     private String director;
     private String actor;
     private String linkUrl;
-    private String rating;
+    private int rating;
     private String imgUrl;
+    private int ratingCount;
     // ----------------------------------------------------------
     /**
      * Create a new Movie object.
@@ -122,7 +123,7 @@ public class Movie
      * gets the rating of this movie
      * @return returns the rating of this film
      */
-    public String getRating()
+    public int getRating()
     {
         return rating;
     }
@@ -131,7 +132,7 @@ public class Movie
      * sets the rating of film
      * @param rating is the rating associated with this film
      */
-    public void setRating(String rating)
+    public void setRating(int rating)
     {
         this.rating = rating;
     }
@@ -153,5 +154,25 @@ public class Movie
     {
         this.imgUrl = imgUrl;
     }
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @return
+     */
+    public int getRatingCount()
+    {
+        return ratingCount;
+    }
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @param ratingCount
+     */
+    public void setRatingCount(int ratingCount)
+    {
+        this.ratingCount = ratingCount;
+    }
+
+
 
 }

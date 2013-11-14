@@ -1,5 +1,6 @@
 package com.example.movietracker;
 
+import java.io.UnsupportedEncodingException;
 import android.content.res.AssetManager;
 import java.io.File;
 import java.io.BufferedReader;
@@ -75,7 +76,7 @@ public class MainMovieView extends Activity
      * @param fileName
      * @return
      */
-    public JSONObject getJsonFromAssets(String fileName)
+    public Movie getJsonFromAssets(String fileName)
     {
         try
         {
@@ -86,35 +87,62 @@ public class MainMovieView extends Activity
             // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-        try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(
-                    is, "iso-8859-1"), 8);
-            StringBuilder sb = new StringBuilder();
-            String line = null;
-            while ((line = reader.readLine()) != null) {
-                sb.append(line + "\n");
-            }
-            is.close();
-            result = sb.toString();
-        } catch (Exception e) {
-            Log.e("log_tag", "Error converting result " + e.toString());
+
+        JsonReader reader = null;
+        try
+        {
+            reader = new JsonReader(new InputStreamReader(is, "UTF-8"));
+        }
+        catch (UnsupportedEncodingException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
 
-        try {
-
-            jArray = new JSONObject(result);
-        } catch (JSONException e) {
-            Log.e("log_tag", "Error parsing data " + e.toString());
+        Movie drive = null;
+        try
+        {
+           drive  = readMovie(reader);
+        }
+        catch (IOException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
 
-        return jArray;
+        System.out.println(drive.getRating() + "");
+        System.out.println(drive.getRatingCount() + "");
+        return drive;
 
     }
+
+    public Movie readMovie(JsonReader reader) throws IOException {
+        int rating = 0;
+        int ratingCount = 0;
+        Movie movie = new Movie();
+        reader.beginObject();
+        while (reader.hasNext()) {
+          String name = reader.nextName();
+          if (name.equals("rating_count")) {
+            ratingCount = reader.nextInt();
+          } else if (name.equals("rating")) {
+            rating = reader.nextInt();
+
+          } else {
+            reader.skipValue();
+          }
+        }
+        reader.endObject();
+        movie.setRating(rating);
+        movie.setRatingCount(ratingCount);
+        return movie;
+      }
 
     public void testGetJsonFromAssets() throws JSONException
     {
-        JSONObject obj = getJsonFromAssets("drive.json");
-        System.out.println(obj.getString("rating_count"));
+        Movie movie = getJsonFromAssets("drive.json");
+
     }
+
 
 }
