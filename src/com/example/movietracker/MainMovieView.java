@@ -1,5 +1,6 @@
 package com.example.movietracker;
 
+import com.google.gson.Gson;
 import java.io.UnsupportedEncodingException;
 import android.content.res.AssetManager;
 import java.io.File;
@@ -13,6 +14,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import java.io.*;
+import java.util.*;
 
 
 import java.util.HashMap;
@@ -45,7 +47,7 @@ public class MainMovieView extends Activity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        assetManager = getAssets();
+        assetManager = this.getAssets();
         try
         {
             testGetJsonFromAssets();
@@ -76,73 +78,56 @@ public class MainMovieView extends Activity
      * @param fileName
      * @return
      */
-    public Movie getJsonFromAssets(String fileName)
+    public void getJsonFromAssets(String fileName)
     {
+        // Create stream and reader for parsing.
+        BufferedReader reader = null;
+        InputStream inputStream = null;
+
+        // Try to open a stream from the specified file
         try
         {
-            is = assetManager.open(fileName);
+            inputStream = assetManager.open(fileName);
         }
         catch (IOException e1)
         {
-            // TODO Auto-generated catch block
+            System.out.println("cannot open drive.json");
             e1.printStackTrace();
         }
 
-        JsonReader reader = null;
+        // Try to create the reader from the open stream to the file.
         try
         {
-            reader = new JsonReader(new InputStreamReader(is, "UTF-8"));
+            reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
         }
         catch (UnsupportedEncodingException e)
         {
-            // TODO Auto-generated catch block
+            System.out.println("cannot create bufferedReader from input stream");
             e.printStackTrace();
         }
 
-        Movie drive = null;
-        try
-        {
-           drive  = readMovie(reader);
-        }
-        catch (IOException e)
-        {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        // Create Gson object to parse JSON.
+        Gson gson = new Gson();
 
-        System.out.println(drive.getRating() + "");
-        System.out.println(drive.getRatingCount() + "");
-        return drive;
+        // Parse JSON into a Movie Array. **This is an array of one** "Tricky"
+        Movie[] response = gson.fromJson(reader, Movie[].class);
+
+        System.out.println(response[0].getRating());
+        System.out.println(response[0].getRatingCount());
+        System.out.println(response[0].getSimplePlot());
+        //System.out.println(response[0].getDirector());
+        //System.out.println(response[0].getTitle());
+        //System.out.println(response[0].getActor());
+        //System.out.println(response[0].getLinkUrl());
+        //System.out.println(response[0].getImgUrl());
 
     }
 
-    public Movie readMovie(JsonReader reader) throws IOException {
-        int rating = 0;
-        int ratingCount = 0;
-        Movie movie = new Movie();
-        reader.beginObject();
-        while (reader.hasNext()) {
-          String name = reader.nextName();
-          if (name.equals("rating_count")) {
-            ratingCount = reader.nextInt();
-          } else if (name.equals("rating")) {
-            rating = reader.nextInt();
-
-          } else {
-            reader.skipValue();
-          }
-        }
-        reader.endObject();
-        movie.setRating(rating);
-        movie.setRatingCount(ratingCount);
-        return movie;
-      }
 
     public void testGetJsonFromAssets() throws JSONException
     {
-        Movie movie = getJsonFromAssets("drive.json");
+        getJsonFromAssets("drive.json");
 
     }
-
 
 }

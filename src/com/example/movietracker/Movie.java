@@ -12,14 +12,14 @@ package com.example.movietracker;
 
 public class Movie
 {
-    private String simplePlot;
+    private String plot_simple;
     private String title;
     private String director;
     private String actor;
     private String linkUrl;
-    private int rating;
+    private float rating;
     private String imgUrl;
-    private int ratingCount;
+    private float rating_count;
     // ----------------------------------------------------------
     /**
      * Create a new Movie object.
@@ -35,16 +35,16 @@ public class Movie
      */
     public String getSimplePlot()
     {
-        return simplePlot;
+        return plot_simple;
     }
     // ----------------------------------------------------------
     /**
      * sets a one sentence plot summary of any movie
-     * @param simplePlot is the simple plot summary that will be set
+     * @param plot_simple is the simple plot summary that will be set
      */
-    public void setSimplePlot(String simplePlot)
+    public void setSimplePlot(String plot_simple)
     {
-        this.simplePlot = simplePlot;
+        this.plot_simple = plot_simple;
     }
     // ----------------------------------------------------------
     /**
@@ -123,7 +123,7 @@ public class Movie
      * gets the rating of this movie
      * @return returns the rating of this film
      */
-    public int getRating()
+    public float getRating()
     {
         return rating;
     }
@@ -159,9 +159,9 @@ public class Movie
      * Place a description of your method here.
      * @return
      */
-    public int getRatingCount()
+    public float getRatingCount()
     {
-        return ratingCount;
+        return rating_count;
     }
     // ----------------------------------------------------------
     /**
@@ -170,7 +170,7 @@ public class Movie
      */
     public void setRatingCount(int ratingCount)
     {
-        this.ratingCount = ratingCount;
+        this.rating_count = rating_count;
     }
 
 

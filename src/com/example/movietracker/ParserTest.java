@@ -17,26 +17,4 @@ public class ParserTest
         parser = new Parser();
     }
 
-    public void testPullJSONDataToJSONObject() {
-        System.out.println("hello");
-        org.json.JSONObject testObject = null;
-        try
-        {
-            testObject = parser.pullJSONDataToJSONObject("drive.json");
-        }
-        catch (JSONException e)
-        {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        catch (IOException e)
-        {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        System.out.println(testObject == null);
-        System.out.println(testObject.toString());
-
-        assertTrue(testObject != null);
-    }
 }

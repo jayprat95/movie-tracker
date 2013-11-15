@@ -10,6 +10,7 @@ import java.lang.String;
 import org.json.*;
 import org.json.simple.parser.*;
 import java.io.*;
+import com.google.gson.*;
 
 // Import Exceptions.
 import java.io.FileNotFoundException;
@@ -33,13 +34,40 @@ public class Parser extends Activity
 
 
     // ----------------------------------------------------------
-    /**
-     * Place a description of your method here.
-     * @param fileLocation
-     * @return
-     * @throws JSONException
-     * @throws IOException
-     */
+
+
+    public String pullDataFromJson(String fileLocation) {
+/*
+        Reader reader;
+        try {
+            //reader = new InputStreamReader(JsonToJava.class.getResourceAsStream("/Server1.json"), "UTF-8");
+        }
+        catch (IOException e1)
+        {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        */
+
+            Gson gson = new Gson();
+            String str = gson.fromJson("\"drive.json\"", String.class);
+            System.out.println(str);
+            //Movie p = gson.fromJson(reader, Movie.class);
+            //System.out.println(p);
+
+            return str;
+
+    }
+
+
+    }
+
+
+
+
+
+
+    /*
     public JSONObject pullJSONDataToJSONObject(String fileLocation) throws JSONException, IOException {
         org.json.simple.parser.JSONParser parser = new JSONParser();
         BufferedReader bufferedReader = null;
@@ -63,4 +91,5 @@ public class Parser extends Activity
 
         return this.jsonObject;
     }
-}
+
+    */
