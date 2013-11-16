@@ -3,46 +3,31 @@ package com.example.movietracker;
 import com.google.gson.Gson;
 import java.io.UnsupportedEncodingException;
 import android.content.res.AssetManager;
-import java.io.File;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.io.InputStreamReader;
-import android.util.JsonReader;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
-import java.io.*;
-import java.util.*;
 
-
-import java.util.HashMap;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import android.app.ProgressDialog;
-import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.ListView;
 
 // -------------------------------------------------------------------------
 /**
- *  Write a one-sentence summary of your class here.
- *  Follow it with additional details about its purpose, what abstraction
- *  it represents, and how to use it.
+ *  This is the main view class.
+ *  It also contains a parser that pull from json files in assets.
  *
- *  @author jayanth
- *  @version Nov 14, 2013
+ *  @author jayanthprathipati
+ *  @author oliverebeling-koning
+ *  @author linsayboylan
+ *  @version Nov 15, 2013
  */
 public class MainMovieView extends Activity
 {
 
-    JSONObject jsonObject;
-    InputStream is = null;
-    String result = "";
-    JSONObject jArray = null;
-    AssetManager assetManager;
+    private AssetManager assetManager;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -112,6 +97,7 @@ public class MainMovieView extends Activity
         // Parse JSON into a Movie Array. **This is an array of one** "Tricky"
         Movie[] response = gson.fromJson(reader, Movie[].class);
 
+        // Print out desired topics from json file
         System.out.println(response[0].getRating());
         System.out.println(response[0].getRatingCount());
         System.out.println(response[0].getSimplePlot());

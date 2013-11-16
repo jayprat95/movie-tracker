@@ -7,7 +7,9 @@ package com.example.movietracker;
  *  it represents, and how to use it.
  *
  *  @author jayanthprathipati
- *  @version Nov 10, 2013
+ *  @author oliverebeling-koning
+ *  @author linsayboylan
+ *  @version Nov 15, 2013
  */
 
 public class Movie
@@ -157,7 +159,7 @@ public class Movie
     // ----------------------------------------------------------
     /**
      * Place a description of your method here.
-     * @return
+     * @return the rating count
      */
     public float getRatingCount()
     {
@@ -166,9 +168,9 @@ public class Movie
     // ----------------------------------------------------------
     /**
      * Place a description of your method here.
-     * @param ratingCount
+     * @param rating_count the count of ratings to store
      */
-    public void setRatingCount(int ratingCount)
+    public void setRatingCount(int rating_count)
     {
         this.rating_count = rating_count;
     }
