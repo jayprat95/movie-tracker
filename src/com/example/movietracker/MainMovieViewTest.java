@@ -1,6 +1,3 @@
-
-
-
 package com.example.movietracker;
 
 import junit.framework.TestCase;

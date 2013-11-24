@@ -1,5 +1,7 @@
 package com.example.movietracker;
 
+import java.util.Map;
+
 // -------------------------------------------------------------------------
 /**
  *  Write a one-sentence summary of your class here.
@@ -16,12 +18,15 @@ public class Movie
 {
     private String plot_simple;
     private String title;
-    private String director;
-    private String actor;
-    private String linkUrl;
+    private String[] directors;
+    private String[] actors;
+    private String[] runtime;
+    private String type;
+    private String imdb_url;
+    private int release_date;
     private float rating;
-    private String imgUrl;
     private float rating_count;
+    private Map<String, String> poster;
     // ----------------------------------------------------------
     /**
      * Create a new Movie object.
@@ -71,54 +76,54 @@ public class Movie
      * Gets the director of the film
      * @return returns string representing the director
      */
-    public String getDirector()
+    public String[] getDirectors()
     {
-        return director;
+        return directors;
     }
     // ----------------------------------------------------------
     /**
-     * sets the director
-     * @param director
+     * sets the directors
+     * @param directors
      */
-    public void setDirector(String director)
+    public void setDirectors(String[] directors)
     {
-        this.director = director;
+        this.directors = directors;
     }
     // ----------------------------------------------------------
     /**
      * gets the actors in the film
      * @return returns the actors in this film
      */
-    public String getActor()
+    public String[] getActors()
     {
-        return actor;
+        return actors;
     }
     // ----------------------------------------------------------
     /**
      * sets the actors associated with this film
-     * @param actor is the string representation of the actors
+     * @param actors is the string representation of the actors
      */
-    public void setActor(String actor)
+    public void setActor(String[] actors)
     {
-        this.actor = actor;
+        this.actors = actors;
     }
     // ----------------------------------------------------------
     /**
      * This is the imdb link associated with this film
      * @return returns the string representation for this url
      */
-    public String getLinkUrl()
+    public String getImdb_url()
     {
-        return linkUrl;
+        return imdb_url;
     }
     // ----------------------------------------------------------
     /**
      * sets the imdb link associated with this flm
-     * @param linkUrl is the link that will be set
+     * @param imdb_url is the link that will be set
      */
-    public void setLinkUrl(String linkUrl)
+    public void setImdb_url(String imdb_url)
     {
-        this.linkUrl = linkUrl;
+        this.imdb_url = imdb_url;
     }
     // ----------------------------------------------------------
     /**
@@ -141,20 +146,20 @@ public class Movie
     // ----------------------------------------------------------
     /**
      * gets the image url for this movie
-     * @return returns a url for the poster image for this movie
+     * @return the year it was released
      */
-    public String getImgUrl()
+    public int getRelease_date()
     {
-        return imgUrl;
+        return release_date;
     }
     // ----------------------------------------------------------
     /**
      * sets the image url for this movie
-     * @param imgUrl is the url for the poster image
+     * @param release_date the year it was released
      */
-    public void setImgUrl(String imgUrl)
+    public void setRelease_date(int release_date)
     {
-        this.imgUrl = imgUrl;
+        this.release_date = release_date;
     }
     // ----------------------------------------------------------
     /**
@@ -173,6 +178,61 @@ public class Movie
     public void setRatingCount(int rating_count)
     {
         this.rating_count = rating_count;
+    }
+    /**
+     * Place a description of your method here.
+     * @return the movie length
+     */
+    public String[] getRuntime()
+    {
+        return runtime;
+    }
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @param runtime the movie length
+     */
+    public void setRuntime(String[] runtime)
+    {
+        this.runtime = runtime;
+    }
+
+
+    /**
+     * Place a description of your method here.
+     * @return the poster url
+     */
+    public Map<String, String> getPoster()
+    {
+        return poster;
+    }
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @param poster poster url
+     */
+    public void setPoster(Map<String, String> poster)
+    {
+        this.poster = poster;
+    }
+
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @return the type (M, PG, PG13)
+     */
+    public String getType()
+    {
+        return type;
+    }
+    // ----------------------------------------------------------
+    /**
+     * Place a description of your method here.
+     * @param type the type
+     */
+    public void setType(String type)
+    {
+        this.type = type;
     }
 
 

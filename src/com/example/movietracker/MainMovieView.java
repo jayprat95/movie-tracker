@@ -1,6 +1,8 @@
 package com.example.movietracker;
 
 import com.google.gson.Gson;
+import android.widget.*;
+import java.util.*;
 import java.io.UnsupportedEncodingException;
 import android.content.res.AssetManager;
 import java.io.BufferedReader;
@@ -24,10 +26,58 @@ import org.json.JSONObject;
  *  @author linsayboylan
  *  @version Nov 15, 2013
  */
+
+
+
+
 public class MainMovieView extends Activity
 {
-
+    // ~Fields............................................................
     private AssetManager assetManager;
+
+    private List<Movie> list;
+    private List<String> titles;
+
+
+    // Widget Fields
+    private TextView titleText;
+    private TextView directorsText;
+    private EditText searchField;
+    private Button search;
+
+
+
+
+    // ~Methods............................................................
+
+    public void initialize() {
+        list = new ArrayList<Movie>();
+        titles = new ArrayList<String>();
+
+        // load all movies from assets
+        String[] files = null;
+        try {
+            files = assetManager.list("file:///android_asset");
+        }
+        catch (IOException exception) {
+            // No Files Located In Assets
+            System.out.println("No Files Located In Assets");
+            exception.printStackTrace();
+        }
+
+        for (String movieFile : files) {
+            if (movieFile != null) {
+                // Make a movie object then run get JSON fields.
+                Movie newMovie = getJsonFromAssets(movieFile);
+                list.add(newMovie);
+                titles.add(newMovie.getTitle());
+            }
+        }
+
+    }
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -61,9 +111,9 @@ public class MainMovieView extends Activity
     /**
      * Place a description of your method here.
      * @param fileName
-     * @return
+     * @return movie The movie created from file name passed in
      */
-    public void getJsonFromAssets(String fileName)
+    public Movie getJsonFromAssets(String fileName)
     {
         // Create stream and reader for parsing.
         BufferedReader reader = null;
@@ -101,19 +151,54 @@ public class MainMovieView extends Activity
         System.out.println(response[0].getRating());
         System.out.println(response[0].getRatingCount());
         System.out.println(response[0].getSimplePlot());
-        //System.out.println(response[0].getDirector());
-        //System.out.println(response[0].getTitle());
-        //System.out.println(response[0].getActor());
-        //System.out.println(response[0].getLinkUrl());
-        //System.out.println(response[0].getImgUrl());
+        System.out.println(response[0].getDirectors()[0]);
+        System.out.println(response[0].getTitle());
+        System.out.println(response[0].getActors()[0]);
+        System.out.println(response[0].getPoster().get("imdb"));
+        System.out.println(response[0].getRuntime()[0]);
+        System.out.println(response[0].getType());
+        System.out.println(response[0].getImdb_url());
+        System.out.println(response[0].getRelease_date());
 
+        // return new movie created.
+        return response[0];
     }
 
 
     public void testGetJsonFromAssets() throws JSONException
     {
         getJsonFromAssets("drive.json");
+    }
 
+
+    // Widget Methods............................................
+
+    public void searchClicked() {
+        System.out.println("clicked Search");
+        this.searchFieldEditingDone();
+    }
+
+    public void searchFieldEditingDone() {
+        System.out.println("Done Editing");
+        Boolean contained = false;
+        for (String title : this.titles) {
+            if (searchField.getText().toString().equals(title)) {
+                // successful search for title.
+                contained = true;
+                System.out.println("Found movie after entering search");
+            }
+        }
+
+        Boolean notSet = true;
+        for (int ii = 0; ii < list.size(); ii++) {
+            String currentTitle = searchField.getText().toString();
+            if (list.get(ii).getTitle().equals(currentTitle)) {
+                System.out.println("Updating movie texts");
+                titleText.setText(list.get(ii).getTitle());
+                directorsText.setText(list.get(ii).getDirectors()[0] + ", " + list.get(ii).getDirectors()[1]);
+                break;
+            }
+        }
     }
 
 }
