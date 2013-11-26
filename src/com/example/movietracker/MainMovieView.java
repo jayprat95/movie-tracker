@@ -1,5 +1,6 @@
 package com.example.movietracker;
 
+import android.support.v4.widget.DrawerLayout;
 import android.widget.*;
 import java.util.*;
 import android.content.res.AssetManager;
@@ -37,6 +38,11 @@ public class MainMovieView extends Activity
     private EditText searchField;
     private Button search;
 
+
+    // Testing menu fields
+    private String[] mPlanetTitles;
+    private DrawerLayout mDrawerLayout;
+    private ListView mDrawerList;
 
 
 
