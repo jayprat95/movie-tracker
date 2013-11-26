@@ -1,5 +1,6 @@
 package com.example.movietracker;
 
+import android.content.Intent;
 import android.content.res.AssetManager;
 import java.util.List;
 import android.os.Bundle;
@@ -11,9 +12,8 @@ public class DetailedMovieActivity extends Activity
     // ~Fields............................................................
     private AssetManager assetManager;
 
-    private List<Movie> movies;
-
-    private Parser parser;
+    private Intent currentIntent;
+    private String movie;
 
 
     // ~Methods...........................................................
@@ -26,6 +26,10 @@ public class DetailedMovieActivity extends Activity
         super.onCreate(savedInstanceState);
         assetManager = this.getAssets();
         setContentView(R.layout.detailed_movie_view);
+
+        // Get extra parameter of the movie name.
+        currentIntent = getIntent();
+        movie = currentIntent.getStringExtra("movie");
 
     }
 }

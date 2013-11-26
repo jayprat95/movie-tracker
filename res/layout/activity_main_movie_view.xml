@@ -10,13 +10,47 @@
     tools:context=".MainMovieView" >
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/searchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="19dp"
+        android:text="Search" />
+
+    <Button
+        android:id="@+id/watched"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="31dp"
+        android:layout_toLeftOf="@+id/searchButton"
+        android:text="Watched Movies" />
+
+    <Button
+        android:id="@+id/toWatch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/watched"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:text="Want To Watch Movies" />
+
+    <Button
+        android:id="@+id/favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/watched"
+        android:layout_below="@+id/toWatch"
+        android:layout_marginTop="50dp"
+        android:text="Favorite Movies" />
+
+    <EditText
+        android:id="@+id/searchText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="125dp"
-        android:layout_marginTop="77dp"
-        android:text="Button" />
+        android:layout_alignTop="@+id/searchButton"
+        android:ems="10" />
 
 </RelativeLayout>

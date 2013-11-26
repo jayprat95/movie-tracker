@@ -17,7 +17,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="128dp"
         android:layout_marginTop="122dp"
-        android:text="detailed movie view" />
+        android:text="list movie view" />
 
     <Button
         android:id="@+id/watched"

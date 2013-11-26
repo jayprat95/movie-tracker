@@ -1,5 +1,7 @@
 package com.example.movietracker;
 
+import java.util.Arrays;
+import android.widget.EditText;
 import android.widget.Button;
 import android.view.View;
 import android.content.Intent;
@@ -14,11 +16,8 @@ public class MainMovieActivity
 {
     // ~Fields............................................................
     private AssetManager assetManager;
-
     private List<Movie>  movies;
-
     private Parser       parser;
-
 
     // ~Methods...........................................................
 
@@ -26,6 +25,7 @@ public class MainMovieActivity
     {
         movies = new ArrayList<Movie>();
 
+        // Collect and parse all movies in assets folder
         System.out.println("Generating parser and parsing...");
         parser = new Parser(assetManager);
         movies = parser.getMovies();
@@ -38,23 +38,70 @@ public class MainMovieActivity
         super.onCreate(savedInstanceState);
         assetManager = this.getAssets();
         setContentView(R.layout.activity_main_movie_view);
+        initialize();
 
-        Button button1 = (Button)findViewById(R.id.button1);
+        // Watch buttons for opening up different views.
+        setupListeners();
 
-        button1.setOnClickListener(new Button.OnClickListener() {
+    }
 
+    public void setupListeners() {
+        Button watched = (Button)findViewById(R.id.watched);
+        watched.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v)
             {
-
                 Intent intent =
                     new Intent(
                         getApplicationContext(),
-                        DetailedMovieActivity.class);
+                        ListMovieActivity.class);
+                intent.putExtra("listName", "watched");
                 startActivity(intent);
-
             }
         });
+
+        Button toWatch = (Button)findViewById(R.id.toWatch);
+        toWatch.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent =
+                    new Intent(
+                        getApplicationContext(),
+                        ListMovieActivity.class);
+                intent.putExtra("listName", "toWatch");
+                startActivity(intent);
+            }
+        });
+
+        Button favorite = (Button)findViewById(R.id.favorite);
+        favorite.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent =
+                    new Intent(
+                        getApplicationContext(),
+                        ListMovieActivity.class);
+                intent.putExtra("listName", "favorite");
+                startActivity(intent);
+            }
+        });
+
+        Button searchButton = (Button)findViewById(R.id.searchButton);
+        searchButton.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent =
+                    new Intent(
+                        getApplicationContext(),
+                        ListMovieActivity.class);
+                intent.putExtra("listName", "searchButton");
+                startActivity(intent);
+            }
+        });
+
 
     }
 }
