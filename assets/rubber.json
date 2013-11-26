@@ -1,0 +1,59 @@
+[
+  {
+    "rating_count": 15793,
+    "genres": [
+      "Comedy",
+      "Horror"
+    ],
+    "rated": "R",
+    "language": [
+      "English"
+    ],
+    "rating": 5.7,
+    "country": [
+      "France",
+      "Angola"
+    ],
+    "release_date": 20101110,
+    "title": "Rubber",
+    "year": 2010,
+    "filming_locations": "Hollywood, Los Angeles, California, USA",
+    "imdb_id": "tt1612774",
+    "directors": [
+      "Quentin Dupieux"
+    ],
+    "writers": [
+      "Quentin Dupieux"
+    ],
+    "actors": [
+      "Goodyear",
+      "Stephen Spinella",
+      "Jack Plotnick",
+      "Wings Hauser",
+      "Roxane Mesquida",
+      "Ethan Cohn",
+      "Charley Koontz",
+      "Daniel Quinn",
+      "Devin Brochu",
+      "Hayley Holmes",
+      "Haley Ramm",
+      "Cecelia Antoinette",
+      "David Bowe",
+      "Remy Thorne",
+      "Tara Jean O'Brien"
+    ],
+    "plot_simple": "When Robert, a tire, discovers his destructive telepathic powers, he soon sets his sights on a desert town; in particular, a mysterious woman becomes his obsession.",
+    "poster": {
+      "imdb": "http://ia.media-imdb.com/images/M/MV5BMTU2Nzg2NDQ2Nl5BMl5BanBnXkFtZTcwMDk5MjMzNA@@._V1_SX214_.jpg",
+      "cover": "http://imdb-poster.b0.upaiyun.com/001/612/774.jpg!cover?_upt=ede57d581385537198"
+    },
+    "runtime": [
+      "82 min"
+    ],
+    "type": "M",
+    "imdb_url": "http://www.imdb.com/title/tt1612774/",
+    "also_known_as": [
+      "Gumi"
+    ]
+  }
+]
