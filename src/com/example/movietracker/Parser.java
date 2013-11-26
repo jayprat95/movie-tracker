@@ -131,5 +131,13 @@ public class Parser
         return response[0];
     }
 
+    // ----------------------------------------------------------
+    /**
+     * This method returns all the movie objects.
+     * @return movies
+     */
+    public List<Movie> getMovies() {
+        return this.movies;
+    }
 
 }

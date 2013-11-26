@@ -1,20 +1,12 @@
 package com.example.movietracker;
 
-import com.google.gson.Gson;
 import android.widget.*;
 import java.util.*;
-import java.io.UnsupportedEncodingException;
 import android.content.res.AssetManager;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 // -------------------------------------------------------------------------
 /**
@@ -35,8 +27,7 @@ public class MainMovieView extends Activity
     // ~Fields............................................................
     private AssetManager assetManager;
 
-    private List<Movie> list;
-    private List<String> titles;
+    private List<Movie> movies;
 
     private Parser parser;
 
@@ -52,23 +43,11 @@ public class MainMovieView extends Activity
     // ~Methods............................................................
 
     public void initialize() {
-        list = new ArrayList<Movie>();
-        titles = new ArrayList<String>();
+        movies = new ArrayList<Movie>();
 
-        System.out.println("Generating parser");
+        System.out.println("Generating parser and parsing...");
         parser = new Parser(assetManager);
-
-        // load all movies from assets
-        String[] files = null;
-        try {
-            files = assetManager.list("file:///android_asset");
-        }
-        catch (IOException exception) {
-            // No Files Located In Assets
-            System.out.println("No Files Located In Assets");
-            exception.printStackTrace();
-        }
-
+        movies = parser.getMovies();
     }
 
 
@@ -80,6 +59,8 @@ public class MainMovieView extends Activity
         assetManager = this.getAssets();
         setContentView(R.layout.activity_main_movie_view);
         this.initialize();
+
+
     }
 
 
@@ -97,7 +78,7 @@ public class MainMovieView extends Activity
 
 
     // Widget Methods............................................
-
+/*
     public void searchClicked() {
         System.out.println("clicked Search");
         this.searchFieldEditingDone();
@@ -125,5 +106,6 @@ public class MainMovieView extends Activity
             }
         }
     }
+    */
 
 }
