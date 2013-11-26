@@ -9,14 +9,23 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainMovieView" >
 
-    <Button
-        android:id="@+id/button1"
+    <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="125dp"
-        android:layout_marginTop="77dp"
+        android:layout_marginLeft="128dp"
+        android:layout_marginTop="122dp"
+        android:text="detailed movie view" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
         android:text="Button" />
 
 </RelativeLayout>

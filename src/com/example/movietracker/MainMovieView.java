@@ -38,14 +38,6 @@ public class MainMovieView extends Activity
     private EditText searchField;
     private Button search;
 
-
-    // Testing menu fields
-    private String[] mPlanetTitles;
-    private DrawerLayout mDrawerLayout;
-    private ListView mDrawerList;
-
-
-
     // ~Methods............................................................
 
     public void initialize() {
@@ -65,7 +57,7 @@ public class MainMovieView extends Activity
         assetManager = this.getAssets();
         setContentView(R.layout.activity_main_movie_view);
         this.initialize();
-
+        setContentView(R.layout.detailed_movie_view);
 
     }
 
@@ -81,6 +73,10 @@ public class MainMovieView extends Activity
 
 
 
+
+    public void searchClicked() {
+        System.out.println("Search clicked");
+    }
 
 
     // Widget Methods............................................
