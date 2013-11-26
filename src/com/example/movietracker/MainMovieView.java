@@ -38,6 +38,7 @@ public class MainMovieView extends Activity
     private List<Movie> list;
     private List<String> titles;
 
+    private Parser parser;
 
     // Widget Fields
     private TextView titleText;
@@ -54,6 +55,9 @@ public class MainMovieView extends Activity
         list = new ArrayList<Movie>();
         titles = new ArrayList<String>();
 
+        System.out.println("Generating parser");
+        parser = new Parser(assetManager);
+
         // load all movies from assets
         String[] files = null;
         try {
@@ -65,15 +69,6 @@ public class MainMovieView extends Activity
             exception.printStackTrace();
         }
 
-        for (String movieFile : files) {
-            if (movieFile != null) {
-                // Make a movie object then run get JSON fields.
-                Movie newMovie = getJsonFromAssets(movieFile);
-                list.add(newMovie);
-                titles.add(newMovie.getTitle());
-            }
-        }
-
     }
 
 
@@ -83,16 +78,8 @@ public class MainMovieView extends Activity
     {
         super.onCreate(savedInstanceState);
         assetManager = this.getAssets();
-        try
-        {
-            testGetJsonFromAssets();
-        }
-        catch (JSONException e)
-        {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
         setContentView(R.layout.activity_main_movie_view);
+        this.initialize();
     }
 
 
@@ -107,68 +94,6 @@ public class MainMovieView extends Activity
 
 
 
-    // ----------------------------------------------------------
-    /**
-     * Place a description of your method here.
-     * @param fileName
-     * @return movie The movie created from file name passed in
-     */
-    public Movie getJsonFromAssets(String fileName)
-    {
-        // Create stream and reader for parsing.
-        BufferedReader reader = null;
-        InputStream inputStream = null;
-
-        // Try to open a stream from the specified file
-        try
-        {
-            inputStream = assetManager.open(fileName);
-        }
-        catch (IOException e1)
-        {
-            System.out.println("cannot open drive.json");
-            e1.printStackTrace();
-        }
-
-        // Try to create the reader from the open stream to the file.
-        try
-        {
-            reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
-        }
-        catch (UnsupportedEncodingException e)
-        {
-            System.out.println("cannot create bufferedReader from input stream");
-            e.printStackTrace();
-        }
-
-        // Create Gson object to parse JSON.
-        Gson gson = new Gson();
-
-        // Parse JSON into a Movie Array. **This is an array of one** "Tricky"
-        Movie[] response = gson.fromJson(reader, Movie[].class);
-
-        // Print out desired topics from json file
-        System.out.println(response[0].getRating());
-        System.out.println(response[0].getRatingCount());
-        System.out.println(response[0].getSimplePlot());
-        System.out.println(response[0].getDirectors()[0]);
-        System.out.println(response[0].getTitle());
-        System.out.println(response[0].getActors()[0]);
-        System.out.println(response[0].getPoster().get("imdb"));
-        System.out.println(response[0].getRuntime()[0]);
-        System.out.println(response[0].getType());
-        System.out.println(response[0].getImdb_url());
-        System.out.println(response[0].getRelease_date());
-
-        // return new movie created.
-        return response[0];
-    }
-
-
-    public void testGetJsonFromAssets() throws JSONException
-    {
-        getJsonFromAssets("drive.json");
-    }
 
 
     // Widget Methods............................................
