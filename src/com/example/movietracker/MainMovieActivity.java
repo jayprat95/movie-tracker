@@ -17,7 +17,8 @@ public class MainMovieActivity
     // ~Fields............................................................
     private AssetManager assetManager;
     private List<Movie>  movies;
-    private Parser       parser;
+    private Parser       jsonParser;
+    private TextFileParser listParser;
 
     // ~Methods...........................................................
 
@@ -25,10 +26,13 @@ public class MainMovieActivity
     {
         movies = new ArrayList<Movie>();
 
+        // Collect and parse all stored lists of movies.
+        listParser = new TextFileParser(assetManager);
+
         // Collect and parse all movies in assets folder
         System.out.println("Generating parser and parsing...");
-        parser = new Parser(assetManager);
-        movies = parser.getMovies();
+        jsonParser = new Parser(assetManager);
+        movies = jsonParser.getMovies();
     }
 
 
