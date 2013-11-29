@@ -1,5 +1,6 @@
 package com.example.movietracker;
 
+import java.io.Serializable;
 import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -20,13 +21,14 @@ import java.util.*;
  * @version Nov 15, 2013
  */
 
-public class Parser
+public class Parser implements Serializable
 {
 
 // ~Fields.....................................................................
     private AssetManager assetManager;
     private List<String> filenames;
-    private List<Movie> movies;
+    private ArrayList<Movie> movies;
+    private List<String> titles;
 
 
 // ~Methods....................................................................
@@ -41,13 +43,14 @@ public class Parser
     {
         assetManager = am;
         filenames = new ArrayList<String>();
+        titles = new ArrayList<String>();
         try
         {
             // For all asset files, if it is a json file then add to list
             for (String file : assetManager.list("")) {
                 if (file.length() > 5) {
                     if (file.substring(file.length() - 5, file.length()).equals(".json")) {
-                        System.out.println("Adding " + file.toString() + " to movies");
+                        //System.out.println("Adding " + file.toString() + " to movies");
                         filenames.add(file);
                     }
                 }
@@ -63,10 +66,15 @@ public class Parser
         movies = new ArrayList<Movie>();
         for (String file : this.filenames) {
             movies.add(this.jsonToMovies(file));
-            System.out.println("Converted " + file.toString() + " to a movie");
+            //System.out.println("Converted " + file.toString() + " to a movie");
         }
 
-
+        // Make easy list of title to check through
+        for (Movie movie : movies) {
+            if (movies.size() > 0) {
+            this.titles.add(movie.getTitle());
+            }
+        }
 
     }
 
@@ -136,8 +144,33 @@ public class Parser
      * This method returns all the movie objects.
      * @return movies
      */
-    public List<Movie> getMovies() {
+    public ArrayList<Movie> getMovies() {
         return this.movies;
+    }
+
+    public boolean hasMovie(String title) {
+        return titles.contains(title);
+    }
+
+    public Movie getMovieFromTitle(String title) {
+        for (Movie movie : movies) {
+            if (movie.getTitle().equals(title)) {
+                return movie;
+            }
+        }
+        System.out.println("Could Not Find Movie");
+        return null;
+    }
+
+    public ArrayList<String> getTitlesList() {
+        ArrayList<String> returnList = new ArrayList<String>();
+        if (movies !=null && movies.size() > 0) {
+            for (Movie movie : movies) {
+                returnList.add(movie.getTitle());
+            }
+            return returnList;
+        }
+        return null;
     }
 
 }

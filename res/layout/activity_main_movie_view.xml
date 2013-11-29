@@ -28,15 +28,6 @@
         android:text="Watched Movies" />
 
     <Button
-        android:id="@+id/toWatch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/watched"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:text="Want To Watch Movies" />
-
-    <Button
         android:id="@+id/favorite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,5 +43,15 @@
         android:layout_alignParentLeft="true"
         android:layout_alignTop="@+id/searchButton"
         android:ems="10" />
+
+    <Button
+        android:id="@+id/toWatch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/searchButton"
+        android:layout_below="@+id/watched"
+        android:layout_marginRight="42dp"
+        android:layout_marginTop="46dp"
+        android:text="Want To Watch Movies" />
 
 </RelativeLayout>

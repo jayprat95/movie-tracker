@@ -1,5 +1,8 @@
 package com.example.movietracker;
 
+import java.io.Serializable;
+import android.os.Parcel;
+import android.content.Context;
 import java.util.Arrays;
 import android.widget.EditText;
 import android.widget.Button;
@@ -16,25 +19,8 @@ public class MainMovieActivity
 {
     // ~Fields............................................................
     private AssetManager assetManager;
-    private List<Movie>  movies;
-    private Parser       jsonParser;
-    private TextFileParser listParser;
 
     // ~Methods...........................................................
-
-    public void initialize()
-    {
-        movies = new ArrayList<Movie>();
-
-        // Collect and parse all stored lists of movies.
-        listParser = new TextFileParser(assetManager);
-
-        // Collect and parse all movies in assets folder
-        System.out.println("Generating parser and parsing...");
-        jsonParser = new Parser(assetManager);
-        movies = jsonParser.getMovies();
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -42,7 +28,6 @@ public class MainMovieActivity
         super.onCreate(savedInstanceState);
         assetManager = this.getAssets();
         setContentView(R.layout.activity_main_movie_view);
-        initialize();
 
         // Watch buttons for opening up different views.
         setupListeners();
@@ -50,6 +35,7 @@ public class MainMovieActivity
     }
 
     public void setupListeners() {
+
         Button watched = (Button)findViewById(R.id.watched);
         watched.setOnClickListener(new Button.OnClickListener() {
             @Override
@@ -59,7 +45,7 @@ public class MainMovieActivity
                     new Intent(
                         getApplicationContext(),
                         ListMovieActivity.class);
-                intent.putExtra("listName", "watched");
+                intent.putExtra("listname", "watched");
                 startActivity(intent);
             }
         });
@@ -73,7 +59,7 @@ public class MainMovieActivity
                     new Intent(
                         getApplicationContext(),
                         ListMovieActivity.class);
-                intent.putExtra("listName", "toWatch");
+                intent.putExtra("listname", "toWatch");
                 startActivity(intent);
             }
         });
@@ -87,7 +73,7 @@ public class MainMovieActivity
                     new Intent(
                         getApplicationContext(),
                         ListMovieActivity.class);
-                intent.putExtra("listName", "favorite");
+                intent.putExtra("listname", "favorite");
                 startActivity(intent);
             }
         });
@@ -101,11 +87,12 @@ public class MainMovieActivity
                     new Intent(
                         getApplicationContext(),
                         ListMovieActivity.class);
-                intent.putExtra("listName", "searchButton");
+                intent.putExtra("listname", "searchButton");
                 startActivity(intent);
             }
         });
 
 
     }
+
 }

@@ -1,5 +1,6 @@
 package com.example.movietracker;
 
+import java.io.Serializable;
 import java.util.Map;
 
 // -------------------------------------------------------------------------
@@ -14,14 +15,14 @@ import java.util.Map;
  *  @version Nov 15, 2013
  */
 
-public class Movie
+public class Movie implements Serializable
 {
     private String plot_simple;
     private String title;
+    private String type;
     private String[] directors;
     private String[] actors;
     private String[] runtime;
-    private String type;
     private String imdb_url;
     private int release_date;
     private float rating;
