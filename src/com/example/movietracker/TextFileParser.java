@@ -20,6 +20,15 @@ import android.content.res.AssetManager;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+// -------------------------------------------------------------------------
+/**
+ * This class is a parser for storing and retrieving information from internal
+ * memory. The two main methods are "setMovieList" and "getStringFromFiles",
+ * which actually store the data in memory.
+ *
+ * @author Oliver
+ * @version Nov 30, 2013
+ */
 public class TextFileParser
 {
     // ~Fields................................................................
@@ -54,39 +63,7 @@ public class TextFileParser
     }
 
 
-    private ArrayList<String> getWatchedList()
-    {
-        return watchedTitles;
-    }
-
-
-    private ArrayList<String> getToWatchList()
-    {
-        return toWatchTitles;
-    }
-
-
-    private ArrayList<String> getFavoriteList()
-    {
-        return favoriteTitles;
-    }
-
-    public ArrayList<String> getList(String filename) {
-        if (filename.equals("watched")) {
-            return this.getWatchedList();
-        }
-        else if (filename.equals("toWatch")) {
-            return this.getToWatchList();
-        }
-        else if (filename.equals("favorite")) {
-            return this.getFavoriteList();
-        }
-        System.out.println("INVALID SYTAX LIST NAME");
-        return null;
-    }
-
-
-    private String getStringFromList(ArrayList<String> list)
+    private String getStringFromListHelper(ArrayList<String> list)
     {
         StringBuilder sb = new StringBuilder();
         if (list.size() == 0)
@@ -122,7 +99,7 @@ public class TextFileParser
         {
             fos =
                 context.openFileOutput(
-                    "STORED_toWatch.txt",
+                    "STORED_" + listname + ".txt",
                     Context.MODE_PRIVATE);
         }
         catch (FileNotFoundException e)
@@ -134,7 +111,8 @@ public class TextFileParser
         // Write list of names passed in to file in bytes.
         try
         {
-            fos.write(getStringFromList(moviesToSet).getBytes());
+            fos.write(getStringFromListHelper(moviesToSet).getBytes());
+            fos.close();
         }
         catch (IOException e)
         {
@@ -163,12 +141,14 @@ public class TextFileParser
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("Cannot access/find file. Reading");
+            System.out.println("Cannot access/find file. Reading"
+                + " The name: " + filename);
             e.printStackTrace();
             return;
         }
 
-        if (fis == null) {
+        if (fis == null)
+        {
             return;
         }
         // Initialize reading variables
@@ -199,7 +179,7 @@ public class TextFileParser
         {
             this.watchedString = contents;
         }
-        else if (filename.equals("filename"))
+        else if (filename.equals("favorite"))
         {
             this.favoriteString = contents;
         }
@@ -207,6 +187,9 @@ public class TextFileParser
         {
             System.out.println("INVALID FILENAME");
         }
+
+        // Store the string fields into the list fields.
+        this.parseStringsToStringList(filename);
 
     }
 
@@ -262,5 +245,44 @@ public class TextFileParser
                 }
             }
         }
+    }
+
+
+    // ************* GETTERS & SETTERS **************** //
+
+    private ArrayList<String> getWatchedList()
+    {
+        return watchedTitles;
+    }
+
+
+    private ArrayList<String> getToWatchList()
+    {
+        return toWatchTitles;
+    }
+
+
+    private ArrayList<String> getFavoriteList()
+    {
+        return favoriteTitles;
+    }
+
+
+    public ArrayList<String> getList(String filename)
+    {
+        if (filename.equals("watched"))
+        {
+            return this.getWatchedList();
+        }
+        else if (filename.equals("toWatch"))
+        {
+            return this.getToWatchList();
+        }
+        else if (filename.equals("favorite"))
+        {
+            return this.getFavoriteList();
+        }
+        System.out.println("INVALID SYNTAX LIST NAME");
+        return null;
     }
 }

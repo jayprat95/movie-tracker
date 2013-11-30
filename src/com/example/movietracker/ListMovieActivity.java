@@ -26,6 +26,7 @@ public class ListMovieActivity
     private Intent            currentIntent;
     private String            listname;
     private Parser            jsonParser;
+    private TextFileParser    textParser;
     private ArrayList<Movie>  movies;
 
     private TextView          textView1;
@@ -49,7 +50,7 @@ public class ListMovieActivity
         assetManager = this.getAssets();
         setContentView(R.layout.list_movie_view);
 
-        // Get extra parameter of the movie name passed in.
+        // Get extra parameter of the list name passed in.
         currentIntent = getIntent();
         listname = currentIntent.getStringExtra("listname");
 
@@ -58,60 +59,25 @@ public class ListMovieActivity
         textView1 = (TextView)findViewById(R.id.textView1);
         textView1.setText(listname + " is the name of the view");
 
-        // /******************TESTING
-        // Collect and parse all movies in assets folder
+        // Pull data for all movies in assets folder
         System.out.println("Generating parser and parsing...");
         jsonParser = new Parser(assetManager);
         movies = jsonParser.getMovies();
-        // /******************TESTING
 
-        // Pull movies from list from file.
-        TextFileParser textParser =
-            new TextFileParser(this.assetManager, this.getBaseContext());
-        textParser.getStringFromFiles(listname);
-        textParser.parseStringsToStringList(listname);
-        ArrayList<String> titles = textParser.getList(listname);
-
-        // ************ATTEMPT AT LISTING MOVIES**********************
-        final ListView listView = (ListView)findViewById(R.id.listView);
-        // Final parameter of this adapter should be the correct list to display.
-        final StableArrayAdapter adapter =
-            new StableArrayAdapter(
-                this,
-                android.R.layout.simple_list_item_1,
-                jsonParser.getTitlesList());
-        listView.setAdapter(adapter);
-
-        listView
-            .setOnItemClickListener(new OnItemClickListenerImplementation(this.movies) {
-                @Override
-                public void onItemClick(
-                    AdapterView<?> parent,
-                    final View view,
-                    int position,
-                    long id)
-                {
-                    final String item =
-                        (String)parent.getItemAtPosition(position);
-                    Intent intent =
-                        new Intent(
-                            getApplicationContext(),
-                            DetailedMovieActivity.class);
-
-                    Movie movieToDetail = jsonParser.getMovieFromTitle(item);
-                    intent.putExtra("movieTitle", item);
-                    ParcelableImplementation[] parcelableArray =
-                        { new ParcelableImplementation(movieToDetail.getTitle()),
-                            new ParcelableImplementation(movieToDetail.getSimplePlot()), new ParcelableImplementation(movieToDetail.getType()), new ParcelableImplementation(movieToDetail.getTitle()), new ParcelableImplementation(movieToDetail.getTitle()), new ParcelableImplementation(movieToDetail.getTitle()), new ParcelableImplementation(movieToDetail.getTitle()), new ParcelableImplementation(movieToDetail.getTitle()), new ParcelableImplementation(movieToDetail.getTitle()), new ParcelableImplementation(movieToDetail.getTitle()), new ParcelableImplementation(movieToDetail.getTitle()) };
-                    intent.putExtra("movieData", parcelableArray);
-
-                    startActivity(intent);
-                }
-            });
+        this.updateLists();
 
     }
 
 
+    /**
+     * // ----------------------------------------------------------------------
+     * --- /** This is an adapter class for the list view of movies. This is a
+     * custom adapter for handling the interaction with the list of movies in
+     * the view.
+     *
+     * @author Oliver
+     * @version Nov 30, 2013
+     */
     private class StableArrayAdapter
         extends ArrayAdapter<String>
     {
@@ -124,42 +90,190 @@ public class ListMovieActivity
             List<String> strings)
         {
             super(context, textViewResourceId, strings);
-            if ((strings != null) && (strings.size() > 0)) {
-            for (int ii = 0; ii < strings.size(); ii++)
+            if ((strings != null) && (strings.size() > 0))
             {
-                mIdMap.put(strings.get(ii), ii);
-            }
+                for (int ii = 0; ii < strings.size(); ii++)
+                {
+                    mIdMap.put(strings.get(ii), ii);
+                }
             }
         }
 
     }
+
 
     private class OnItemClickListenerImplementation
         implements OnItemClickListener
     {
         ArrayList<Movie> m;
 
-        public OnItemClickListenerImplementation (ArrayList<Movie> moviesToField) {
+
+        public OnItemClickListenerImplementation(ArrayList<Movie> moviesToField)
+        {
             m = moviesToField;
         }
 
 
-
-        public void onItemClick(
-            AdapterView<?> av,
-            View v,
-            int i,
-            long l)
+        public void onItemClick(AdapterView<?> av, View v, int i, long l)
         {
             onItemClick(av, v, i, l);
         }
 
 
-
-        public ArrayList<Movie> getMoviesInClick() {
+        public ArrayList<Movie> getMoviesInClick()
+        {
             return m;
         }
 
+    }
+
+
+    public void pullMoviesFromListFile()
+    {
+
+        // Pull movies from list from file.
+        textParser =
+            new TextFileParser(this.assetManager, this.getBaseContext());
+        textParser.getStringFromFiles(listname);
+        if (listname.equals("toWatch"))
+        {
+            toWatch = textParser.getList(listname);
+        }
+        else if (listname.equals("watched"))
+        {
+            watched = textParser.getList(listname);
+        }
+        else if (listname.equals("favorite"))
+        {
+            favorite = textParser.getList(listname);
+        }
+        else if (listname.equals("search"))
+        {
+            favorite = jsonParser.getTitlesList();
+        }
 
     }
+
+
+    public void setupListView()
+    {
+        final ListView listView = (ListView)findViewById(R.id.listView);
+
+        // set correct list to pass to adapter to display in view
+        ArrayList<String> arrayAdapterList = jsonParser.getTitlesList();
+        if (listname.equals("watched"))
+        {
+            arrayAdapterList = watched;
+        }
+        if (listname.equals("toWatch"))
+        {
+            arrayAdapterList = toWatch;
+        }
+        if (listname.equals("favorite"))
+        {
+            arrayAdapterList = favorite;
+        }
+        final StableArrayAdapter adapter =
+            new StableArrayAdapter(
+                this,
+                android.R.layout.simple_list_item_1,
+                arrayAdapterList);
+        listView.setAdapter(adapter);
+        // Setup listener for the list of movies
+        listView.setOnItemClickListener(new OnItemClickListenerImplementation(
+            this.movies) {
+            @Override
+            public void onItemClick(
+                AdapterView<?> parent,
+                final View view,
+                int position,
+                long id)
+            {
+                final String item = (String)parent.getItemAtPosition(position);
+                // Start intent for details of movie clicked
+                Intent intent =
+                    new Intent(
+                        getApplicationContext(),
+                        DetailedMovieActivity.class);
+                // Pass all details to intents before starting
+                Movie movieToDetail = jsonParser.getMovieFromTitle(item);
+                intent.putExtra("movieTitle", item);
+                ParcelableImplementation[] parcelableArray =
+                    {
+                        new ParcelableImplementation(movieToDetail.getTitle()),
+                        new ParcelableImplementation(movieToDetail
+                            .getSimplePlot()),
+                        new ParcelableImplementation(movieToDetail.getType()),
+                        new ParcelableImplementation(
+                            stringArrayToString(movieToDetail.getDirectors())),
+                        new ParcelableImplementation(
+                            stringArrayToString(movieToDetail.getActors())),
+                        new ParcelableImplementation(
+                            stringArrayToString(movieToDetail.getRuntime())),
+                        new ParcelableImplementation(movieToDetail
+                            .getImdb_url()),
+                        new ParcelableImplementation(Integer
+                            .toString(movieToDetail.getRelease_date())),
+                        new ParcelableImplementation(Float
+                            .toString(movieToDetail.getRating())),
+                        new ParcelableImplementation(Float
+                            .toString(movieToDetail.getRatingCount())),
+                        new ParcelableImplementation(movieToDetail.getPoster()
+                            .get("imdb")),
+                        new ParcelableImplementation(movieToDetail.getPoster()
+                            .get("cover")) };
+                intent.putExtra("movieData", parcelableArray);
+
+                if ((listname.equals("toWatch")) || (listname.equals("watched") || (listname.equals("favorite")))) {
+                startActivityForResult(intent, 0);
+                }
+                else {
+                    startActivity(intent);
+                }
+            }
+
+
+
+            // Helper method for passing string arrays into detailed view
+            // Turns string array into readable string
+            private String stringArrayToString(String[] stringArray)
+            {
+                StringBuilder sb = new StringBuilder();
+                if (stringArray.length < 1)
+                {
+                    return "";
+                }
+                for (String ss : stringArray)
+                {
+                    sb.append(ss + ", ");
+                }
+                String returnString = sb.toString();
+                return returnString.substring(0, returnString.length() - 2);
+
+            }
+        });
+    }
+    //_________________________________________________________________________
+
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        System.out.println(resultCode);
+        boolean[] update = data.getBooleanArrayExtra("update");
+        System.out.println(update + "........");
+        if (update[0]) {
+            this.updateLists();
+        }
+    }
+
+    public void updateLists() {
+        // Get movies for this list from internal memory
+        this.pullMoviesFromListFile();
+
+        // ListView Setup and Control
+        this.setupListView();
+    }
+
 }

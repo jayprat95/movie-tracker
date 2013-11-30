@@ -43,4 +43,23 @@ public class ParcelableImplementation implements Parcelable
         return this.stringToMove;
     }
 
+
+
+
+    public String stringArrayToString(String[] stringArray)
+    {
+        StringBuilder sb = new StringBuilder();
+        if (stringArray.length < 1)
+        {
+            return "";
+        }
+        for (String ss : stringArray)
+        {
+            sb.append(ss + ", ");
+        }
+        String returnString = sb.toString();
+        return returnString.substring(0, returnString.length() - 2);
+
+    }
+
 }

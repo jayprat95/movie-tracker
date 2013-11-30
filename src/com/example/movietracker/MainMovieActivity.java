@@ -34,6 +34,11 @@ public class MainMovieActivity
 
     }
 
+    // ----------------------------------------------------------
+    /**
+     * This method creates the listeners for the four buttons. They each
+     * start a new activity via creating an intent.
+     */
     public void setupListeners() {
 
         Button watched = (Button)findViewById(R.id.watched);
