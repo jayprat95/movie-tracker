@@ -1,5 +1,6 @@
 package com.example.movietracker;
 
+import android.widget.RatingBar;
 import java.io.IOException;
 import android.graphics.BitmapFactory;
 import java.io.BufferedInputStream;
@@ -70,7 +71,8 @@ public class DetailedMovieActivity
         movieString = currentIntent.getStringExtra("movieTitle");
         movieDataParcelable =
             currentIntent.getParcelableArrayExtra("movieData");
-
+        RatingBar ratingsBar = (RatingBar)findViewById(R.id.movieRatings);
+        ratingsBar.setEnabled(false);
         // ******** Get all data passed in and set Texts.*******
 
         // New piece of Data: Title
@@ -90,23 +92,23 @@ public class DetailedMovieActivity
         // New piece of Data: Type
         // Convert movie data to custom parcelable class.
         movieData = (ParcelableImplementation)movieDataParcelable[2];
-        type = new TextView(this);
-        type = (TextView)findViewById(R.id.type);
-        type.setText(movieData.getString());
+//        type = new TextView(this);
+//        type = (TextView)findViewById(R.id.type);
+//        type.setText(movieData.getString());
 
         // New piece of Data: Directors
         // Convert movie data to custom parcelable class.
         movieData = (ParcelableImplementation)movieDataParcelable[3];
         type = new TextView(this);
         type = (TextView)findViewById(R.id.directors);
-        type.setText(movieData.getString());
+        type.setText("Directed by: " + movieData.getString());
 
         // New piece of Data: Actors
         // Convert movie data to custom parcelable class.
         movieData = (ParcelableImplementation)movieDataParcelable[4];
         type = new TextView(this);
         type = (TextView)findViewById(R.id.actors);
-        type.setText(movieData.getString());
+        type.setText("Actors: " + movieData.getString());
 
         // New piece of Data: Runtime
         // Convert movie data to custom parcelable class.
@@ -127,14 +129,16 @@ public class DetailedMovieActivity
         movieData = (ParcelableImplementation)movieDataParcelable[7];
         type = new TextView(this);
         type = (TextView)findViewById(R.id.releaseDate);
-        type.setText(parseDate(movieData.getString()));
+        type.setText("Released on: " + parseDate(movieData.getString()));
 
         // New piece of Data: Rating
         // Convert movie data to custom parcelable class.
         movieData = (ParcelableImplementation)movieDataParcelable[8];
         type = new TextView(this);
         // type = (TextView)findViewById(R.id.rating);
-        type.setText(movieData.getString());
+        Float rating = Float.parseFloat(movieData.getString());
+        ratingsBar.setRating(rating / 2);
+        //type.setText(movieData.getString());
 
         // New piece of Data: Rating Count
         // Convert movie data to custom parcelable class.

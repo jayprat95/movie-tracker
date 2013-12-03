@@ -9,102 +9,91 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainMovieView" >
 
+    <ImageView
+        android:id="@+id/pictureImdb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_launcher" />
+
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:text="Title:" />
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/pictureImdb"
+        android:layout_marginLeft="50dp"
+        android:layout_toRightOf="@+id/pictureImdb"
+        android:text="Title" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/releaseDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/favoriteButton"
-        android:text="detailed movie view" />
+        android:layout_alignLeft="@+id/title"
+        android:layout_below="@+id/title"
+        android:text="release date" />
+
+    <TextView
+        android:id="@+id/actors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/releaseDate"
+        android:layout_below="@+id/releaseDate"
+        android:text="Actors" />
+
+    <TextView
+        android:id="@+id/directors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/actors"
+        android:layout_below="@+id/actors"
+        android:text="Directors" />
 
     <TextView
         android:id="@+id/plotSimple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/title"
-        android:text="plotSimple" />
+        android:layout_alignLeft="@+id/pictureImdb"
+        android:layout_alignRight="@+id/title"
+        android:layout_below="@+id/directors"
+        android:layout_marginTop="25dp"
+        android:text="Simple Plot" />
 
-    <TextView
-        android:id="@+id/type"
+    <Button
+        android:id="@+id/toWatchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView1"
-        android:layout_alignRight="@+id/favoriteButton"
-        android:layout_marginBottom="37dp"
-        android:text="type" />
+        android:layout_alignBottom="@+id/watchedButton"
+        android:layout_alignRight="@+id/plotSimple"
+        android:text="To Watch" />
 
     <Button
         android:id="@+id/favoriteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/watchedButton"
-        android:layout_below="@+id/textView1"
+        android:layout_alignLeft="@+id/plotSimple"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="22dp"
         android:text="Favorite" />
 
     <Button
         android:id="@+id/watchedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/favoriteButton"
-        android:layout_marginRight="17dp"
+        android:layout_alignBaseline="@+id/favoriteButton"
+        android:layout_alignBottom="@+id/favoriteButton"
+        android:layout_toRightOf="@+id/favoriteButton"
+        android:layout_toLeftOf="@+id/toWatchButton"
         android:text="Watched" />
 
-    <Button
-        android:id="@+id/toWatchButton"
+    <RatingBar
+        android:id="@+id/movieRatings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/watchedButton"
-        android:layout_marginTop="23dp"
-        android:text="Want To Watch" />
-
-    <TextView
-        android:id="@+id/directors"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/type"
-        android:layout_alignParentLeft="true"
-        android:layout_toLeftOf="@+id/type"
-        android:text="directors" />
-
-    <TextView
-        android:id="@+id/actors"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/type"
-        android:layout_alignTop="@+id/type"
-        android:layout_marginTop="18dp"
-        android:text="actors" />
-
-    <TextView
-        android:id="@+id/releaseDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/directors"
-        android:layout_alignLeft="@+id/toWatchButton"
-        android:layout_marginBottom="35dp"
-        android:text="releaseDate" />
-
-    <ImageView
-        android:id="@+id/pictureImdb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/toWatchButton"
-        android:layout_alignLeft="@+id/actors"
-        android:layout_below="@+id/favoriteButton"
-        android:layout_toLeftOf="@+id/title" />
+        android:layout_above="@+id/toWatchButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="31dp" />
 
 </RelativeLayout>
