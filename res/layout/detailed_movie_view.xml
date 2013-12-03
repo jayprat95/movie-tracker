@@ -96,4 +96,29 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="31dp" />
 
+    <ImageView
+        android:id="@+id/favoriteCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/watchedButton"
+        android:layout_toLeftOf="@+id/title"
+        android:src="@android:drawable/checkbox_on_background" />
+
+    <ImageView
+        android:id="@+id/watchedCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/favoriteCheckBox"
+        android:layout_centerHorizontal="true"
+        android:src="@android:drawable/checkbox_on_background" />
+
+    <ImageView
+        android:id="@+id/toWatchCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/movieRatings"
+        android:layout_below="@+id/toWatchButton"
+        android:layout_marginRight="15dp"
+        android:src="@android:drawable/checkbox_on_background" />
+
 </RelativeLayout>
