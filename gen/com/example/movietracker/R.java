@@ -29,7 +29,7 @@ public final class R {
         public static final int directors=0x7f08000a;
         public static final int favorite=0x7f080003;
         public static final int favoriteButton=0x7f08000e;
-        public static final int favoriteCheckBox=0x7f080010;
+        public static final int favoriteCheckBox=0x7f080011;
         public static final int listView=0x7f080014;
         public static final int movieRatings=0x7f08000f;
         public static final int pictureImdb=0x7f080006;
@@ -45,7 +45,7 @@ public final class R {
         public static final int toWatchCheckBox=0x7f080012;
         public static final int watched=0x7f080002;
         public static final int watchedButton=0x7f08000d;
-        public static final int watchedCheckBox=0x7f080011;
+        public static final int watchedCheckBox=0x7f080010;
     }
     public static final class layout {
         public static final int activity_main_movie_view=0x7f030000;

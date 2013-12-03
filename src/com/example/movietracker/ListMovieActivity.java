@@ -29,7 +29,6 @@ public class ListMovieActivity
     private TextFileParser    textParser;
     private ArrayList<Movie>  movies;
 
-    private TextView          textView1;
 
     // ~Fields............................................................
     private ArrayList<String> toWatch;
@@ -54,10 +53,6 @@ public class ListMovieActivity
         currentIntent = getIntent();
         listname = currentIntent.getStringExtra("listname");
 
-        // Set text on screen dynamically
-//        textView1 = new TextView(this);
-//        textView1 = (TextView)findViewById(R.id.textView1);
-//        textView1.setText(listname + " is the name of the view");
 
         // Pull data for all movies in assets folder
         System.out.println("Generating parser and parsing...");
