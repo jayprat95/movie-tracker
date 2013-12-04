@@ -13,45 +13,49 @@
         android:id="@+id/searchButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_alignBottom="@+id/searchText"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="19dp"
-        android:text="Search" />
-
-    <Button
-        android:id="@+id/watched"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="31dp"
-        android:layout_toLeftOf="@+id/searchButton"
-        android:text="Watched Movies" />
-
-    <Button
-        android:id="@+id/favorite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/watched"
-        android:layout_below="@+id/toWatch"
-        android:layout_marginTop="50dp"
-        android:text="Favorite Movies" />
+        android:text="Enter" />
 
     <EditText
         android:id="@+id/searchText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/searchButton"
-        android:ems="10" />
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="18dp"
+        android:layout_toLeftOf="@+id/searchButton"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
 
     <Button
         android:id="@+id/toWatch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/favorite"
+        android:layout_alignBottom="@+id/favorite"
         android:layout_alignRight="@+id/searchButton"
-        android:layout_below="@+id/watched"
-        android:layout_marginRight="42dp"
-        android:layout_marginTop="46dp"
-        android:text="Want To Watch Movies" />
+        android:text="To Watch" />
+
+    <Button
+        android:id="@+id/watched"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="55dp"
+        android:text="Favorite" />
+
+    <Button
+        android:id="@+id/favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/watched"
+        android:layout_alignBottom="@+id/watched"
+        android:layout_toLeftOf="@+id/toWatch"
+        android:layout_toRightOf="@+id/watched"
+        android:text="Watched" />
 
 </RelativeLayout>

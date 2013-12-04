@@ -63,7 +63,7 @@ public class ListMovieActivity
         System.out.println("Generating parser and parsing...");
         jsonParser = new Parser(assetManager);
         movies = jsonParser.getMovies();
-
+        setTitle(listname);
         this.updateLists();
 
     }
