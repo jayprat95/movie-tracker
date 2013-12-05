@@ -16,19 +16,18 @@ import junit.framework.TestCase;
  *  @version Dec 4, 2013
  */
 
-public class ParserTest
-    extends ActivityTestCase
+public class ParserTest extends ActivityTestCase
 {
 
     // ----------------------------------------------------------
     //gets the JSON from the
     private AssetManager assets;
     private Parser parse;
-    final Context ctx =  getInstrumentation().getTargetContext();
-    protected void setUp()
-        throws Exception
+    Context ctx;
+    protected void setUp() throws Exception
     {
         super.setUp();
+        ctx = getInstrumentation().getTargetContext();
         assets = ctx.getResources().getAssets();
         parse = new Parser(assets);
     }
@@ -40,7 +39,8 @@ public class ParserTest
      */
     public void testJsonToMovies()
     {
-        fail("Not yet implemented");
+        Movie drive = parse.jsonToMovies("Drive");
+        assertEquals("Drive", drive.getTitle());
     }
 
 
