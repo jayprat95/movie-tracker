@@ -1,233 +1,135 @@
 package com.example.movietracker;
 
+import java.util.Map;
+import java.util.HashMap;
 import junit.framework.TestCase;
 
 // -------------------------------------------------------------------------
 /**
- *  Write a one-sentence summary of your class here.
- *  Follow it with additional details about its purpose, what abstraction
- *  it represents, and how to use it.
- * 
- *  @author jayanthprathipati
+ *  This class tests the Movie data model to ensure that it meets project
+ *  specifications
+ *
+ *  @author jayanth
  *  @version Dec 4, 2013
  */
 
-public class MovieTest
-    extends TestCase
+public class MovieTest extends TestCase
 {
 
     // ----------------------------------------------------------
+    //field for testing purposes
+    private Movie testMovie;
     protected void setUp()
-        throws Exception
     {
-        super.setUp();
+        testMovie = new Movie();
     }
 
 
     /**
-     * Test method for {@link com.example.movietracker.Movie#Movie()}.
+     * Test method for getSimplePlot() and setSimplePlot()
      */
-    public void testMovie()
+    public void testGetAndSetSimplePlot()
     {
-        fail("Not yet implemented");
+        testMovie.setSimplePlot("Hello!");
+        assertEquals("Hello!", testMovie.getSimplePlot());
     }
 
 
     /**
-     * Test method for {@link com.example.movietracker.Movie#getSimplePlot()}.
+     * Test method for getting/setting the title
      */
-    public void testGetSimplePlot()
+    public void testGetAndSetTitle()
     {
-        fail("Not yet implemented");
+        testMovie.setTitle("hi");
+        assertEquals("hi", testMovie.getTitle());
+    }
+
+    /**
+     * Test method for getDirectors and setDirectors
+     */
+    public void testGetAndSetDirectors()
+    {
+        String[] testArray = {"A", "B", "C"};
+        testMovie.setDirectors(testArray);
+        assertEquals("A", testMovie.getDirectors()[0]);
+    }
+
+    /**
+     * Test method for get and set actors
+     */
+    public void testGetAndSetActors()
+    {
+        String[] testArray = {"A", "B", "C"};
+        testMovie.setActor(testArray);
+        assertEquals("A", testMovie.getActors()[0]);
+    }
+
+    /**
+     * Test method for get and set Imdb Url
+     */
+    public void testGetAndSetImdb_url()
+    {
+        testMovie.setImdb_url("I");
+        assertEquals("I", testMovie.getImdb_url());
+    }
+
+    /**
+     * Test method for Get and Set Rating
+     */
+    public void testGetAndSetRating()
+    {
+        testMovie.setRating(5);
+        assertEquals(5.0, testMovie.getRating(), 0.01);
     }
 
 
     /**
-     * Test method for {@link com.example.movietracker.Movie#setSimplePlot(java.lang.String)}.
+     * Test method for get & set the release date
      */
-    public void testSetSimplePlot()
+    public void testGetAndSetRelease_date()
     {
-        fail("Not yet implemented");
+       testMovie.setRelease_date(5);
+       assertEquals(5.0, testMovie.getRelease_date(), 0.01);
+    }
+
+    /**
+     * Test method for get and set ratings count
+     */
+    public void testGetAndSetRatingCount()
+    {
+        testMovie.setRatingCount(10);
+        assertEquals(10.0, testMovie.getRatingCount(), 0.01);
+    }
+
+    /**
+     * Test method for get and set runTime
+     */
+    public void testGetAndSetRuntime()
+    {
+        String[] testArray = {"A", "B", "C"};
+        testMovie.setRuntime(testArray);
+        assertEquals("A", testMovie.getRuntime()[0]);
     }
 
 
     /**
-     * Test method for {@link com.example.movietracker.Movie#getTitle()}.
+     * Test method for get and set posters
      */
-    public void testGetTitle()
+    public void testGetAndSetPoster()
     {
-        fail("Not yet implemented");
+        Map<String, String> testMap = new HashMap<String, String>();
+        testMap.put("H", "I");
+        testMovie.setPoster(testMap);
+        assertEquals("I", testMovie.getPoster().get("H"));
     }
 
-
     /**
-     * Test method for {@link com.example.movietracker.Movie#setTitle(java.lang.String)}.
+     * Test method for get and set type
      */
-    public void testSetTitle()
+    public void testGetAndSetType()
     {
-        fail("Not yet implemented");
-    }
-
-
-    /**
-     * Test method for {@link com.example.movietracker.Movie#getDirectors()}.
-     */
-    public void testGetDirectors()
-    {
-        fail("Not yet implemented");
-    }
-
-
-    /**
-     * Test method for {@link com.example.movietracker.Movie#setDirectors(java.lang.String[])}.
-     */
-    public void testSetDirectors()
-    {
-        fail("Not yet implemented");
-    }
-
-
-    /**
-     * Test method for {@link com.example.movietracker.Movie#getActors()}.
-     */
-    public void testGetActors()
-    {
-        fail("Not yet implemented");
-    }
-
-
-    /**
-     * Test method for {@link com.example.movietracker.Movie#setActor(java.lang.String[])}.
-     */
-    public void testSetActor()
-    {
-        fail("Not yet implemented");
-    }
-
-
-    /**
-     * Test method for {@link com.example.movietracker.Movie#getImdb_url()}.
-     */
-    public void testGetImdb_url()
-    {
-        fail("Not yet implemented");
-    }
-
-
-    /**
-     * Test method for {@link com.example.movietracker.Movie#setImdb_url(java.lang.String)}.
-     */
-    public void testSetImdb_url()
-    {
-        fail("Not yet implemented");
-    }
-
-
-    /**
-     * Test method for {@link com.example.movietracker.Movie#getRating()}.
-     */
-    public void testGetRating()
-    {
-        fail("Not yet implemented");
-    }
-
-
-    /**
-     * Test method for {@link com.example.movietracker.Movie#setRating(int)}.
-     */
-    public void testSetRating()
-    {
-        fail("Not yet implemented");
-    }
-
-
-    /**
-     * Test method for {@link com.example.movietracker.Movie#getRelease_date()}.
-     */
-    public void testGetRelease_date()
-    {
-        fail("Not yet implemented");
-    }
-
-
-    /**
-     * Test method for {@link com.example.movietracker.Movie#setRelease_date(int)}.
-     */
-    public void testSetRelease_date()
-    {
-        fail("Not yet implemented");
-    }
-
-
-    /**
-     * Test method for {@link com.example.movietracker.Movie#getRatingCount()}.
-     */
-    public void testGetRatingCount()
-    {
-        fail("Not yet implemented");
-    }
-
-
-    /**
-     * Test method for {@link com.example.movietracker.Movie#setRatingCount(int)}.
-     */
-    public void testSetRatingCount()
-    {
-        fail("Not yet implemented");
-    }
-
-
-    /**
-     * Test method for {@link com.example.movietracker.Movie#getRuntime()}.
-     */
-    public void testGetRuntime()
-    {
-        fail("Not yet implemented");
-    }
-
-
-    /**
-     * Test method for {@link com.example.movietracker.Movie#setRuntime(java.lang.String[])}.
-     */
-    public void testSetRuntime()
-    {
-        fail("Not yet implemented");
-    }
-
-
-    /**
-     * Test method for {@link com.example.movietracker.Movie#getPoster()}.
-     */
-    public void testGetPoster()
-    {
-        fail("Not yet implemented");
-    }
-
-
-    /**
-     * Test method for {@link com.example.movietracker.Movie#setPoster(java.util.Map)}.
-     */
-    public void testSetPoster()
-    {
-        fail("Not yet implemented");
-    }
-
-
-    /**
-     * Test method for {@link com.example.movietracker.Movie#getType()}.
-     */
-    public void testGetType()
-    {
-        fail("Not yet implemented");
-    }
-
-
-    /**
-     * Test method for {@link com.example.movietracker.Movie#setType(java.lang.String)}.
-     */
-    public void testSetType()
-    {
-        fail("Not yet implemented");
+        testMovie.setType("R");
+        assertEquals("R", testMovie.getType());
     }
 
 }
