@@ -39,8 +39,8 @@ public class ParserTest extends ActivityTestCase
      */
     public void testJsonToMovies()
     {
-        Movie drive = parse.jsonToMovies("Drive");
-        assertEquals("Drive", drive.getTitle());
+        Movie drive = parse.jsonToMovies("drive.json");
+        assertEquals("drive.json", drive.getTitle());
     }
 
 
