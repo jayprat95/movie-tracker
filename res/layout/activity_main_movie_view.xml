@@ -46,7 +46,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="55dp"
-        android:text="Favorite" />
+        android:text="Watched" />
 
     <Button
         android:id="@+id/favorite"
@@ -56,6 +56,6 @@
         android:layout_alignBottom="@+id/watched"
         android:layout_toLeftOf="@+id/toWatch"
         android:layout_toRightOf="@+id/watched"
-        android:text="Watched" />
+        android:text="Favorite" />
 
 </RelativeLayout>
