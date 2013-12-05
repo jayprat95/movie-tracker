@@ -60,7 +60,6 @@ public class ListMovieActivity
 //        textView1.setText(listname + " is the name of the view");
 
         // Pull data for all movies in assets folder
-        System.out.println("Generating parser and parsing...");
         jsonParser = new Parser(assetManager);
         movies = jsonParser.getMovies();
         setTitle(listname);
@@ -260,9 +259,7 @@ public class ListMovieActivity
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        System.out.println(resultCode);
         boolean[] update = data.getBooleanArrayExtra("update");
-        System.out.println(update + "........");
         if (update[0]) {
             this.updateLists();
         }
