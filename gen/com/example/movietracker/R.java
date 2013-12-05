@@ -40,10 +40,10 @@ public final class R {
         public static final int searchButton=0x7f080001;
         public static final int searchText=0x7f080002;
         public static final int title=0x7f080007;
-        public static final int toWatch=0x7f080005;
+        public static final int toWatch=0x7f080003;
         public static final int toWatchButton=0x7f08000c;
         public static final int toWatchCheckBox=0x7f080012;
-        public static final int watched=0x7f080003;
+        public static final int watched=0x7f080005;
         public static final int watchedButton=0x7f08000d;
         public static final int watchedCheckBox=0x7f080010;
     }
