@@ -37,8 +37,7 @@ public class DetailedMovieActivity
 
     private Movie                    theMovie;
 
-    // Boolean to indicate to update lists on exit.
-    private boolean                  updateList[];
+    private boolean updateList[];
 
     // ~Fields for Widgets
     private TextView                 title;
@@ -72,21 +71,103 @@ public class DetailedMovieActivity
         movieString = currentIntent.getStringExtra("movieTitle");
         movieDataParcelable =
             currentIntent.getParcelableArrayExtra("movieData");
+        RatingBar ratingsBar = (RatingBar)findViewById(R.id.movieRatings);
+        ratingsBar.setEnabled(false);
+        // ******** Get all data passed in and set Texts.*******
 
-        this.getAllDataPassedIn();
+        // New piece of Data: Title
+        // Convert movie data to custom parcelable class.
+        movieData = (ParcelableImplementation)movieDataParcelable[0];
+        title = new TextView(this);
+        title = (TextView)findViewById(R.id.title);
+        title.setText(movieData.getString());
+
+        // New piece of Data: Simple Plot
+        // Convert movie data to custom parcelable class.
+        movieData = (ParcelableImplementation)movieDataParcelable[1];
+        plotSimple = new TextView(this);
+        plotSimple = (TextView)findViewById(R.id.plotSimple);
+        plotSimple.setText(movieData.getString());
+
+        // New piece of Data: Type
+        // Convert movie data to custom parcelable class.
+        movieData = (ParcelableImplementation)movieDataParcelable[2];
+//        type = new TextView(this);
+//        type = (TextView)findViewById(R.id.type);
+//        type.setText(movieData.getString());
+
+        // New piece of Data: Directors
+        // Convert movie data to custom parcelable class.
+        movieData = (ParcelableImplementation)movieDataParcelable[3];
+        type = new TextView(this);
+        type = (TextView)findViewById(R.id.directors);
+        type.setText("Directed by: " + movieData.getString());
+
+        // New piece of Data: Actors
+        // Convert movie data to custom parcelable class.
+        movieData = (ParcelableImplementation)movieDataParcelable[4];
+        type = new TextView(this);
+        type = (TextView)findViewById(R.id.actors);
+        type.setText("Actors: " + movieData.getString());
+
+        // New piece of Data: Runtime
+        // Convert movie data to custom parcelable class.
+        movieData = (ParcelableImplementation)movieDataParcelable[5];
+        type = new TextView(this);
+        // type = (TextView)findViewById(R.id.runtime);
+        type.setText(movieData.getString());
+
+        // New piece of Data: Imdb url
+        // Convert movie data to custom parcelable class.
+        movieData = (ParcelableImplementation)movieDataParcelable[6];
+        type = new TextView(this);
+        // type = (TextView)findViewById(R.id.imdb_url);
+        type.setText(movieData.getString());
+
+        // New piece of Data: Released Date
+        // Convert movie data to custom parcelable class.
+        movieData = (ParcelableImplementation)movieDataParcelable[7];
+        type = new TextView(this);
+        type = (TextView)findViewById(R.id.releaseDate);
+        type.setText("Released on: " + parseDate(movieData.getString()));
+
+        // New piece of Data: Rating
+        // Convert movie data to custom parcelable class.
+        movieData = (ParcelableImplementation)movieDataParcelable[8];
+        type = new TextView(this);
+        // type = (TextView)findViewById(R.id.rating);
+        Float rating = Float.parseFloat(movieData.getString());
+        ratingsBar.setRating(rating / 2);
+        //type.setText(movieData.getString());
+
+        // New piece of Data: Rating Count
+        // Convert movie data to custom parcelable class.
+        movieData = (ParcelableImplementation)movieDataParcelable[9];
+        type = new TextView(this);
+        // type = (TextView)findViewById(R.id.ratingCount);
+        type.setText(movieData.getString());
+
+        // New piece of Data: Picture url imdb
+        // Convert movie data to custom parcelable class.
+        movieData = (ParcelableImplementation)movieDataParcelable[10];
+        ImageView iv = new ImageView(this);
+        iv = (ImageView)findViewById(R.id.pictureImdb);
+
+        iv.setImageBitmap(getImageBitmap(movieData.getString()));
+
+        // New piece of Data: Picture url cover
+        // Convert movie data to custom parcelable class.
+        movieData = (ParcelableImplementation)movieDataParcelable[11];
+        type = new TextView(this);
+        // type = (TextView)findViewById(R.id.pictureCover;
+        //type.setText(movieData.getString());
+
 
         this.setupListeners();
-
-        // Update checkmarks if movie is on the list
-        this.updateChecks();
     }
 
 
-    // ----------------------------------------------------------
-    /**
-     * This method sets up listeners for the adding the movie to a list
-     * if clicked.
-     */
+
     public void setupListeners()
     {
 
@@ -176,6 +257,7 @@ public class DetailedMovieActivity
             }
         });
 
+
     }
 
 
@@ -194,11 +276,9 @@ public class DetailedMovieActivity
     }
 
 
-    private Bitmap getImageBitmap(String url)
-    {
+    private Bitmap getImageBitmap(String url) {
         Bitmap bm = null;
-        try
-        {
+        try {
             URL aURL = new URL(url);
             URLConnection conn = aURL.openConnection();
             conn.connect();
@@ -207,124 +287,10 @@ public class DetailedMovieActivity
             bm = BitmapFactory.decodeStream(bis);
             bis.close();
             is.close();
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return bm;
-    }
-
-
-    /**
-     * This method gets all the data about the movie and updates the widgets.
-     */
-    private void getAllDataPassedIn()
-    {
-        // ************* Get all data passed in and set Texts.***************
-
-        // New piece of Data: Title
-        // Convert movie data to custom parcelable class.
-        movieData = (ParcelableImplementation)movieDataParcelable[0];
-        title = new TextView(this);
-        title = (TextView)findViewById(R.id.title);
-        title.setText(movieData.getString());
-
-        // New piece of Data: Simple Plot
-        // Convert movie data to custom parcelable class.
-        movieData = (ParcelableImplementation)movieDataParcelable[1];
-        plotSimple = new TextView(this);
-        plotSimple = (TextView)findViewById(R.id.plotSimple);
-        plotSimple.setText(movieData.getString());
-
-        // New piece of Data: Type
-        // Convert movie data to custom parcelable class.
-        movieData = (ParcelableImplementation)movieDataParcelable[2];
-        // type = new TextView(this);
-        // type = (TextView)findViewById(R.id.type);
-        // type.setText(movieData.getString());
-
-        // New piece of Data: Directors
-        // Convert movie data to custom parcelable class.
-        movieData = (ParcelableImplementation)movieDataParcelable[3];
-        type = new TextView(this);
-        type = (TextView)findViewById(R.id.directors);
-        type.setText("Directed by: " + movieData.getString());
-
-        // New piece of Data: Actors
-        // Convert movie data to custom parcelable class.
-        movieData = (ParcelableImplementation)movieDataParcelable[4];
-        type = new TextView(this);
-        type = (TextView)findViewById(R.id.actors);
-        type.setText("Actors: " + movieData.getString());
-
-        // New piece of Data: Runtime
-        // Convert movie data to custom parcelable class.
-        movieData = (ParcelableImplementation)movieDataParcelable[5];
-        type = new TextView(this);
-        // type = (TextView)findViewById(R.id.runtime);
-        type.setText(movieData.getString());
-
-        // New piece of Data: Imdb url
-        // Convert movie data to custom parcelable class.
-        movieData = (ParcelableImplementation)movieDataParcelable[6];
-        type = new TextView(this);
-        // type = (TextView)findViewById(R.id.imdb_url);
-        type.setText(movieData.getString());
-
-        // New piece of Data: Released Date
-        // Convert movie data to custom parcelable class.
-        movieData = (ParcelableImplementation)movieDataParcelable[7];
-        type = new TextView(this);
-        type = (TextView)findViewById(R.id.releaseDate);
-        type.setText("Released on: " + parseDate(movieData.getString()));
-
-        // New piece of Data: Rating
-        // Convert movie data to custom parcelable class.
-        movieData = (ParcelableImplementation)movieDataParcelable[8];
-        RatingBar ratingsBar = (RatingBar)findViewById(R.id.ratingsBar);
-        ratingsBar.setEnabled(false);
-        Float rating = Float.parseFloat(movieData.getString());
-        ratingsBar.setRating(rating / 2);
-
-        // New piece of Data: Rating Count
-        // Convert movie data to custom parcelable class.
-        movieData = (ParcelableImplementation)movieDataParcelable[9];
-        type = new TextView(this);
-        // type = (TextView)findViewById(R.id.ratingCount);
-        type.setText(movieData.getString());
-
-        // New piece of Data: Picture url imdb
-        // Convert movie data to custom parcelable class.
-        movieData = (ParcelableImplementation)movieDataParcelable[10];
-        ImageView iv = new ImageView(this);
-        iv = (ImageView)findViewById(R.id.pictureImdb);
-
-        iv.setImageBitmap(getImageBitmap(movieData.getString()));
-
-        // New piece of Data: Picture url cover
-        // Convert movie data to custom parcelable class.
-        movieData = (ParcelableImplementation)movieDataParcelable[11];
-        type = new TextView(this);
-        // type = (TextView)findViewById(R.id.pictureCover;
-        // type.setText(movieData.getString());
-    }
-
-    public void updateChecks() {
-        ImageView checks = new ImageView(this);
-        checks = (ImageView)findViewById(R.id.watchedCheckBox);
-        textParser.getStringFromFiles("watched");
-        ArrayList<String> temp = textParser.getList("watched");
-        if ((temp != null) && (temp.contains(movieString)))
-        {
-            System.out.println("Setting Visible");
-            checks.setVisibility(View.VISIBLE);
-        }
-        else {
-            System.out.println("Setting Invisible");
-            checks.setVisibility(View.INVISIBLE);
-        }
-
     }
 
     /**
@@ -332,12 +298,10 @@ public class DetailedMovieActivity
      * update immediately because of changes.
      */
     @Override
-    public void onBackPressed()
-    {
+    public void onBackPressed() {
         Intent intent = new Intent();
         intent.putExtra("update", updateList);
         setResult(RESULT_OK, intent);
         finish();
     }
-
 }

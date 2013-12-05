@@ -89,7 +89,7 @@
         android:text="Watched" />
 
     <RatingBar
-        android:id="@+id/ratingsBar"
+        android:id="@+id/movieRatings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/toWatchButton"
@@ -109,7 +109,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/toWatchCheckBox"
-        android:layout_toLeftOf="@+id/ratingsBar"
+        android:layout_toLeftOf="@+id/movieRatings"
         android:src="@android:drawable/checkbox_on_background" />
 
     <ImageView
@@ -117,7 +117,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toWatchButton"
-        android:layout_toRightOf="@+id/ratingsBar"
+        android:layout_toRightOf="@+id/movieRatings"
         android:src="@android:drawable/checkbox_on_background" />
 
 </RelativeLayout>

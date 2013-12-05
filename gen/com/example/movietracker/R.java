@@ -31,9 +31,9 @@ public final class R {
         public static final int favoriteButton=0x7f08000e;
         public static final int favoriteCheckBox=0x7f080011;
         public static final int listView=0x7f080014;
+        public static final int movieRatings=0x7f08000f;
         public static final int pictureImdb=0x7f080006;
         public static final int plotSimple=0x7f08000b;
-        public static final int ratingsBar=0x7f08000f;
         public static final int releaseDate=0x7f080008;
         public static final int scrollView1=0x7f080013;
         public static final int search=0x7f080000;
