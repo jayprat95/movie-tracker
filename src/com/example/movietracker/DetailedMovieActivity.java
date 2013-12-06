@@ -172,6 +172,8 @@ public class DetailedMovieActivity
 
 
         this.updateCheckMarks();
+
+        this.setTitle(this.formatTitle());
     }
 
 
@@ -359,6 +361,16 @@ public class DetailedMovieActivity
         }
 
     }
+
+
+    public String formatTitle() {
+        if (movieString.length() < 2) {
+            return movieString;
+        }
+        return this.movieString.substring(0, 1).toUpperCase() + this.movieString.substring(1, movieString.length());
+
+    }
+
 
     /**
      * This method overrides the back button to let the list know whether to

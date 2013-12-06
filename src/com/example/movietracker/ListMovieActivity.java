@@ -63,8 +63,9 @@ public class ListMovieActivity
         System.out.println("Generating parser and parsing...");
         jsonParser = new Parser(assetManager);
         movies = jsonParser.getMovies();
-        setTitle(listname);
         this.updateLists();
+
+        this.setTitleCorrectly();
 
     }
 
@@ -265,6 +266,22 @@ public class ListMovieActivity
         System.out.println(update + "........");
         if (update[0]) {
             this.updateLists();
+        }
+    }
+
+
+    public void setTitleCorrectly() {
+        if (listname.equals("watched")) {
+            setTitle("Watched List");
+        }
+        else if (listname.equals("toWatch")) {
+            setTitle("Want To Watch List");
+        }
+        else if (listname.equals("favorite")) {
+            setTitle("Favorite List");
+        }
+        else {
+            setTitle("List");
         }
     }
 
