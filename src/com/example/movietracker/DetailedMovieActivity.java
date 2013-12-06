@@ -35,6 +35,8 @@ public class DetailedMovieActivity
 
     private TextFileParser           textParser;
 
+    private TextFileParser updateMarksParser;
+
     private Movie                    theMovie;
 
     private boolean updateList[];
@@ -65,6 +67,8 @@ public class DetailedMovieActivity
         super.onCreate(savedInstanceState);
         assetManager = this.getAssets();
         setContentView(R.layout.detailed_movie_view);
+
+
 
         // Get extra parameter of the movie name.
         currentIntent = getIntent();
@@ -163,7 +167,11 @@ public class DetailedMovieActivity
         //type.setText(movieData.getString());
 
 
+
         this.setupListeners();
+
+
+        this.updateCheckMarks();
     }
 
 
@@ -199,6 +207,9 @@ public class DetailedMovieActivity
                         + " from watched");
                     textParser.setMovieList(temp, "watched");
                 }
+
+                // update the checkmarks if it was added to the list
+                DetailedMovieActivity.this.updateCheckMarks();
             }
         });
 
@@ -227,6 +238,9 @@ public class DetailedMovieActivity
                         + " from toWatch");
                     textParser.setMovieList(temp, "toWatch");
                 }
+
+                // update the checkmarks if it was added to the list
+                DetailedMovieActivity.this.updateCheckMarks();
             }
         });
 
@@ -254,6 +268,9 @@ public class DetailedMovieActivity
                         + " from favorite");
                     textParser.setMovieList(temp, "favorite");
                 }
+
+                // update the checkmarks if it was added to the list
+                DetailedMovieActivity.this.updateCheckMarks();
             }
         });
 
@@ -293,6 +310,56 @@ public class DetailedMovieActivity
         return bm;
     }
 
+
+    public void updateCheckMarks() {
+        updateMarksParser = new TextFileParser(this.assetManager, this.getBaseContext());
+
+        // Update watched checkbox
+        updateMarksParser.getStringFromFiles("watched");
+        ArrayList<String> temp = updateMarksParser.getList("watched");
+        ImageView watchedBox = new ImageView(this);
+        watchedBox = (ImageView)findViewById(R.id.watchedCheckBox);
+        System.out.println(temp.contains(movieString));
+
+        if ((temp != null) && (temp.contains(movieString)))
+        {
+            watchedBox.setVisibility(View.VISIBLE);
+        }
+        else {
+            watchedBox.setVisibility(View.INVISIBLE);
+        }
+
+        // Update toWatch checkbox
+        updateMarksParser.getStringFromFiles("toWatch");
+        temp = updateMarksParser.getList("toWatch");
+        ImageView toWatchBox = new ImageView(this);
+        toWatchBox = (ImageView)findViewById(R.id.toWatchCheckBox);
+        System.out.println(temp.contains(movieString));
+
+        if ((temp != null) && (temp.contains(movieString)))
+        {
+            toWatchBox.setVisibility(View.VISIBLE);
+        }
+        else {
+            toWatchBox.setVisibility(View.INVISIBLE);
+        }
+
+        // Update favorite checkbox
+        updateMarksParser.getStringFromFiles("favorite");
+        temp = updateMarksParser.getList("favorite");
+        ImageView favoriteBox = new ImageView(this);
+        favoriteBox = (ImageView)findViewById(R.id.favoriteCheckBox);
+
+        if ((temp != null) && (temp.contains(movieString)))
+        {
+            favoriteBox.setVisibility(View.VISIBLE);
+        }
+        else {
+            favoriteBox.setVisibility(View.INVISIBLE);
+        }
+
+    }
+
     /**
      * This method overrides the back button to let the list know whether to
      * update immediately because of changes.
@@ -304,4 +371,5 @@ public class DetailedMovieActivity
         setResult(RESULT_OK, intent);
         finish();
     }
+
 }
