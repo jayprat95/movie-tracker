@@ -1,5 +1,6 @@
 package com.example.movietracker;
 
+import java.util.Collections;
 import java.io.FileOutputStream;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -63,6 +64,10 @@ public class TextFileParser
     }
 
 
+    /**
+     * This method puts the list into a long string with a comma delimiter
+     * in order to store it in memory easier.
+     */
     private String getStringFromListHelper(ArrayList<String> list)
     {
         StringBuilder sb = new StringBuilder();
@@ -77,7 +82,11 @@ public class TextFileParser
 
         String returnString = sb.toString();
         return returnString.substring(0, returnString.length() - 1);
+    }
 
+    private ArrayList<String> alphabetize(ArrayList<String> theList) {
+        Collections.sort(theList);
+        return theList;
     }
 
 
@@ -93,6 +102,10 @@ public class TextFileParser
      */
     public void setMovieList(ArrayList<String> moviesToSet, String listname)
     {
+        // Alphabetize the list before storing it.
+        ArrayList<String> moviesToSetAlphabetized = this.alphabetize(moviesToSet);
+
+
         // Create output stream with spot in internal memory.
         FileOutputStream fos = null;
         try
@@ -111,7 +124,8 @@ public class TextFileParser
         // Write list of names passed in to file in bytes.
         try
         {
-            fos.write(getStringFromListHelper(moviesToSet).getBytes());
+            fos.write(getStringFromListHelper(moviesToSetAlphabetized).getBytes());
+            fos.flush();
             fos.close();
         }
         catch (IOException e)
@@ -169,6 +183,7 @@ public class TextFileParser
         }
 
         String contents = builder.toString();
+        System.out.println(contents);
 
         // Store file contents in correct variable
         if (filename.equals("toWatch"))
@@ -201,6 +216,10 @@ public class TextFileParser
      */
     public void parseStringsToStringList(String filename)
     {
+        // Initialize lists of movies
+        watchedTitles.clear();
+        toWatchTitles.clear();
+        favoriteTitles.clear();
         // Create delimiter and parse file into a String list for all lists.
         String delimiter = "[,]";
 
