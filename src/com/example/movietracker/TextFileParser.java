@@ -117,7 +117,7 @@ public class TextFileParser
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("Cannot access/find file. Writing");
+            System.out.println("Cannot access. Need to create file. Writing");
             e.printStackTrace();
         }
 
@@ -155,7 +155,7 @@ public class TextFileParser
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("Cannot access/find file. Reading"
+            System.out.println("Cannot access. Need to create file. Writing"
                 + " The name: " + filename);
             e.printStackTrace();
             return;
