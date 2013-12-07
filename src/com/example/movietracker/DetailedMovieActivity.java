@@ -10,6 +10,7 @@ import java.net.URL;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.widget.ImageView;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -20,6 +21,8 @@ import android.content.res.AssetManager;
 import java.util.List;
 import android.os.Bundle;
 import java.util.ArrayList;
+
+import android.app.ActionBar;
 import android.app.Activity;
 
 public class DetailedMovieActivity extends Activity {
@@ -63,6 +66,10 @@ public class DetailedMovieActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		assetManager = this.getAssets();
 		setContentView(R.layout.detailed_movie_view);
+		
+		// Setup button on titlebar
+        ActionBar actionBar = getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
 		// Get extra parameter of the movie name.
 		currentIntent = getIntent();
@@ -349,6 +356,13 @@ public class DetailedMovieActivity extends Activity {
 		intent.putExtra("update", updateList);
 		setResult(RESULT_OK, intent);
 		finish();
+	}
+	
+	public boolean onOptionsItemSelected(MenuItem item){
+	    Intent myIntent = new Intent(getApplicationContext(), ListMovieActivity.class);
+	    startActivityForResult(myIntent, 0);
+	    return true;
+
 	}
 
 }

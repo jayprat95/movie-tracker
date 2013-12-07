@@ -10,12 +10,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.content.Intent;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.content.res.AssetManager;
 import java.util.List;
 import android.os.Bundle;
 import java.util.ArrayList;
+
+import android.app.ActionBar;
 import android.app.Activity;
 
 public class ListMovieActivity
@@ -50,6 +53,10 @@ public class ListMovieActivity
         assetManager = this.getAssets();
         setContentView(R.layout.list_movie_view);
 
+        // Setup button on titlebar
+        ActionBar actionBar = getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        
         // Get extra parameter of the list name passed in.
         currentIntent = getIntent();
         listname = currentIntent.getStringExtra("listname");
@@ -293,4 +300,9 @@ public class ListMovieActivity
         this.setupListView();
     }
 
+    public boolean onOptionsItemSelected(MenuItem item){
+        Intent myIntent = new Intent(getApplicationContext(), MainMovieActivity.class);
+        startActivityForResult(myIntent, 0);
+        return true;
+    }
 }

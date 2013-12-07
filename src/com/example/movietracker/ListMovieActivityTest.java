@@ -151,5 +151,14 @@ public class ListMovieActivityTest extends
 		assertNotNull(nextActivity);
 		nextActivity.finish();
 	}
+	
+	public void testClickOnMovieNone() {
+		// Setup
+		setActivityIntent(intentWatched);
+		lmaWatched = this.getActivity();
+		listViewWatched = (ListView) lmaWatched.findViewById(R.id.listView);
+		assertEquals(listViewWatched.getChildCount(), 0);
+		
+	}
 
 }
