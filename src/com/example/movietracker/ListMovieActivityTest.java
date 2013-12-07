@@ -29,39 +29,72 @@ public class ListMovieActivityTest
      public ListMovieActivityTest(Class<ListMovieActivity> activityClass)
      {
          super(activityClass);
-         // TODO Auto-generated constructor stub
      }
 
      // ~Fields................................................................
-     private ListMovieActivity  lma;
-     private Intent intent;
-     private ListView listView;
-     private Instrumentation mInstrumentation;
+     private ListMovieActivity  lmaWatched;
+     private ListMovieActivity  lmaToWatch;
+     private ListMovieActivity  lmaFavorite;
+     private Intent intentWatched;
+     private Intent intentToWatch;
+     private Intent intentFavorite;
+     private Instrumentation mInstrumentationWatched;
+     private Instrumentation mInstrumentationToWatch;
+     private Instrumentation mInstrumentationFavorite;
+     
+     // Widget fields
+     private ListView listViewWatched;
+     private ListView listViewToWatch;
+     private ListView listViewFavorite;
+     
+     
+     
+     
+     
     // ----------------------------------------------------------
     protected void setUp()
         throws Exception
     {
         super.setUp();
-
-        this.mInstrumentation = getInstrumentation();
-        intent = new Intent();
-        intent =
-            new Intent(mInstrumentation.getContext(),
+        
+        
+        // ***Setup three activities***
+        this.mInstrumentationWatched = getInstrumentation();
+        intentWatched = new Intent();
+        intentWatched =
+            new Intent(mInstrumentationWatched.getContext(),
                 ListMovieActivity.class);
-        intent.putExtra("listname", "watched");
-        setActivityIntent(intent);
-        lma = this.getActivity();
-        listView = (ListView)lma.findViewById(R.id.listView);
-
+        intentWatched.putExtra("listname", "watched");
+        //***
+        this.mInstrumentationToWatch = getInstrumentation();
+        intentToWatch = new Intent();
+        intentToWatch =
+            new Intent(mInstrumentationToWatch.getContext(),
+                ListMovieActivity.class);
+        intentWatched.putExtra("listname", "toWatch");
+        //***
+        this.mInstrumentationFavorite = getInstrumentation();
+        intentFavorite = new Intent();
+        intentFavorite =
+            new Intent(mInstrumentationFavorite.getContext(),
+                ListMovieActivity.class);
+        intentFavorite.putExtra("listname", "favorite");
     }
 
 
     /**
      * Test method for {@link com.example.movietracker.ListMovieActivity#onCreate(android.os.Bundle)}.
      */
-    public void testOnCreateBundle()
+    public void testOnCreateBundleWatched()
     {
-
+        setActivityIntent(intentWatched);
+        lmaWatched = this.getActivity();
+        listViewWatched = (ListView)lmaWatched.findViewById(R.id.listView);
+        assertEquals(listViewWatched.getCount(), 0);
+        
+        
+    	
+    	
     }
 
 
