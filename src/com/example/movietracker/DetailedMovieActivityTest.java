@@ -43,12 +43,14 @@ public class DetailedMovieActivityTest
     private TextView  plotSimple;
     private TextView  directors;
     private TextView  actors;
+    private TextView  releaseDate;
     private Button    watchedButton;
     private Button    favoriteButton;
     private Button    toWatchButton;
     private ImageView watchedCheckBox;
     private ImageView favoriteCheckBox;
     private ImageView toWatchCheckBox;
+    private ImageView pictureImdb;
 
 
     // ----------------------------------------------------------
@@ -75,13 +77,12 @@ public class DetailedMovieActivityTest
                 new ParcelableImplementation("a"),
                 new ParcelableImplementation("r"),
                 new ParcelableImplementation("u"),
-                new ParcelableImplementation(Integer
-                    .toString(05050505)),
+                new ParcelableImplementation("20130812"),
                 new ParcelableImplementation(Float
                     .toString(5)),
                 new ParcelableImplementation(Float
                     .toString(5)),
-                new ParcelableImplementation("i"),
+                new ParcelableImplementation("http://ia.media-imdb.com/images/M/MV5BMTQwNTU3MTE4NF5BMl5BanBnXkFtZTcwOTgxNDM2Mg@@._V1_SX214_.jpg"),
                 new ParcelableImplementation("c") };
         intent.putExtra("movieData", parcelableArray);
 
@@ -97,12 +98,14 @@ public class DetailedMovieActivityTest
         plotSimple = (TextView)dma.findViewById(R.id.plotSimple);
         directors = (TextView)dma.findViewById(R.id.directors);
         actors = (TextView)dma.findViewById(R.id.actors);
+        releaseDate = (TextView)dma.findViewById(R.id.releaseDate);
         watchedButton = (Button)dma.findViewById(R.id.watchedButton);
         toWatchButton = (Button)dma.findViewById(R.id.toWatchButton);
         favoriteButton = (Button)dma.findViewById(R.id.favoriteButton);
         watchedCheckBox = (ImageView)dma.findViewById(R.id.watchedCheckBox);
         toWatchCheckBox = (ImageView)dma.findViewById(R.id.toWatchCheckBox);
         favoriteCheckBox = (ImageView)dma.findViewById(R.id.favoriteCheckBox);
+        pictureImdb = (ImageView)dma.findViewById(R.id.pictureImdb);
 
     }
 
@@ -124,18 +127,7 @@ public class DetailedMovieActivityTest
      */
     public void testOnCreateBundle()
     {
-        System.out.println(watchedCheckBox == null);
-        assertFalse(watchedCheckBox.isShown());
-        try
-        {
-            runTestOnUiThread(new Runnable() { public void run() { watchedButton.performClick(); } });
-        }
-        catch (Throwable e)
-        {
-            System.out.println("Could not click button");
-            e.printStackTrace();
-        }
-        assertTrue(watchedCheckBox.isShown());
+    	assertEquals(dma.getTitle(), title.getText());
     }
 
 
@@ -148,4 +140,50 @@ public class DetailedMovieActivityTest
         fail("Not yet implemented");
     }
 
+
+    public void testCheckBoxes() {
+     // Checking boxes
+        assertFalse(watchedCheckBox.isShown());
+        assertFalse(toWatchCheckBox.isShown());
+        assertFalse(favoriteCheckBox.isShown());
+        try
+        {
+            runTestOnUiThread(new Runnable() { public void run() { watchedButton.performClick(); } });
+            runTestOnUiThread(new Runnable() { public void run() { toWatchButton.performClick(); } });
+            runTestOnUiThread(new Runnable() { public void run() { favoriteButton.performClick(); } });
+        }
+        catch (Throwable e)
+        {
+            System.out.println("Could not click button");
+            e.printStackTrace();
+        }
+        assertTrue(watchedCheckBox.isShown());
+        assertTrue(toWatchCheckBox.isShown());
+        assertTrue(favoriteCheckBox.isShown());
+
+        // Unchecking
+        try
+        {
+            runTestOnUiThread(new Runnable() { public void run() { watchedButton.performClick(); } });
+            runTestOnUiThread(new Runnable() { public void run() { toWatchButton.performClick(); } });
+            runTestOnUiThread(new Runnable() { public void run() { favoriteButton.performClick(); } });
+        }
+        catch (Throwable e)
+        {
+            System.out.println("Could not click button");
+            e.printStackTrace();
+        }
+        assertFalse(watchedCheckBox.isShown());
+        assertFalse(toWatchCheckBox.isShown());
+        assertFalse(favoriteCheckBox.isShown());
+    }
+    
+    public void testFieldWidgets() {
+    	assertEquals("t", title.getText());
+    	assertEquals("p", plotSimple.getText());
+    	assertEquals("Directed by: d", directors.getText());
+    	assertEquals("Actors: a", actors.getText());
+    	assertEquals("Released on: 12/08/2013", releaseDate.getText());
+    	System.out.println(pictureImdb.getDrawable());
+    }
 }
