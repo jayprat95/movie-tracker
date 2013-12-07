@@ -21,7 +21,8 @@ import android.app.Instrumentation;
 public class DetailedMovieActivityTest
     extends ActivityInstrumentationTestCase2<DetailedMovieActivity>
 {
-    public DetailedMovieActivityTest() {
+    @SuppressWarnings("deprecation")
+	public DetailedMovieActivityTest() {
        super("com.DetailedMovieActivity", DetailedMovieActivity.class);
     }
 
@@ -29,7 +30,6 @@ public class DetailedMovieActivityTest
     public DetailedMovieActivityTest(Class<DetailedMovieActivity> activityClass)
     {
         super(activityClass);
-        // TODO Auto-generated constructor stub
     }
 
 
@@ -88,7 +88,6 @@ public class DetailedMovieActivityTest
 
         setActivityIntent(intent);
         dma = this.getActivity();
-        System.out.println(dma);
 
 
 
@@ -110,15 +109,6 @@ public class DetailedMovieActivityTest
     }
 
 
-    /**
-     * Test method for
-     * {@link com.example.movietracker.DetailedMovieActivity#onBackPressed()}.
-     */
-    public void testOnBackPressed()
-    {
-        fail("Not yet implemented");
-    }
-
 
     /**
      * Test method for
@@ -130,15 +120,6 @@ public class DetailedMovieActivityTest
     	assertEquals(dma.getTitle(), title.getText());
     }
 
-
-    /**
-     * Test method for
-     * {@link com.example.movietracker.DetailedMovieActivity#setupListeners()}.
-     */
-    public void testSetupListeners()
-    {
-        fail("Not yet implemented");
-    }
 
 
     public void testCheckBoxes() {

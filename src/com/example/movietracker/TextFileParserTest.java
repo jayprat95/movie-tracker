@@ -1,5 +1,9 @@
 package com.example.movietracker;
 
+import android.app.Instrumentation;
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.test.ActivityTestCase;
 import junit.framework.TestCase;
 
 // -------------------------------------------------------------------------
@@ -13,14 +17,22 @@ import junit.framework.TestCase;
  */
 
 public class TextFileParserTest
-    extends TestCase
+    extends ActivityTestCase
 {
+	// ~Fields..................................................
+	private Context ctx;
+	private AssetManager assets;
+	
+	private TextFileParser tfp;
 
     // ----------------------------------------------------------
     protected void setUp()
         throws Exception
     {
         super.setUp();
+        ctx = getInstrumentation().getTargetContext();
+        assets = ctx.getResources().getAssets();
+        tfp = new TextFileParser(assets, ctx);
     }
 
 
