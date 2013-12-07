@@ -1,5 +1,6 @@
 package com.example.movietracker;
 
+import java.util.ArrayList;
 import android.content.Context;
 import android.test.ActivityTestCase;
 import android.test.ActivityInstrumentationTestCase2;
@@ -41,15 +42,19 @@ public class ParserTest extends ActivityTestCase
     {
         Movie drive = parse.jsonToMovies("drive.json");
         assertEquals("drive.json", drive.getTitle());
+        Exception e = new Exception();
+
     }
 
 
     /**
-     * Test method for {@link com.example.movietracker.Parser#getMovies()}.
+     * Test method for getMovies()
      */
     public void testGetMovies()
     {
-        fail("Not yet implemented");
+        ArrayList<Movie> list = parse.getMovies();
+        assertNotNull(list);
+        assertFalse(list.isEmpty());
     }
 
 
