@@ -22,30 +22,32 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
+        public static final int mt=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f080015;
-        public static final int actors=0x7f080009;
-        public static final int directors=0x7f08000a;
+        public static final int action_settings=0x7f080016;
+        public static final int actors=0x7f08000a;
+        public static final int directors=0x7f08000b;
         public static final int favorite=0x7f080004;
-        public static final int favoriteButton=0x7f08000e;
-        public static final int favoriteCheckBox=0x7f080011;
-        public static final int listView=0x7f080014;
-        public static final int movieRatings=0x7f08000f;
-        public static final int pictureImdb=0x7f080006;
-        public static final int plotSimple=0x7f08000b;
-        public static final int releaseDate=0x7f080008;
-        public static final int scrollView1=0x7f080013;
+        public static final int favoriteButton=0x7f08000f;
+        public static final int favoriteCheckBox=0x7f080012;
+        public static final int iconView=0x7f080006;
+        public static final int listView=0x7f080015;
+        public static final int movieRatings=0x7f080010;
+        public static final int pictureImdb=0x7f080007;
+        public static final int plotSimple=0x7f08000c;
+        public static final int releaseDate=0x7f080009;
+        public static final int scrollView1=0x7f080014;
         public static final int search=0x7f080000;
         public static final int searchButton=0x7f080001;
         public static final int searchText=0x7f080002;
-        public static final int title=0x7f080007;
+        public static final int title=0x7f080008;
         public static final int toWatch=0x7f080003;
-        public static final int toWatchButton=0x7f08000c;
-        public static final int toWatchCheckBox=0x7f080012;
+        public static final int toWatchButton=0x7f08000d;
+        public static final int toWatchCheckBox=0x7f080013;
         public static final int watched=0x7f080005;
-        public static final int watchedButton=0x7f08000d;
-        public static final int watchedCheckBox=0x7f080010;
+        public static final int watchedButton=0x7f08000e;
+        public static final int watchedCheckBox=0x7f080011;
     }
     public static final class layout {
         public static final int activity_main_movie_view=0x7f030000;

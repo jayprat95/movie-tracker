@@ -1,5 +1,6 @@
 package com.example.movietracker;
 
+import android.widget.ImageView;
 import java.io.Serializable;
 import android.os.Parcel;
 import android.content.Context;
@@ -29,6 +30,11 @@ public class MainMovieActivity
         assetManager = this.getAssets();
         setContentView(R.layout.activity_main_movie_view);
 
+
+        EditText text = (EditText)findViewById(R.id.searchText);
+
+        text.setFocusable(false);
+        text.setVisibility(View.GONE);
         // Watch buttons for opening up different views.
         setupListeners();
 

@@ -14,8 +14,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/searchText"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:text="Enter" />
+        android:text="All Movies" />
 
     <EditText
         android:id="@+id/searchText"
@@ -57,5 +58,15 @@
         android:layout_toLeftOf="@+id/toWatch"
         android:layout_toRightOf="@+id/watched"
         android:text="Favorite" />
+
+    <ImageView
+        android:id="@+id/iconView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/toWatch"
+        android:layout_alignLeft="@+id/searchButton"
+        android:layout_alignRight="@+id/toWatch"
+        android:layout_below="@+id/searchButton"
+        android:src="@drawable/mt" />
 
 </RelativeLayout>
