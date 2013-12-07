@@ -1,0 +1,63 @@
+[
+  {
+    "rating_count": 795956,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "rated": "R",
+    "language": [
+      "English",
+      "Spanish",
+      "French"
+    ],
+    "rating": 9.0,
+    "country": [
+      "USA"
+    ],
+    "release_date": 19941014,
+    "title": "Pulp Fiction",
+    "year": 1994,
+    "filming_locations": "1435 Flower Street, Glendale, California, USA",
+    "imdb_id": "tt0110912",
+    "directors": [
+      "Quentin Tarantino"
+    ],
+    "writers": [
+      "Quentin Tarantino",
+      "Roger Avary"
+    ],
+    "actors": [
+      "John Travolta",
+      "Samuel L. Jackson",
+      "Tim Roth",
+      "Amanda Plummer",
+      "Eric Stoltz",
+      "Bruce Willis",
+      "Ving Rhames",
+      "Phil LaMarr",
+      "Maria de Medeiros",
+      "Rosanna Arquette",
+      "Peter Greene",
+      "Uma Thurman",
+      "Duane Whitaker",
+      "Paul Calderon",
+      "Frank Whaley"
+    ],
+    "plot_simple": "The lives of two mob hit men, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+    "poster": {
+      "imdb": "http://ia.media-imdb.com/images/M/MV5BMjE0ODk2NjczOV5BMl5BanBnXkFtZTYwNDQ0NDg4._V1_SY317_CR4,0,214,317_.jpg",
+      "cover": "http://imdb-poster.b0.upaiyun.com/000/110/912.jpg!cover?_upt=09e454f31386262089"
+    },
+    "runtime": [
+      "154 min",
+      "168 min (special edition)"
+    ],
+    "type": "M",
+    "imdb_url": "http://www.imdb.com/title/tt0110912/",
+    "also_known_as": [
+      "Tiempos violentos"
+    ]
+  }
+]

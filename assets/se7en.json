@@ -1,0 +1,59 @@
+[
+  {
+    "rating_count": 597460,
+    "genres": [
+      "Crime",
+      "Mystery",
+      "Thriller"
+    ],
+    "rated": "R",
+    "language": [
+      "English"
+    ],
+    "rating": 8.7,
+    "country": [
+      "USA"
+    ],
+    "release_date": 19950922,
+    "title": "Se7en",
+    "year": 1995,
+    "filming_locations": "Pacific Electric Building, Los Angeles, California, USA",
+    "imdb_id": "tt0114369",
+    "directors": [
+      "David Fincher"
+    ],
+    "writers": [
+      "Andrew Kevin Walker"
+    ],
+    "actors": [
+      "Brad Pitt",
+      "Morgan Freeman",
+      "Gwyneth Paltrow",
+      "R. Lee Ermey",
+      "Andrew Kevin Walker",
+      "Daniel Zacapa",
+      "John Cassini",
+      "Bob Mack",
+      "Peter Crombie",
+      "Reg E. Cathey",
+      "George Christy",
+      "Endre Hules",
+      "Hawthorne James",
+      "William Davidson",
+      "Bob Collins"
+    ],
+    "plot_simple": "Two detectives, a rookie and a veteran, hunt a serial killer who uses the seven deadly sins as his modus operandi.",
+    "poster": {
+      "imdb": "http://ia.media-imdb.com/images/M/MV5BMTQwNTU3MTE4NF5BMl5BanBnXkFtZTcwOTgxNDM2Mg@@._V1_SX214_.jpg",
+      "cover": "http://imdb-poster.b0.upaiyun.com/000/114/369.jpg!cover?_upt=3b2e77191386262553"
+    },
+    "runtime": [
+      "127 min"
+    ],
+    "type": "M",
+    "imdb_url": "http://www.imdb.com/title/tt0114369/",
+    "also_known_as": [
+      "Seven"
+    ]
+  }
+]

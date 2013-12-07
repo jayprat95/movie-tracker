@@ -1,0 +1,61 @@
+[
+  {
+    "rating_count": 723715,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "rated": "R",
+    "language": [
+      "English",
+      "Italian",
+      "Latin"
+    ],
+    "rating": 9.2,
+    "country": [
+      "USA"
+    ],
+    "release_date": 19720324,
+    "title": "The Godfather",
+    "year": 1972,
+    "filming_locations": "110 Longfellow Road, Staten Island, New York City, New York, USA",
+    "imdb_id": "tt0068646",
+    "directors": [
+      "Francis Ford Coppola"
+    ],
+    "writers": [
+      "Mario Puzo",
+      "Francis Ford Coppola"
+    ],
+    "actors": [
+      "Marlon Brando",
+      "Al Pacino",
+      "James Caan",
+      "Richard S. Castellano",
+      "Robert Duvall",
+      "Sterling Hayden",
+      "John Marley",
+      "Richard Conte",
+      "Al Lettieri",
+      "Diane Keaton",
+      "Abe Vigoda",
+      "Talia Shire",
+      "Gianni Russo",
+      "John Cazale",
+      "Rudy Bond"
+    ],
+    "plot_simple": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+    "poster": {
+      "imdb": "http://ia.media-imdb.com/images/M/MV5BMjEyMjcyNDI4MF5BMl5BanBnXkFtZTcwMDA5Mzg3OA@@._V1_SX214_.jpg",
+      "cover": "http://imdb-poster.b0.upaiyun.com/000/068/646.jpg!cover?_upt=0333c1b91386261976"
+    },
+    "runtime": [
+      "175 min"
+    ],
+    "type": "M",
+    "imdb_url": "http://www.imdb.com/title/tt0068646/",
+    "also_known_as": [
+      "Mario Puzo's The Godfather"
+    ]
+  }
+]

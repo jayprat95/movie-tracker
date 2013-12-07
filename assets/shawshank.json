@@ -1,0 +1,58 @@
+[
+  {
+    "rating_count": 1027712,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "language": [
+      "English"
+    ],
+    "rating": 9.3,
+    "country": [
+      "USA"
+    ],
+    "release_date": 19950603,
+    "title": "The Shawshank Redemption",
+    "year": 1994,
+    "filming_locations": "St. Croix, U.S. Virgin Islands",
+    "imdb_id": "tt0111161",
+    "directors": [
+      "Frank Darabont"
+    ],
+    "writers": [
+      "Stephen King",
+      "Frank Darabont"
+    ],
+    "actors": [
+      "Tim Robbins",
+      "Morgan Freeman",
+      "Bob Gunton",
+      "William Sadler",
+      "Clancy Brown",
+      "Gil Bellows",
+      "Mark Rolston",
+      "James Whitmore",
+      "Jeffrey DeMunn",
+      "Larry Brandenburg",
+      "Neil Giuntoli",
+      "Brian Libby",
+      "David Proval",
+      "Joseph Ragno",
+      "Jude Ciccolella"
+    ],
+    "plot_simple": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+    "poster": {
+      "imdb": "http://ia.media-imdb.com/images/M/MV5BMTc3NjM4MTY3MV5BMl5BanBnXkFtZTcwODk4Mzg3OA@@._V1_SY317_CR4,0,214,317_.jpg",
+      "cover": "http://imdb-poster.b0.upaiyun.com/000/111/161.jpg!cover?_upt=eb7880e61386261873"
+    },
+    "runtime": [
+      "142 min"
+    ],
+    "type": "M",
+    "imdb_url": "http://www.imdb.com/title/tt0111161/",
+    "also_known_as": [
+      "Xiao shen ke de jiu shu"
+    ]
+  }
+]

@@ -1,0 +1,59 @@
+[
+  {
+    "rating_count": 779428,
+    "genres": [
+      "Drama"
+    ],
+    "rated": "R",
+    "language": [
+      "English"
+    ],
+    "rating": 8.9,
+    "country": [
+      "USA",
+      "Germany"
+    ],
+    "release_date": 19991015,
+    "title": "Fight Club",
+    "year": 1999,
+    "filming_locations": "421 W. Eighth Street, Los Angeles, California, USA",
+    "imdb_id": "tt0137523",
+    "directors": [
+      "David Fincher"
+    ],
+    "writers": [
+      "Chuck Palahniuk",
+      "Jim Uhls"
+    ],
+    "actors": [
+      "Edward Norton",
+      "Brad Pitt",
+      "Helena Bonham Carter",
+      "Meat Loaf",
+      "Zach Grenier",
+      "Richmond Arquette",
+      "David Andrews",
+      "George Maguire",
+      "Eugenie Bondurant",
+      "Christina Cabot",
+      "Sydney 'Big Dawg' Colston",
+      "Rachel Singer",
+      "Christie Cronenweth",
+      "Tim De Zarn",
+      "Ezra Buzzington"
+    ],
+    "plot_simple": "An insomniac office worker looking for a way to change his life crosses paths with a devil-may-care soap maker and they form an underground fight club that evolves into something much, much more...",
+    "poster": {
+      "imdb": "http://ia.media-imdb.com/images/M/MV5BMjIwNTYzMzE1M15BMl5BanBnXkFtZTcwOTE5Mzg3OA@@._V1_SX214_.jpg",
+      "cover": "http://imdb-poster.b0.upaiyun.com/000/137/523.jpg!cover?_upt=e49b10f01386262393"
+    },
+    "runtime": [
+      "139 min"
+    ],
+    "type": "M",
+    "imdb_url": "http://www.imdb.com/title/tt0137523/",
+    "also_known_as": [
+      "El club de la pelea"
+    ]
+  }
+]
