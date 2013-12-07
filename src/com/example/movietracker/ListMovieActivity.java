@@ -281,7 +281,7 @@ public class ListMovieActivity
             setTitle("Favorite List");
         }
         else {
-            setTitle("List");
+            setTitle("All List");
         }
     }
 

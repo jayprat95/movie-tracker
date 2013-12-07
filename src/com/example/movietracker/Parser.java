@@ -141,10 +141,13 @@ public class Parser implements Serializable
 
     // ----------------------------------------------------------
     /**
-     * This method returns all the movie objects.
+     * This method returns all the movie objects 
+     * sorted alphabetically.
      * @return movies
      */
     public ArrayList<Movie> getMovies() {
+    	
+    	
         return this.movies;
     }
 
@@ -168,9 +171,14 @@ public class Parser implements Serializable
             for (Movie movie : movies) {
                 returnList.add(movie.getTitle());
             }
-            return returnList;
+            return this.alphabetize(returnList);
         }
         return null;
+    }
+    
+    private ArrayList<String> alphabetize(ArrayList<String> theList) {
+        Collections.sort(theList);
+        return theList;
     }
 
 }
