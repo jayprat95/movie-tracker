@@ -41,8 +41,7 @@ public class ParserTest extends ActivityTestCase
     public void testJsonToMovies()
     {
         Movie drive = parse.jsonToMovies("drive.json");
-        assertEquals("drive.json", drive.getTitle());
-        Exception e = new Exception();
+        assertEquals("Drive", drive.getTitle());
 
     }
 
@@ -63,7 +62,8 @@ public class ParserTest extends ActivityTestCase
      */
     public void testHasMovie()
     {
-        fail("Not yet implemented");
+       assertTrue(parse.hasMovie("Drive"));
+       assertFalse(parse.hasMovie("Romeo and Juliet"));
     }
 
 
@@ -72,7 +72,9 @@ public class ParserTest extends ActivityTestCase
      */
     public void testGetMovieFromTitle()
     {
-        fail("Not yet implemented");
+       Movie drive = parse.getMovieFromTitle("Drive");
+       assertEquals("Drive", drive.getTitle());
+       assertNull(parse.getMovieFromTitle("Romeo and Juliet"));
     }
 
 
@@ -81,7 +83,9 @@ public class ParserTest extends ActivityTestCase
      */
     public void testGetTitlesList()
     {
-        fail("Not yet implemented");
+        ArrayList<String> list = parse.getTitlesList();
+        assertNotNull(list);
+        assertFalse(list.isEmpty());
     }
 
 }
