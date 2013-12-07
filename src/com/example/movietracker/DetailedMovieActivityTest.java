@@ -1,5 +1,8 @@
 package com.example.movietracker;
 
+import android.widget.ImageView;
+import android.widget.Button;
+import android.widget.TextView;
 import junit.framework.TestCase;
 
 // -------------------------------------------------------------------------
@@ -16,11 +19,31 @@ public class DetailedMovieActivityTest
     extends TestCase
 {
 
+    // ~Fields................................................................
+    private DetailedMovieActivity dma;
+    private TextView                 title;
+    private TextView                 plotSimple;
+    private TextView                 type;
+    private TextView                 directors;
+    private TextView                 actors;
+    private Button watchedButton;
+    private Button favoriteButton;
+    private Button toWatchButton;
+    private ImageView watchedCheckBox;
+    private ImageView favoriteCheckBox;
+    private ImageView toWatchCheckBox;
+
+
+
+
+
+
     // ----------------------------------------------------------
     protected void setUp()
         throws Exception
     {
         super.setUp();
+        dma = new DetailedMovieActivity();
     }
 
 
@@ -38,7 +61,10 @@ public class DetailedMovieActivityTest
      */
     public void testOnCreateBundle()
     {
-        fail("Not yet implemented");
+        System.out.println(watchedCheckBox == null);
+        assertFalse(watchedCheckBox.isShown());
+        watchedButton.performClick();
+        assertTrue(watchedCheckBox.isShown());
     }
 
 
