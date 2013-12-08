@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.os.Parcelable;
 import android.content.Context;
 import android.content.Intent;
@@ -186,13 +187,13 @@ public class DetailedMovieActivity extends Activity {
 				// Adding movie from list
 				if ((temp != null) && (!(temp.contains(movieString)))) {
 					temp.add(movieString);
+					DetailedMovieActivity.this.displayToast("Adding " + movieString + "\nto \"Watched\" List");
 					textParser.setMovieList(temp, "watched");
 				}
 				// Removing movie from list
 				else if ((temp != null) && (temp.contains(movieString))) {
 					temp.remove(movieString);
-					System.out.println("Removing " + movieString
-							+ " from watched");
+					DetailedMovieActivity.this.displayToast("Removing " + movieString + "\nto \"Watched\" List");
 					textParser.setMovieList(temp, "watched");
 				}
 
@@ -213,14 +214,13 @@ public class DetailedMovieActivity extends Activity {
 				// Adding movie from list
 				if ((temp != null) && (!(temp.contains(movieString)))) {
 					temp.add(movieString);
-					System.out.println("Adding " + movieString + " to toWatch");
+					DetailedMovieActivity.this.displayToast("Adding " + movieString + "\nto \"Want to watch\" List");
 					textParser.setMovieList(temp, "toWatch");
 				}
 				// Removing movie from list
 				else if ((temp != null) && (temp.contains(movieString))) {
 					temp.remove(movieString);
-					System.out.println("Removing " + movieString
-							+ " from toWatch");
+					DetailedMovieActivity.this.displayToast("Removing " + movieString + "\nto \"Want to watch\" List");
 					textParser.setMovieList(temp, "toWatch");
 				}
 
@@ -241,13 +241,13 @@ public class DetailedMovieActivity extends Activity {
 				// Adding movie from list
 				if ((temp != null) && (!(temp.contains(movieString)))) {
 					temp.add(movieString);
+					DetailedMovieActivity.this.displayToast("Adding " + movieString + "\nto \"Favorite\" List");
 					textParser.setMovieList(temp, "favorite");
 				}
 				// Removing movie from list
 				else if ((temp != null) && (temp.contains(movieString))) {
 					temp.remove(movieString);
-					System.out.println("Removing " + movieString
-							+ " from favorite");
+					DetailedMovieActivity.this.displayToast("Removing " + movieString + "\nto \"Favorite\" List");
 					textParser.setMovieList(temp, "favorite");
 				}
 
@@ -359,6 +359,13 @@ public class DetailedMovieActivity extends Activity {
 	    finish();
 	    return true;
 
+	}
+	
+	public void displayToast(String string) {
+		Context context = getApplicationContext();
+		CharSequence text = string;
+		int duration = Toast.LENGTH_SHORT;
+		Toast.makeText(context, text, duration).show();
 	}
 
 }
