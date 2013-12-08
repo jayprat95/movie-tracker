@@ -66,7 +66,7 @@ public class DetailedMovieActivityTest extends
 				new ParcelableImplementation("t"),
 				new ParcelableImplementation("d"),
 				new ParcelableImplementation("a"),
-				new ParcelableImplementation("r"),
+				new ParcelableImplementation("60 min"),
 				new ParcelableImplementation("u"),
 				new ParcelableImplementation("20130812"),
 				new ParcelableImplementation(Float.toString(5)),
