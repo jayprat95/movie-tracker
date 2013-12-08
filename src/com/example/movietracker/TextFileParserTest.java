@@ -21,7 +21,6 @@ public class TextFileParserTest
 {
 	// ~Fields..................................................
 	private Context ctx;
-	private AssetManager assets;
 	
 	private TextFileParser tfp;
 
@@ -31,8 +30,7 @@ public class TextFileParserTest
     {
         super.setUp();
         ctx = getInstrumentation().getTargetContext();
-        assets = ctx.getResources().getAssets();
-        tfp = new TextFileParser(assets, ctx);
+        tfp = new TextFileParser(ctx);
     }
 
 

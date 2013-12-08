@@ -90,7 +90,7 @@ public class DetailedMovieActivity extends Activity {
 	public void setupListeners() {
 
 		// Open TextFileParser for adding or removing movies from buttons.
-		textParser = new TextFileParser(assetManager, this.getBaseContext());
+		textParser = new TextFileParser(this.getBaseContext());
 
 		// ....................................................................
 		// Adding movie to list watched
@@ -207,8 +207,7 @@ public class DetailedMovieActivity extends Activity {
 	 */
 	public void updateCheckMarks() {
 		// Get connection to internal memory to check lists
-		updateMarksParser = new TextFileParser(this.assetManager,
-				this.getBaseContext());
+		updateMarksParser = new TextFileParser(this.getBaseContext());
 
 		// Update watched checkbox
 		updateMarksParser.getStringFromFiles("watched");

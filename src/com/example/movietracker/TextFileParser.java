@@ -2,23 +2,12 @@ package com.example.movietracker;
 
 import java.util.Collections;
 import java.io.FileOutputStream;
-import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileInputStream;
-import java.io.File;
 import android.content.Context;
-import java.io.OutputStreamWriter;
-import java.io.FileWriter;
-import java.io.OutputStream;
 import java.util.List;
 import java.util.Arrays;
-import java.io.BufferedReader;
-import java.io.Reader;
-import java.io.InputStreamReader;
-import java.io.InputStream;
 import java.io.IOException;
-import android.content.res.AssetManager;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 // -------------------------------------------------------------------------
@@ -33,11 +22,8 @@ import java.util.ArrayList;
 public class TextFileParser
 {
     // ~Fields................................................................
-    private AssetManager      assetManager;
     private Context           context;
-    private ArrayList<Movie>  movies;
 
-    private String[]          lists = { "watched", "toWatch", "favorite" };
     private String            watchedString;
     private String            toWatchString;
     private String            favoriteString;
@@ -48,7 +34,12 @@ public class TextFileParser
 
     // ~Methods...............................................................
 
-    public TextFileParser(AssetManager am, Context con)
+    /**
+     * The constructor for the TextFileParser. It initializes all the fields.
+     * @param am the assetmanager to use
+     * @param con the context to use
+     */
+    public TextFileParser(Context con)
     {
         // Initialize lists of movies
         watchedTitles = new ArrayList<String>();
@@ -58,7 +49,7 @@ public class TextFileParser
         toWatchString = "";
         favoriteString = "";
 
-        assetManager = am;
+        // Store asset manager and context
         context = con;
 
     }
@@ -66,7 +57,7 @@ public class TextFileParser
 
     /**
      * This method puts the list into a long string with a comma delimiter
-     * in order to store it in memory easier.
+     * in order to store the string in memory easier.
      */
     private String getStringFromListHelper(ArrayList<String> list)
     {
@@ -75,15 +66,21 @@ public class TextFileParser
         {
             return "";
         }
+        // Concatenate string to store
         for (String title : list)
         {
             sb.append(title + ",");
         }
-
+        // Fix format of string and return
         String returnString = sb.toString();
         return returnString.substring(0, returnString.length() - 1);
     }
 
+    /*
+     * This method is used to alphabetize the list passed in.
+     * @param theList the list to sort
+     * @return the sorted list
+     */
     private ArrayList<String> alphabetize(ArrayList<String> theList) {
         Collections.sort(theList);
         return theList;
@@ -93,7 +90,7 @@ public class TextFileParser
     // ----------------------------------------------------------
     /**
      * This method stores a list of titles in internal memory.
-     * "Internal Memory...STORED_toWatch.txt"
+     * i.e. "Internal Memory...STORED_toWatch.txt"
      *
      * @param moviesToSet
      *            List of titles to store
@@ -105,8 +102,8 @@ public class TextFileParser
         // Alphabetize the list before storing it.
         ArrayList<String> moviesToSetAlphabetized = this.alphabetize(moviesToSet);
 
-
-        // Create output stream with spot in internal memory.
+        // Create output stream with spot in internal memory or overwrite if 
+        // file already exists.
         FileOutputStream fos = null;
         try
         {
@@ -160,11 +157,13 @@ public class TextFileParser
             e.printStackTrace();
             return;
         }
-
+        
+        // If no movies in file then do not crash. just return
         if (fis == null)
         {
             return;
         }
+        
         // Initialize reading variables
         int k = 0;
         StringBuilder builder = new StringBuilder();
@@ -183,7 +182,6 @@ public class TextFileParser
         }
 
         String contents = builder.toString();
-        System.out.println(contents);
 
         // Store file contents in correct variable
         if (filename.equals("toWatch"))
@@ -203,7 +201,8 @@ public class TextFileParser
             System.out.println("INVALID FILENAME");
         }
 
-        // Store the string fields into the list fields.
+        
+        // Sort the string fields into the arraylist.
         this.parseStringsToStringList(filename);
 
     }
@@ -220,6 +219,7 @@ public class TextFileParser
         watchedTitles.clear();
         toWatchTitles.clear();
         favoriteTitles.clear();
+        
         // Create delimiter and parse file into a String list for all lists.
         String delimiter = "[,]";
 
@@ -267,6 +267,7 @@ public class TextFileParser
     }
 
 
+    
     // ************* GETTERS & SETTERS **************** //
 
     private ArrayList<String> getWatchedList()

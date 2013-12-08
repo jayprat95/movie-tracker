@@ -3,9 +3,7 @@ package com.example.movietracker;
 import java.util.ArrayList;
 import android.content.Context;
 import android.test.ActivityTestCase;
-import android.test.ActivityInstrumentationTestCase2;
 import android.content.res.AssetManager;
-import junit.framework.TestCase;
 
 // -------------------------------------------------------------------------
 /**

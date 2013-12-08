@@ -15,15 +15,22 @@ public class ParcelableImplementation implements Parcelable {
 	private String stringToMove;
 
 	// ~Methods..........................................
+	/**
+	 * This is a constructor and holds the string to store.
+	 * @param t the string to store
+	 */
 	public ParcelableImplementation(String t) {
 		this.stringToMove = t;
 	}
 
 	/**
-	 * This 
+	 * These are implemented methods from the Parcelable class
 	 */
 	public static final Parcelable.Creator<ParcelableImplementation> CREATOR = 
 			new Parcelable.Creator<ParcelableImplementation>() {
+		/**
+		 * Convert from the string to store to a parcel.
+		 */
 		public ParcelableImplementation createFromParcel(Parcel in) {
 			String s = in.readString();
 			return new ParcelableImplementation(s);
@@ -51,13 +58,6 @@ public class ParcelableImplementation implements Parcelable {
 		out.writeString(stringToMove);
 	}
 
-	/**
-	 * This method is used to store a string
-	 * @param in the string to store
-	 */
-	private ParcelableImplementation(Parcel in) {
-		this.stringToMove = in.readString();
-	}
 
 	/**
 	 * This method is used to get the string passed in back out
