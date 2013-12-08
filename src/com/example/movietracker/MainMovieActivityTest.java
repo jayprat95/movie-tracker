@@ -40,9 +40,12 @@ public class MainMovieActivityTest
     private MainMovieActivity mma;
     private Intent            intent;
     private Instrumentation   mInstrumentation;
-    
+
     //Widgets
     Button toWatchButton;
+    Button watchedButton;
+    Button favoriteButton;
+    Button searchButton;
 
 
     protected void setUp()
@@ -61,6 +64,7 @@ public class MainMovieActivityTest
      */
     public void testOnCreateBundle()
     {
+        mma = this.getActivity();
         EditText text = (EditText)mma.findViewById(R.id.searchText);
         assertEquals(View.GONE, text.getVisibility());
     }
@@ -104,28 +108,21 @@ public class MainMovieActivityTest
     }
     public void testOnClickWatched()
     {
-        final Button watched =
+        mma = this.getActivity();
+        watchedButton =
             (Button)mma.findViewById(R.id.watched);
-        Instrumentation mInstrumentationToWatch = getInstrumentation();
-        Intent intentWatched = new Intent();
-        intentWatched =
-            new Intent(
-                mInstrumentationToWatch.getContext(),
-                MainMovieActivity.class);
-        intentWatched.putExtra("listname", "watched");
-        setActivityIntent(intentWatched);
         ActivityMonitor activityMonitor =
             getInstrumentation().addMonitor(
-                MainMovieActivity.class.getName(),
+                ListMovieActivity.class.getName(),
                 null,
                 false);
-        MainMovieActivity myActivity = getActivity();
+        System.out.println(watchedButton);
         try
         {
             runTestOnUiThread(new Runnable() {
                 public void run()
                 {
-                    watched.performClick();
+                    watchedButton.performClick();
                 }
             });
         }
@@ -144,28 +141,21 @@ public class MainMovieActivityTest
     }
     public void testOnClickFavorite()
     {
-        final Button favorite =
+        mma = this.getActivity();
+        favoriteButton =
             (Button)mma.findViewById(R.id.favorite);
-        Instrumentation mInstrumentationToWatch = getInstrumentation();
-        Intent intentFavorite = new Intent();
-        intentFavorite =
-            new Intent(
-                mInstrumentationToWatch.getContext(),
-                MainMovieActivity.class);
-        intentFavorite.putExtra("listname", "favorite");
-        setActivityIntent(intentFavorite);
         ActivityMonitor activityMonitor =
             getInstrumentation().addMonitor(
-                MainMovieActivity.class.getName(),
+                ListMovieActivity.class.getName(),
                 null,
                 false);
-        MainMovieActivity myActivity = getActivity();
+        System.out.println(favoriteButton);
         try
         {
             runTestOnUiThread(new Runnable() {
                 public void run()
                 {
-                    favorite.performClick();
+                    favoriteButton.performClick();
                 }
             });
         }
@@ -185,28 +175,21 @@ public class MainMovieActivityTest
 
     public void testOnClickSearch()
     {
-        final Button search =
+        mma = this.getActivity();
+        searchButton =
             (Button)mma.findViewById(R.id.searchButton);
-        Instrumentation mInstrumentationToWatch = getInstrumentation();
-        Intent intentSearch = new Intent();
-        intentSearch =
-            new Intent(
-                mInstrumentationToWatch.getContext(),
-                MainMovieActivity.class);
-        intentSearch.putExtra("listname", "searchButton");
-        setActivityIntent(intentSearch);
         ActivityMonitor activityMonitor =
             getInstrumentation().addMonitor(
-                MainMovieActivity.class.getName(),
+                ListMovieActivity.class.getName(),
                 null,
                 false);
-        MainMovieActivity myActivity = getActivity();
+        System.out.println(searchButton);
         try
         {
             runTestOnUiThread(new Runnable() {
                 public void run()
                 {
-                    search.performClick();
+                    searchButton.performClick();
                 }
             });
         }
