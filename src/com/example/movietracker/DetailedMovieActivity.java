@@ -353,8 +353,10 @@ public class DetailedMovieActivity extends Activity {
 	}
 	
 	public boolean onOptionsItemSelected(MenuItem item){
-	    Intent myIntent = new Intent(getApplicationContext(), ListMovieActivity.class);
-	    startActivityForResult(myIntent, 0);
+	    Intent intent = new Intent(getApplicationContext(), ListMovieActivity.class);
+	    intent.putExtra("update", updateList);
+	    setResult(RESULT_OK, intent);
+	    finish();
 	    return true;
 
 	}
