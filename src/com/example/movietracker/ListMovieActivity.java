@@ -17,6 +17,13 @@ import java.util.ArrayList;
 import android.app.ActionBar;
 import android.app.Activity;
 
+/**
+ * This class displays lists of movie titles. When a title is clicked it pulls
+ * up that movie in a detailed view.
+ * 
+ * @author F-16
+ * 
+ */
 public class ListMovieActivity extends Activity {
 	// ~Fields............................................................
 	private AssetManager assetManager;
@@ -35,6 +42,7 @@ public class ListMovieActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		// Initialize the lists
 		toWatch = new ArrayList<String>();
 		watched = new ArrayList<String>();
 		favorite = new ArrayList<String>();
@@ -43,7 +51,7 @@ public class ListMovieActivity extends Activity {
 		assetManager = this.getAssets();
 		setContentView(R.layout.list_movie_view);
 
-		// Setup button on titlebar
+		// Setup button on title bar
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -51,15 +59,11 @@ public class ListMovieActivity extends Activity {
 		currentIntent = getIntent();
 		listname = currentIntent.getStringExtra("listname");
 
-		// Set text on screen dynamically
-		// textView1 = new TextView(this);
-		// textView1 = (TextView)findViewById(R.id.textView1);
-		// textView1.setText(listname + " is the name of the view");
-
 		// Pull data for all movies in assets folder
 		System.out.println("Generating parser and parsing...");
 		jsonParser = new Parser(assetManager);
 		movies = jsonParser.getMovies();
+
 		this.updateLists();
 
 		this.setTitleCorrectly();
@@ -67,20 +71,23 @@ public class ListMovieActivity extends Activity {
 	}
 
 	/**
-	 * // ----------------------------------------------------------------------
-	 * --- /** This is an adapter class for the list view of movies. This is a
-	 * custom adapter for handling the interaction with the list of movies in
-	 * the view.
+	 * // ---------------------------------------------------------------------
+	 * This is an adapter class for the list view of movies. This is a custom
+	 * adapter for handling the interaction with the list of movies in the view.
 	 * 
 	 * @author Oliver
 	 * @version Nov 30, 2013
 	 */
 	private class StableArrayAdapter extends ArrayAdapter<String> {
+		// Create hashmap to associate the title of movie with a position in
+		// list.
 		HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
 
+		// Create adapter for interacting with the titles
 		public StableArrayAdapter(Context context, int textViewResourceId,
 				List<String> strings) {
 			super(context, textViewResourceId, strings);
+			// Add all the titles to the map
 			if ((strings != null) && (strings.size() > 0)) {
 				for (int ii = 0; ii < strings.size(); ii++) {
 					mIdMap.put(strings.get(ii), ii);
@@ -90,29 +97,46 @@ public class ListMovieActivity extends Activity {
 
 	}
 
+	/**
+	 * Custom listener for the listview of movies. This is used to get all the
+	 * movies and listen for which is clicked.
+	 * 
+	 * @author F-16
+	 * 
+	 */
 	private class OnItemClickListenerImplementation implements
 			OnItemClickListener {
 		ArrayList<Movie> m;
 
+		/**
+		 * This method stores the movies
+		 * 
+		 * @param moviesToField
+		 *            the movies to store in the field
+		 */
 		public OnItemClickListenerImplementation(ArrayList<Movie> moviesToField) {
 			m = moviesToField;
 		}
 
+		/**
+		 * This method is called when a movie is clicked on.
+		 */
 		public void onItemClick(AdapterView<?> av, View v, int i, long l) {
 			onItemClick(av, v, i, l);
 		}
 
-		public ArrayList<Movie> getMoviesInClick() {
-			return m;
-		}
-
 	}
 
+	/**
+	 * This method gets the list of movie titles for the list of the button that
+	 * was clicked. (Gets all titles for the listview to display)
+	 */
 	public void pullMoviesFromListFile() {
 
 		// Pull movies from list from file.
 		textParser = new TextFileParser(this.getBaseContext());
 		textParser.getStringFromFiles(listname);
+		// Get correct list
 		if (listname.equals("toWatch")) {
 			toWatch = textParser.getList(listname);
 		} else if (listname.equals("watched")) {
@@ -125,9 +149,13 @@ public class ListMovieActivity extends Activity {
 
 	}
 
+	/**
+	 * This method sets up the whole listview display. Getting movies to list
+	 * and setting up a listener
+	 */
 	public void setupListView() {
+		// Get listview from layout
 		final ListView listView = (ListView) findViewById(R.id.listView);
-
 		// set correct list to pass to adapter to display in view
 		ArrayList<String> arrayAdapterList = jsonParser.getTitlesList();
 		if (listname.equals("watched")) {
@@ -139,22 +167,28 @@ public class ListMovieActivity extends Activity {
 		if (listname.equals("favorite")) {
 			arrayAdapterList = favorite;
 		}
+		// Initialize and set adapter for interacting with the listview.
 		final StableArrayAdapter adapter = new StableArrayAdapter(this,
 				android.R.layout.simple_list_item_1, arrayAdapterList);
 		listView.setAdapter(adapter);
-		// Setup listener for the list of movies
+
+		// Setup custom listener for the list of movies
 		listView.setOnItemClickListener(new OnItemClickListenerImplementation(
 				this.movies) {
+			// **Start up movie activity if a movie was clicked on
 			@Override
 			public void onItemClick(AdapterView<?> parent, final View view,
 					int position, long id) {
+				// Get the movie title that was clicked
 				final String item = (String) parent.getItemAtPosition(position);
 				// Start intent for details of movie clicked
 				Intent intent = new Intent(getApplicationContext(),
 						DetailedMovieActivity.class);
-				// Pass all details to intents before starting
+				// Get movie object that has the same title as the one clicked
 				Movie movieToDetail = jsonParser.getMovieFromTitle(item);
+				// Pass all details to intents before starting
 				intent.putExtra("movieTitle", item);
+				// Create parcel to pass to next activity
 				ParcelableImplementation[] parcelableArray = {
 						new ParcelableImplementation(movieToDetail.getTitle()),
 						new ParcelableImplementation(movieToDetail
@@ -181,6 +215,9 @@ public class ListMovieActivity extends Activity {
 								.get("cover")) };
 				intent.putExtra("movieData", parcelableArray);
 
+				// If a special list then expect a result upon exit.
+				// The result is to update the list incase a movie was removed
+				// from the list
 				if ((listname.equals("toWatch"))
 						|| (listname.equals("watched") || (listname
 								.equals("favorite")))) {
@@ -190,13 +227,18 @@ public class ListMovieActivity extends Activity {
 				}
 			}
 
-			// Helper method for passing string arrays into detailed view
-			// Turns string array into readable string
+			/**
+			 * Helper method for passing string arrays into detailed view
+			 * Turns string array into long string
+			 * @param stringArray the array to convert
+			 * @return the single, long string
+			 */
 			private String stringArrayToString(String[] stringArray) {
 				StringBuilder sb = new StringBuilder();
 				if (stringArray.length < 1) {
 					return "";
 				}
+				// Concatenate the string elements
 				for (String ss : stringArray) {
 					sb.append(ss + ", ");
 				}
@@ -209,17 +251,21 @@ public class ListMovieActivity extends Activity {
 
 	// _________________________________________________________________________
 
+	/**
+	 * This method is called when the movie detailed view is exited.
+	 * It analyzes the result and determines whether to update the listview
+	 */
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		System.out.println(resultCode);
 		boolean[] update = data.getBooleanArrayExtra("update");
-		System.out.println(update + "........");
 		if (update[0]) {
 			this.updateLists();
 		}
 	}
 
+	// Make title of lists in action bar look pretty
 	public void setTitleCorrectly() {
 		if (listname.equals("watched")) {
 			setTitle("Watched List");
@@ -228,10 +274,12 @@ public class ListMovieActivity extends Activity {
 		} else if (listname.equals("favorite")) {
 			setTitle("Favorite List");
 		} else {
-			setTitle("All List");
+			setTitle("All Movie List");
 		}
 	}
 
+	// Pull the movies for the list again and setup the listview again
+	// with the new list of movies.
 	public void updateLists() {
 		// Get movies for this list from internal memory
 		this.pullMoviesFromListFile();
@@ -240,10 +288,14 @@ public class ListMovieActivity extends Activity {
 		this.setupListView();
 	}
 
+	/**
+	 * This method is called when the onscreen back button is clicked.
+	 * It 
+	 */
 	public boolean onOptionsItemSelected(MenuItem item) {
 		Intent myIntent = new Intent(getApplicationContext(),
 				MainMovieActivity.class);
-		startActivityForResult(myIntent, 0);
+		startActivity(myIntent);
 		return true;
 	}
 }
