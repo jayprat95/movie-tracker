@@ -25,6 +25,7 @@
         android:layout_alignTop="@+id/pictureImdb"
         android:layout_marginLeft="50dp"
         android:layout_toRightOf="@+id/pictureImdb"
+        android:textSize="15sp"
         android:text="Title" />
 
     <TextView
@@ -41,8 +42,9 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/releaseDate"
         android:layout_below="@+id/releaseDate"
-        android:singleLine="true"
-        android:text="Actors" />
+        android:inputType="text"
+        android:maxLines="4"
+        android:scrollbars="vertical" />
 
     <TextView
         android:id="@+id/directors"
@@ -58,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/pictureImdb"
         android:layout_alignRight="@+id/title"
-        android:layout_below="@+id/pictureImdb"
+        android:layout_below="@+id/runtime"
         android:layout_marginTop="25dp"
         android:text="Simple Plot" />
 
@@ -120,5 +122,15 @@
         android:layout_below="@+id/toWatchButton"
         android:layout_toRightOf="@+id/movieRatings"
         android:src="@android:drawable/checkbox_on_background" />
+
+    <TextView
+        android:id="@+id/runtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/pictureImdb"
+        android:layout_alignRight="@+id/pictureImdb"
+        android:layout_below="@+id/pictureImdb"
+        android:textSize="8sp"
+        android:text="Runtime" />
 
 </RelativeLayout>
