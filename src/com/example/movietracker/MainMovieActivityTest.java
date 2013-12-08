@@ -40,6 +40,9 @@ public class MainMovieActivityTest
     private MainMovieActivity mma;
     private Intent            intent;
     private Instrumentation   mInstrumentation;
+    
+    //Widgets
+    Button toWatchButton;
 
 
     protected void setUp()
@@ -47,9 +50,9 @@ public class MainMovieActivityTest
     {
         super.setUp();
         this.mInstrumentation = getInstrumentation();
-        intent = new Intent();
-        setActivityIntent(intent);
-        mma = this.getActivity();
+        //intent = new Intent();
+        //setActivityIntent(intent);
+        //mma = this.getActivity();
     }
 
 
@@ -68,22 +71,15 @@ public class MainMovieActivityTest
      */
     public void testOnClickToWatch()
     {
-        final Button toWatchButton =
+    	mma = this.getActivity();
+        toWatchButton =
             (Button)mma.findViewById(R.id.toWatch);
-        Instrumentation mInstrumentationToWatch = getInstrumentation();
-        Intent intentToWatch = new Intent();
-        intentToWatch =
-            new Intent(
-                mInstrumentationToWatch.getContext(),
-                MainMovieActivity.class);
-        intentToWatch.putExtra("listname", "toWatch");
-        setActivityIntent(intentToWatch);
         ActivityMonitor activityMonitor =
             getInstrumentation().addMonitor(
-                MainMovieActivity.class.getName(),
+                ListMovieActivity.class.getName(),
                 null,
                 false);
-        MainMovieActivity myActivity = getActivity();
+        System.out.println(toWatchButton);
         try
         {
             runTestOnUiThread(new Runnable() {

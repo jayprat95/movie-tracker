@@ -49,12 +49,6 @@ public class DetailedMovieActivity extends Activity {
 	private TextView directors;
 	private TextView actors;
 
-	// private TextView title;
-	// private TextView title;
-	// private TextView title;
-	// private TextView title;
-	// private TextView title;
-	// private TextView title;
 
 	// ~Methods...........................................................
 

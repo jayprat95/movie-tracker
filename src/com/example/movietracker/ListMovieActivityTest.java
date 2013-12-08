@@ -138,27 +138,31 @@ public class ListMovieActivityTest extends
 				DetailedMovieActivity.class.getName(), null, false);
 		ListMovieActivity myActivity = getActivity();
 		try {
-			runTestOnUiThread(new Runnable() { public void run() { listViewSearch.performItemClick(listViewSearch.getChildAt(0),
-					0, listViewSearch.getItemIdAtPosition(0)); } });
+			runTestOnUiThread(new Runnable() {
+				public void run() {
+					listViewSearch.performItemClick(
+							listViewSearch.getChildAt(0), 0,
+							listViewSearch.getItemIdAtPosition(0));
+				}
+			});
 		} catch (Throwable e) {
 			System.out.println("Couldnt click movie");
 			e.printStackTrace();
 		}
-		
 
 		Activity nextActivity = getInstrumentation().waitForMonitorWithTimeout(
 				activityMonitor, 30000);
 		assertNotNull(nextActivity);
 		nextActivity.finish();
 	}
-	
+
 	public void testClickOnMovieNone() {
 		// Setup
 		setActivityIntent(intentWatched);
 		lmaWatched = this.getActivity();
 		listViewWatched = (ListView) lmaWatched.findViewById(R.id.listView);
 		assertEquals(listViewWatched.getChildCount(), 0);
-		
+
 	}
 
 }
