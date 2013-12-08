@@ -174,6 +174,5 @@ extends Activity
         // sets the color of that background
         view.setBackgroundColor(color);
     }
->>>>>>> Stashed changes
 
 }
