@@ -13,7 +13,9 @@ import junit.framework.TestCase;
 // -------------------------------------------------------------------------
 /**
  * This class tests the Main Movie Activity in order to ensure that it is
- * working properly
+ * working properly. This class extends the ActivityInstrumentationTestCase2
+ * so that we can call individual elements in the Activity, such as any of the
+ * buttons and test them as we please.
  *
  * @author jayanth
  * @version Dec 4, 2013
@@ -24,6 +26,11 @@ public class MainMovieActivityTest
 {
 
     // ----------------------------------------------------------
+
+    // ----------------------------------------------------------
+    /**
+     * Create a new MainMovieActivityTest object.
+     */
     @SuppressWarnings("deprecation")
     public MainMovieActivityTest()
     {
@@ -31,6 +38,11 @@ public class MainMovieActivityTest
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Create a new MainMovieActivityTest object.
+     * @param activityClass is the mainMovie activity
+     */
     public MainMovieActivityTest(Class<MainMovieActivity> activityClass)
     {
         super(activityClass);
