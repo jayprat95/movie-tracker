@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.view.View;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.graphics.Color;
+
 import java.util.List;
 import android.os.Bundle;
 import java.util.ArrayList;
@@ -29,6 +31,7 @@ public class MainMovieActivity
         super.onCreate(savedInstanceState);
         assetManager = this.getAssets();
         setContentView(R.layout.activity_main_movie_view);
+        this.setActivityBackgroundColor(Color.BLUE);
 
 
         EditText text = (EditText)findViewById(R.id.searchText);
@@ -104,6 +107,11 @@ public class MainMovieActivity
         });
 
 
+    }
+    
+    public void setActivityBackgroundColor(int color) {
+        View view = this.getWindow().getDecorView();
+        view.setBackgroundColor (color);
     }
 
 }
