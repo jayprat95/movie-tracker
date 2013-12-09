@@ -1,14 +1,11 @@
 package com.example.movietracker;
 
 import android.widget.ListView;
-import android.widget.TextView;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.app.Instrumentation.ActivityMonitor;
 import android.content.Intent;
-import android.os.Handler;
 import android.test.ActivityInstrumentationTestCase2;
-import junit.framework.TestCase;
 
 // -------------------------------------------------------------------------
 /**
@@ -24,6 +21,7 @@ import junit.framework.TestCase;
 public class ListMovieActivityTest extends
 		ActivityInstrumentationTestCase2<ListMovieActivity> {
 
+	@SuppressWarnings("deprecation")
 	public ListMovieActivityTest() {
 		super("com.ListMovieActivity", ListMovieActivity.class);
 	}
@@ -138,7 +136,6 @@ public class ListMovieActivityTest extends
 
 		ActivityMonitor activityMonitor = getInstrumentation().addMonitor(
 				DetailedMovieActivity.class.getName(), null, false);
-		ListMovieActivity myActivity = getActivity();
 		try {
 			runTestOnUiThread(new Runnable() {
 				public void run() {

@@ -5,10 +5,7 @@ import android.widget.Button;
 import android.app.Instrumentation.ActivityMonitor;
 import android.view.View;
 import android.widget.EditText;
-import android.app.Instrumentation;
-import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
-import junit.framework.TestCase;
 
 // -------------------------------------------------------------------------
 /**
@@ -55,10 +52,6 @@ public class MainMovieActivityTest
     // ~Fields................................................................
     // creates a Main Movie Activity
     private MainMovieActivity mma;
-    // creates an intent that we can use to test the buttons with
-    private Intent            intent;
-    // makes an instrumentation class so that we can get data for assertions
-    private Instrumentation   mInstrumentation;
 
     // Widgets
     // these are the 4 buttons that are on the main movie activity
@@ -75,8 +68,6 @@ public class MainMovieActivityTest
         throws Exception
     {
         super.setUp();
-        // gets the instrumentation from the test class
-        this.mInstrumentation = getInstrumentation();
     }
 
 

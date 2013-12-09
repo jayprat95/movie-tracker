@@ -16,7 +16,11 @@ import java.util.Map;
 
 public class Movie implements Serializable
 {
-    private String plot_simple;
+    /**
+	 * Version of serialization
+	 */
+	private static final long serialVersionUID = 1L;
+	private String plot_simple;
     private String title;
     private String type;
     private String[] directors;

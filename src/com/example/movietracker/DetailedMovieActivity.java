@@ -18,10 +18,10 @@ import android.widget.Toast;
 import android.os.Parcelable;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.os.Bundle;
 import java.util.ArrayList;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 
@@ -38,14 +38,12 @@ import android.app.Activity;
 public class DetailedMovieActivity extends Activity {
 
 	// ~Fields............................................................
-	private AssetManager assetManager;
 	private Intent currentIntent;
 	private String movieString;
 	private Parcelable[] movieDataParcelable;
 	private ParcelableImplementation movieData;
 	private TextFileParser textParser;
 	private TextFileParser updateMarksParser;
-	private Movie theMovie;
 	private boolean updateList[];
 	// ~~~Fields for Widgets
 	private TextView title;
@@ -68,7 +66,6 @@ public class DetailedMovieActivity extends Activity {
 		updateList[0] = false;
 
 		super.onCreate(savedInstanceState);
-		assetManager = this.getAssets();
 		setContentView(R.layout.detailed_movie_view);
 
 		// Setup button on action bar
@@ -260,6 +257,7 @@ public class DetailedMovieActivity extends Activity {
 	 *
 	 * @return the capitalized title
 	 */
+	@SuppressLint("DefaultLocale")
 	public String formatTitle() {
 		if (movieString.length() < 2) {
 			return movieString;

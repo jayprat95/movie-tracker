@@ -43,8 +43,18 @@
         android:layout_alignLeft="@+id/releaseDate"
         android:layout_below="@+id/releaseDate"
         android:inputType="text"
-        android:maxLines="4"
+        android:maxLines="1"
         android:scrollbars="horizontal" />
+    
+    <TextView
+        android:id="@+id/directors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/actors"
+        android:layout_below="@+id/actors"
+        android:inputType="text"
+        android:maxLines="1"
+        android:scrollbars="horizontal"/>
 
     <TextView
         android:id="@+id/plotSimple"
@@ -123,14 +133,6 @@
         android:layout_below="@+id/directors"
         android:text="Runtime" />
 
-    <TextView
-        android:id="@+id/directors"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/actors"
-        android:layout_below="@+id/actors"
-        android:maxLines="1"
-        android:text="Directors"
-        android:scrollbars="horizontal"/>
+
 
 </RelativeLayout>

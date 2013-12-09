@@ -1,11 +1,9 @@
 package com.example.movietracker;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.widget.ImageView;
 import android.widget.Button;
 import android.widget.TextView;
-import junit.framework.TestCase;
 import android.test.*;
 import android.app.Instrumentation;
 
@@ -54,7 +52,6 @@ public class DetailedMovieActivityTest
     private TextView              title;
     private TextView              plotSimple;
     private TextView              directors;
-    private TextView              actors;
     private TextView              releaseDate;
     private Button                watchedButton;
     private Button                favoriteButton;
@@ -62,7 +59,6 @@ public class DetailedMovieActivityTest
     private ImageView             watchedCheckBox;
     private ImageView             favoriteCheckBox;
     private ImageView             toWatchCheckBox;
-    private ImageView             pictureImdb;
 
 
     // ----------------------------------------------------------
@@ -107,7 +103,6 @@ public class DetailedMovieActivityTest
         title = (TextView)dma.findViewById(R.id.title);
         plotSimple = (TextView)dma.findViewById(R.id.plotSimple);
         directors = (TextView)dma.findViewById(R.id.directors);
-        actors = (TextView)dma.findViewById(R.id.actors);
         releaseDate = (TextView)dma.findViewById(R.id.releaseDate);
         watchedButton = (Button)dma.findViewById(R.id.watchedButton);
         toWatchButton = (Button)dma.findViewById(R.id.toWatchButton);
@@ -115,7 +110,6 @@ public class DetailedMovieActivityTest
         watchedCheckBox = (ImageView)dma.findViewById(R.id.watchedCheckBox);
         toWatchCheckBox = (ImageView)dma.findViewById(R.id.toWatchCheckBox);
         favoriteCheckBox = (ImageView)dma.findViewById(R.id.favoriteCheckBox);
-        pictureImdb = (ImageView)dma.findViewById(R.id.pictureImdb);
 
     }
 

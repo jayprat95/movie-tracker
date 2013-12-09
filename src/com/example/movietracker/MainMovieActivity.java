@@ -1,19 +1,11 @@
 package com.example.movietracker;
 
-import android.widget.ImageView;
-import java.io.Serializable;
-import android.os.Parcel;
-import android.content.Context;
-import java.util.Arrays;
 import android.widget.EditText;
 import android.widget.Button;
 import android.view.View;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.graphics.Color;
-import java.util.List;
 import android.os.Bundle;
-import java.util.ArrayList;
 import android.app.Activity;
 
 
@@ -31,13 +23,10 @@ import android.app.Activity;
 public class MainMovieActivity
 extends Activity
 {
-    // ~Fields............................................................
     /**
      * this class lets us get files from the assets folder, such as the JSON
      * files that we are using in order to get data about Movies for users
      */
-    private AssetManager assetManager;
-
 
     // ~Methods...........................................................
 
@@ -55,7 +44,6 @@ extends Activity
          * gets the asset manager which allows us to access JSON movie files
          * from the assets folder
          */
-        assetManager = this.getAssets();
         // get the view
         setContentView(R.layout.activity_main_movie_view);
         this.setActivityBackgroundColor(Color.BLUE);
