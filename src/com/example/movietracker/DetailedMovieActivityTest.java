@@ -13,7 +13,7 @@ import android.app.Instrumentation;
 /**
  * This method tests the DetailedMovieActivity. It performs normal activities on
  * the detailed view.
- * 
+ *
  *  @author Jayanth Prathipati (jayanth)
  *  @author Oliver Ebeling-Koning (odek)
  *  @author Linsay Boylan (lindsb7)
@@ -23,6 +23,10 @@ import android.app.Instrumentation;
 public class DetailedMovieActivityTest
     extends ActivityInstrumentationTestCase2<DetailedMovieActivity>
 {
+    // ----------------------------------------------------------
+    /**
+     * Create a new DetailedMovieActivityTest object.
+     */
     @SuppressWarnings("deprecation")
     public DetailedMovieActivityTest()
     {
@@ -30,6 +34,11 @@ public class DetailedMovieActivityTest
     }
 
 
+    // ----------------------------------------------------------
+    /**
+     * Create a new DetailedMovieActivityTest object.
+     * @param activityClass
+     */
     public DetailedMovieActivityTest(Class<DetailedMovieActivity> activityClass)
     {
         super(activityClass);
@@ -41,6 +50,7 @@ public class DetailedMovieActivityTest
     private Instrumentation       mInstrumentation;
 
     // Widgets
+    //these are the various buttons and textViews in the Detailed Movie View
     private TextView              title;
     private TextView              plotSimple;
     private TextView              directors;
@@ -71,6 +81,7 @@ public class DetailedMovieActivityTest
         // Pass all details to intents before starting
         String item = "movie";
         intent.putExtra("movieTitle", item);
+        //creates a fake movie with the proper parameters in the project
         ParcelableImplementation[] parcelableArray =
             {
                 new ParcelableImplementation("t"),
@@ -111,7 +122,7 @@ public class DetailedMovieActivityTest
 
     /**
      * Test method for the setting up of the activity
-     * {@link com.example.movietracker.DetailedMovieActivity#onCreate(android.os.Bundle)}
+     *
      * .
      */
     public void testOnCreateBundle()
@@ -129,6 +140,10 @@ public class DetailedMovieActivityTest
         assertFalse(watchedCheckBox.isShown());
         assertFalse(toWatchCheckBox.isShown());
         assertFalse(favoriteCheckBox.isShown());
+        /**
+         * clicks the buttons that will cause the checkbox to appear
+         * and disappear
+         */
         try
         {
             runTestOnUiThread(new Runnable() {
@@ -155,6 +170,7 @@ public class DetailedMovieActivityTest
             System.out.println("Could not click button");
             e.printStackTrace();
         }
+        //assert that the checkboxes are shown when you click on the enablers
         assertTrue(watchedCheckBox.isShown());
         assertTrue(toWatchCheckBox.isShown());
         assertTrue(favoriteCheckBox.isShown());
@@ -186,6 +202,7 @@ public class DetailedMovieActivityTest
             System.out.println("Could not click button");
             e.printStackTrace();
         }
+        //checkboxes should dissapear now that the buttons are unchecked
         assertFalse(watchedCheckBox.isShown());
         assertFalse(toWatchCheckBox.isShown());
         assertFalse(favoriteCheckBox.isShown());
