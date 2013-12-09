@@ -201,8 +201,7 @@ public class ListMovieActivity extends Activity {
 										.getDirectors())),
 						new ParcelableImplementation(
 								stringArrayToString(movieToDetail.getActors())),
-						new ParcelableImplementation(
-								stringArrayToString(movieToDetail.getRuntime())),
+						new ParcelableImplementation(movieToDetail.getRuntime()[0]),
 						new ParcelableImplementation(movieToDetail
 								.getImdb_url()),
 						new ParcelableImplementation(Integer
