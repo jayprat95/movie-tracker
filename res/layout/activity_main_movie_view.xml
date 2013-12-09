@@ -72,21 +72,21 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/watched"
-        android:layout_alignRight="@+id/toWatch"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/iconView"
+        android:gravity="center"
         android:text="Click &quot;All Movies&quot; to get started!"
-        android:layout_centerHorizontal="true"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/textView1"
-        android:layout_alignLeft="@+id/searchButton"
-        android:layout_alignRight="@+id/searchButton"
-        android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:text="Then click below to see your list of movies" />
 
 </RelativeLayout>
