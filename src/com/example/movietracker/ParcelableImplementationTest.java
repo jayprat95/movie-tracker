@@ -6,10 +6,11 @@ import junit.framework.TestCase;
 
 // -------------------------------------------------------------------------
 /**
- *  Write a one-sentence summary of your class here.
- *  Follow it with additional details about its purpose, what abstraction
- *  it represents, and how to use it.
- * 
+ *  This class tests the Parcelable implementation class, which allows us to
+ *  pick and choose specific fields from the Movie JSON files, such as RunTime
+ *  of the film, or a list of actors in the film.
+ *
+ *
  *  @author Jayanth Prathipati (jayanth)
  *  @author Oliver Ebeling-Koning (odek)
  *  @author Linsay Boylan (lindsb7)
