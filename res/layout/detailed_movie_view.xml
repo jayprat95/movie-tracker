@@ -44,7 +44,7 @@
         android:layout_below="@+id/releaseDate"
         android:inputType="text"
         android:maxLines="4"
-        android:scrollbars="vertical" />
+        android:scrollbars="horizontal" />
 
     <TextView
         android:id="@+id/plotSimple"
@@ -129,7 +129,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/actors"
         android:layout_below="@+id/actors"
-        android:maxLines="4"
-        android:text="Directors" />
+        android:maxLines="1"
+        android:text="Directors"
+        android:scrollbars="horizontal"/>
 
 </RelativeLayout>

@@ -370,6 +370,7 @@ public class DetailedMovieActivity extends Activity {
 		directors = new TextView(this);
 		directors = (TextView) findViewById(R.id.directors);
 		directors.setText("Directed by: " + movieData.getString());
+		directors.setMovementMethod(new ScrollingMovementMethod());
 
 		// New piece of Data: Actors
 		// Convert movie data to custom parcelable class.
