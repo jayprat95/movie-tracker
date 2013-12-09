@@ -20,7 +20,7 @@ public class ParcelableImplementationTest
     extends TestCase
 {
 
-    private ParcelableImplementation test;
+    private ParcelableImplementation pi;
     private String                   toMove;
 
 
@@ -30,7 +30,7 @@ public class ParcelableImplementationTest
     {
         super.setUp();
         toMove = "test";
-        test = new ParcelableImplementation(toMove);
+        pi = new ParcelableImplementation(toMove);
     }
 
 
@@ -41,7 +41,7 @@ public class ParcelableImplementationTest
      */
     public void testParcelableImplementation()
     {
-        assertEquals("test", test.getString());
+        assertEquals("test", pi.getString());
     }
 
 
@@ -52,7 +52,7 @@ public class ParcelableImplementationTest
      */
     public void testDescribeContents()
     {
-        assertEquals(0, test.describeContents());
+        assertEquals(0, pi.describeContents());
     }
 
 
@@ -74,8 +74,8 @@ public class ParcelableImplementationTest
     public void testGetString()
     {
         toMove = "move";
-        test = new ParcelableImplementation(toMove);
-        assertEquals("move", test.getString());
+        pi = new ParcelableImplementation(toMove);
+        assertEquals("move", pi.getString());
     }
 
 

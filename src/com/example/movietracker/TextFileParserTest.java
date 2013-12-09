@@ -1,10 +1,9 @@
 package com.example.movietracker;
 
-import android.app.Instrumentation;
+import java.util.ArrayList;
+
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.test.ActivityTestCase;
-import junit.framework.TestCase;
 
 // -------------------------------------------------------------------------
 /**
@@ -36,47 +35,29 @@ public class TextFileParserTest
 
 
     /**
-     * Test method for {@link com.example.movietracker.TextFileParser#TextFileParser(android.content.res.AssetManager, android.content.Context)}.
-     */
-    public void testTextFileParser()
-    {
-        fail("Not yet implemented");
-    }
-
-
-    /**
-     * Test method for {@link com.example.movietracker.TextFileParser#setMovieList(java.util.ArrayList, java.lang.String)}.
-     */
-    public void testSetMovieList()
-    {
-        fail("Not yet implemented");
-    }
-
-
-    /**
-     * Test method for {@link com.example.movietracker.TextFileParser#getStringFromFiles(java.lang.String)}.
+     * Test method for getStringFromFiles.
      */
     public void testGetStringFromFiles()
     {
-        fail("Not yet implemented");
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("hello1");
+        assertEquals("hello1", tfp.getStringFromListHelper(list));
+        list.add("hello2");
+        assertEquals("hello1, hello2", tfp.getStringFromListHelper(list));
     }
-
-
+    
     /**
-     * Test method for {@link com.example.movietracker.TextFileParser#parseStringsToStringList(java.lang.String)}.
+     * This method tests the alphabetize method
      */
-    public void testParseStringsToStringList()
-    {
-        fail("Not yet implemented");
+    public void testAlphabetize() {
+    	ArrayList<String> list = new ArrayList<String>();
+        list.add("hello1");
+        list.add("hello2");
+        list.add("a");
+        ArrayList<String> newList = tfp.alphabetize(list);
+        assertEquals("a", newList.get(0));
+        assertEquals("hello1", newList.get(1));
+        assertEquals("hello2", newList.get(2));
     }
-
-
-    /**
-     * Test method for {@link com.example.movietracker.TextFileParser#getList(java.lang.String)}.
-     */
-    public void testGetList()
-    {
-        fail("Not yet implemented");
+        
     }
-
-}
