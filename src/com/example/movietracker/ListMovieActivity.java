@@ -20,7 +20,7 @@ import android.app.Activity;
 /**
  * This class displays lists of movie titles. When a title is clicked it pulls
  * up that movie in a detailed view.
- * 
+ *
  * 	@author Jayanth Prathipati (jayanth)
  *  @author Oliver Ebeling-Koning (odek)
  *  @author Linsay Boylan (lindsb7)
@@ -42,7 +42,11 @@ public class ListMovieActivity extends Activity {
 
 	// ~Methods...........................................................
 
-	@Override
+	/**
+	 * this function is executed when the list movie activity is first executed
+	 * It allows us to execute and initialize the view in the way that we want
+	 *
+	 */
 	protected void onCreate(Bundle savedInstanceState) {
 		// Initialize the lists
 		toWatch = new ArrayList<String>();
@@ -73,10 +77,10 @@ public class ListMovieActivity extends Activity {
 	}
 
 	/**
-	 * // ---------------------------------------------------------------------
+	 *
 	 * This is an adapter class for the list view of movies. This is a custom
 	 * adapter for handling the interaction with the list of movies in the view.
-	 * 
+	 *
 	 * @author Oliver
 	 * @version Nov 30, 2013
 	 */
@@ -102,9 +106,9 @@ public class ListMovieActivity extends Activity {
 	/**
 	 * Custom listener for the listview of movies. This is used to get all the
 	 * movies and listen for which is clicked.
-	 * 
+	 *
 	 * @author F-16
-	 * 
+	 *
 	 */
 	private class OnItemClickListenerImplementation implements
 			OnItemClickListener {
@@ -112,7 +116,7 @@ public class ListMovieActivity extends Activity {
 
 		/**
 		 * This method stores the movies
-		 * 
+		 *
 		 * @param moviesToField
 		 *            the movies to store in the field
 		 */
@@ -266,7 +270,11 @@ public class ListMovieActivity extends Activity {
 		}
 	}
 
-	// Make title of lists in action bar look pretty
+
+	// ----------------------------------------------------------
+	/**
+	 * Make title of lists in action bar look pretty
+	 */
 	public void setTitleCorrectly() {
 		if (listname.equals("watched")) {
 			setTitle("Watched List");
@@ -279,8 +287,12 @@ public class ListMovieActivity extends Activity {
 		}
 	}
 
-	// Pull the movies for the list again and setup the listview again
-	// with the new list of movies.
+	// ----------------------------------------------------------
+	/**
+	 * Pull the movies for the list again and setup the listview again
+     * with the new list of movies.
+	 */
+
 	public void updateLists() {
 		// Get movies for this list from internal memory
 		this.pullMoviesFromListFile();
@@ -291,7 +303,7 @@ public class ListMovieActivity extends Activity {
 
 	/**
 	 * This method is called when the onscreen back button is clicked.
-	 * It 
+	 * It gets the previous activity and updates it.
 	 */
 	public boolean onOptionsItemSelected(MenuItem item) {
 		Intent myIntent = new Intent(getApplicationContext(),
