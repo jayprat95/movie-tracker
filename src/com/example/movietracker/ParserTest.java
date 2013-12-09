@@ -11,8 +11,10 @@ import android.content.res.AssetManager;
  *  Follow it with additional details about its purpose, what abstraction
  *  it represents, and how to use it.
  *
- *  @author jayanthprathipati
- *  @version Dec 4, 2013
+ *  @author Jayanth Prathipati (jayanth)
+ *  @author Oliver Ebeling-Koning (odek)
+ *  @author Linsay Boylan (lindsb7)
+ *  @version 2013.12.08
  */
 
 public class ParserTest extends ActivityTestCase

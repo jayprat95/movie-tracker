@@ -16,8 +16,10 @@ import java.util.ArrayList;
  * memory. The two main methods are "setMovieList" and "getStringFromFiles",
  * which actually store the data in memory.
  *
- * @author Oliver
- * @version Nov 30, 2013
+ * 	@author Jayanth Prathipati (jayanth)
+ *  @author Oliver Ebeling-Koning (odek)
+ *  @author Linsay Boylan (lindsb7)
+ *  @version 2013.12.08
  */
 public class TextFileParser
 {

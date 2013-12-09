@@ -17,8 +17,10 @@ import junit.framework.TestCase;
  * that we can call individual elements in the Activity, such as any of the
  * buttons and test them as we please.
  *
- * @author jayanth
- * @version Dec 4, 2013
+ *  @author Jayanth Prathipati (jayanth)
+ *  @author Oliver Ebeling-Koning (odek)
+ *  @author Linsay Boylan (lindsb7)
+ *  @version 2013.12.08
  */
 
 public class MainMovieActivityTest

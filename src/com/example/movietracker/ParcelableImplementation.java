@@ -7,8 +7,10 @@ import android.os.Parcelable;
  * This class implements Parcelable and is used to store strings. It is used to
  * pass movie data between activities.
  * 
- * @author F-16
- * 
+ *  @author Jayanth Prathipati (jayanth)
+ *  @author Oliver Ebeling-Koning (odek)
+ *  @author Linsay Boylan (lindsb7)
+ *  @version 2013.12.08
  */
 public class ParcelableImplementation implements Parcelable {
 	// ~Fields........................................

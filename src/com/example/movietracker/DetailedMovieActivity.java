@@ -26,14 +26,17 @@ import android.app.ActionBar;
 import android.app.Activity;
 
 /**
- * This class displays details of a movie.
- * The class has the ability to add and remove the 
- * movie from stored lists.
- * @author F-16
- *
+ * This class displays details of a movie. The class has the ability to add and
+ * remove the movie from stored lists.
+ * 
+ * @author Jayanth Prathipati (jayanth)
+ * @author Oliver Ebeling-Koning (odek)
+ * @author Linsay Boylan (lindsb7)
+ * @version 2013.12.08
+ * 
  */
 public class DetailedMovieActivity extends Activity {
-	
+
 	// ~Fields............................................................
 	private AssetManager assetManager;
 	private Intent currentIntent;
@@ -52,12 +55,11 @@ public class DetailedMovieActivity extends Activity {
 	private TextView actors;
 	private TextView runtime;
 
-
 	// ~Methods...........................................................
 
 	/**
-	 * This method sets up the activity. It initializes and sets up
-	 * listeners, variables, and texts.
+	 * This method sets up the activity. It initializes and sets up listeners,
+	 * variables, and texts.
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -68,13 +70,13 @@ public class DetailedMovieActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		assetManager = this.getAssets();
 		setContentView(R.layout.detailed_movie_view);
-		
-		// Setup button on action bar
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
 
-        this.getAllMovieDataPassedIn();
-        
+		// Setup button on action bar
+		ActionBar actionBar = getActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(true);
+
+		this.getAllMovieDataPassedIn();
+
 		this.setupListeners();
 
 		this.updateCheckMarks();
@@ -83,9 +85,9 @@ public class DetailedMovieActivity extends Activity {
 	}
 
 	/**
-	 * This method sets up the listeners for when a button is clicked
-	 * It then writes to internal memory with the textParser when a 
-	 * button is clicked. A toast is also displayed.
+	 * This method sets up the listeners for when a button is clicked It then
+	 * writes to internal memory with the textParser when a button is clicked. A
+	 * toast is also displayed.
 	 */
 	public void setupListeners() {
 
@@ -105,13 +107,15 @@ public class DetailedMovieActivity extends Activity {
 				// Adding movie from list
 				if ((temp != null) && (!(temp.contains(movieString)))) {
 					temp.add(movieString);
-					DetailedMovieActivity.this.displayToast("Adding " + movieString + "\nto \"Watched\" List");
+					DetailedMovieActivity.this.displayToast("Adding "
+							+ movieString + "\nto \"Watched\" List");
 					textParser.setMovieList(temp, "watched");
 				}
 				// Removing movie from list
 				else if ((temp != null) && (temp.contains(movieString))) {
 					temp.remove(movieString);
-					DetailedMovieActivity.this.displayToast("Removing " + movieString + "\nto \"Watched\" List");
+					DetailedMovieActivity.this.displayToast("Removing "
+							+ movieString + "\nto \"Watched\" List");
 					textParser.setMovieList(temp, "watched");
 				}
 
@@ -132,13 +136,15 @@ public class DetailedMovieActivity extends Activity {
 				// Adding movie from list
 				if ((temp != null) && (!(temp.contains(movieString)))) {
 					temp.add(movieString);
-					DetailedMovieActivity.this.displayToast("Adding " + movieString + "\nto \"Want to watch\" List");
+					DetailedMovieActivity.this.displayToast("Adding "
+							+ movieString + "\nto \"Want to watch\" List");
 					textParser.setMovieList(temp, "toWatch");
 				}
 				// Removing movie from list
 				else if ((temp != null) && (temp.contains(movieString))) {
 					temp.remove(movieString);
-					DetailedMovieActivity.this.displayToast("Removing " + movieString + "\nto \"Want to watch\" List");
+					DetailedMovieActivity.this.displayToast("Removing "
+							+ movieString + "\nto \"Want to watch\" List");
 					textParser.setMovieList(temp, "toWatch");
 				}
 
@@ -159,13 +165,15 @@ public class DetailedMovieActivity extends Activity {
 				// Adding movie from list
 				if ((temp != null) && (!(temp.contains(movieString)))) {
 					temp.add(movieString);
-					DetailedMovieActivity.this.displayToast("Adding " + movieString + "\nto \"Favorite\" List");
+					DetailedMovieActivity.this.displayToast("Adding "
+							+ movieString + "\nto \"Favorite\" List");
 					textParser.setMovieList(temp, "favorite");
 				}
 				// Removing movie from list
 				else if ((temp != null) && (temp.contains(movieString))) {
 					temp.remove(movieString);
-					DetailedMovieActivity.this.displayToast("Removing " + movieString + "\nto \"Favorite\" List");
+					DetailedMovieActivity.this.displayToast("Removing "
+							+ movieString + "\nto \"Favorite\" List");
 					textParser.setMovieList(temp, "favorite");
 				}
 
@@ -178,7 +186,9 @@ public class DetailedMovieActivity extends Activity {
 
 	/**
 	 * This method converts a picture url to a bitmap to display.
-	 * @param url the picture url
+	 * 
+	 * @param url
+	 *            the picture url
 	 * @return the Bitmap created
 	 */
 	private Bitmap getImageBitmap(String url) {
@@ -200,10 +210,9 @@ public class DetailedMovieActivity extends Activity {
 	}
 
 	/**
-	 * This method updates the checkmarks if the movie was added
-	 * to a list or removed from a list.
-	 * The updating pulls the movies from internal memory and 
-	 * hides the check if it is not found for that list.
+	 * This method updates the checkmarks if the movie was added to a list or
+	 * removed from a list. The updating pulls the movies from internal memory
+	 * and hides the check if it is not found for that list.
 	 */
 	public void updateCheckMarks() {
 		// Get connection to internal memory to check lists
@@ -244,14 +253,11 @@ public class DetailedMovieActivity extends Activity {
 
 	}
 
-	
-	
-	
-
-	//.............................Formatting Methods......................
+	// .............................Formatting Methods......................
 	/**
-	 * This method formats the title. It just changes the first letter to 
-	 * a capital.
+	 * This method formats the title. It just changes the first letter to a
+	 * capital.
+	 * 
 	 * @return the capitalized title
 	 */
 	public String formatTitle() {
@@ -261,11 +267,13 @@ public class DetailedMovieActivity extends Activity {
 		return this.movieString.substring(0, 1).toUpperCase()
 				+ this.movieString.substring(1, movieString.length());
 	}
-	
+
 	/**
-	 * This method shows the runtime in hours and minutes instead
-	 * of just minutes
-	 * @param rt the string in minutes
+	 * This method shows the runtime in hours and minutes instead of just
+	 * minutes
+	 * 
+	 * @param rt
+	 *            the string in minutes
 	 * @return the string in hours and minutes
 	 */
 	public String formatRuntime(String rt) {
@@ -278,13 +286,16 @@ public class DetailedMovieActivity extends Activity {
 			hours++;
 			time -= 60;
 		}
-		return Integer.toString(hours) + " hours " + Integer.toString(time) + " minutes";
-		
+		return Integer.toString(hours) + " hours " + Integer.toString(time)
+				+ " minutes";
+
 	}
 
 	/**
 	 * This converts the release date to a readable format
-	 * @param string the string of the release date
+	 * 
+	 * @param string
+	 *            the string of the release date
 	 * @return the formatted release date
 	 */
 	private String formatDate(String string) {
@@ -298,10 +309,7 @@ public class DetailedMovieActivity extends Activity {
 
 	}
 
-	
-	
-	
-	//.............................Navigation Methods......................
+	// .............................Navigation Methods......................
 	/**
 	 * This method overrides the back button to let the list know whether to
 	 * update immediately because of changes.
@@ -313,21 +321,22 @@ public class DetailedMovieActivity extends Activity {
 		setResult(RESULT_OK, intent);
 		finish();
 	}
-	
+
 	/**
-	 * This method decides the execution when the onscreen back button is clicked.
-	 * It notifies the list to update or not
+	 * This method decides the execution when the onscreen back button is
+	 * clicked. It notifies the list to update or not
 	 */
-	public boolean onOptionsItemSelected(MenuItem item){
+	public boolean onOptionsItemSelected(MenuItem item) {
 		// Create new intent to passback data.
-	    Intent intent = new Intent(getApplicationContext(), ListMovieActivity.class);
-	    intent.putExtra("update", updateList);
-	    setResult(RESULT_OK, intent);
-	    finish();
-	    return true;
+		Intent intent = new Intent(getApplicationContext(),
+				ListMovieActivity.class);
+		intent.putExtra("update", updateList);
+		setResult(RESULT_OK, intent);
+		finish();
+		return true;
 
 	}
-	
+
 	/**
 	 * This method gets all the data for the movie to display from the list
 	 * activity
@@ -338,8 +347,7 @@ public class DetailedMovieActivity extends Activity {
 		movieString = currentIntent.getStringExtra("movieTitle");
 		movieDataParcelable = currentIntent
 				.getParcelableArrayExtra("movieData");
-		
-		
+
 		// ******** Get all data passed in and set Texts.*******
 
 		// New piece of Data: Title
@@ -375,7 +383,7 @@ public class DetailedMovieActivity extends Activity {
 		// Convert movie data to custom parcelable class.
 		movieData = (ParcelableImplementation) movieDataParcelable[5];
 		runtime = new TextView(this);
-		runtime = (TextView)findViewById(R.id.runtime);
+		runtime = (TextView) findViewById(R.id.runtime);
 		runtime.setText(this.formatRuntime(movieData.getString()));
 
 		// New piece of Data: Imdb url
@@ -395,8 +403,8 @@ public class DetailedMovieActivity extends Activity {
 		// New piece of Data: Rating
 		// Convert movie data to custom parcelable class.
 		movieData = (ParcelableImplementation) movieDataParcelable[8];
-		RatingBar ratingsBar = (RatingBar)findViewById(R.id.movieRatings);
-		ratingsBar.setAlpha((float)0.4);
+		RatingBar ratingsBar = (RatingBar) findViewById(R.id.movieRatings);
+		ratingsBar.setAlpha((float) 0.4);
 		ratingsBar.setEnabled(false);
 		Float rating = Float.parseFloat(movieData.getString());
 		ratingsBar.setRating(rating / 2);
@@ -425,10 +433,12 @@ public class DetailedMovieActivity extends Activity {
 		// type.setText(movieData.getString());
 
 	}
-	
+
 	/**
 	 * This method displays a toast pop up quickly
-	 * @param string the text to show
+	 * 
+	 * @param string
+	 *            the text to show
 	 */
 	public void displayToast(String string) {
 		Context context = getApplicationContext();

@@ -21,8 +21,10 @@ import android.app.Activity;
  * This class displays lists of movie titles. When a title is clicked it pulls
  * up that movie in a detailed view.
  * 
- * @author F-16
- * 
+ * 	@author Jayanth Prathipati (jayanth)
+ *  @author Oliver Ebeling-Koning (odek)
+ *  @author Linsay Boylan (lindsb7)
+ *  @version 2013.12.08
  */
 public class ListMovieActivity extends Activity {
 	// ~Fields............................................................

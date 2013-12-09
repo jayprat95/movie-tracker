@@ -5,14 +5,13 @@ import java.util.Map;
 
 // -------------------------------------------------------------------------
 /**
- *  Write a one-sentence summary of your class here.
- *  Follow it with additional details about its purpose, what abstraction
- *  it represents, and how to use it.
+ *  This is a movie class. It stores all the data about a movie.
+ *  It contains getters and setters for all the data.
  *
- *  @author jayanthprathipati
- *  @author oliverebeling-koning
- *  @author linsayboylan
- *  @version Nov 15, 2013
+ *  @author Jayanth Prathipati (jayanth)
+ *  @author Oliver Ebeling-Koning (odek)
+ *  @author Linsay Boylan (lindsb7)
+ *  @version 2013.12.08
  */
 
 public class Movie implements Serializable

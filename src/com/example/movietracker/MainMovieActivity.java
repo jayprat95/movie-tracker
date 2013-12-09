@@ -23,8 +23,10 @@ import android.app.Activity;
  * first executes the application. It sets up 4 buttons which link out to the
  * ListMovieActivity.
  *
- * @author jayanth
- * @version Dec 8, 2013
+ *  @author Jayanth Prathipati (jayanth)
+ *  @author Oliver Ebeling-Koning (odek)
+ *  @author Linsay Boylan (lindsb7)
+ *  @version 2013.12.08
  */
 public class MainMovieActivity
 extends Activity

@@ -15,10 +15,10 @@ import java.util.*;
  * This is a class that is used to parse json files in the assets folder into
  * movies. It also contains methods for searching the movies in the assets.
  * 
- * @author jayanthprathipati
- * @author oliverebeling-koning
- * @author linsayboylan
- * @version Nov 15, 2013
+ *  @author Jayanth Prathipati (jayanth)
+ *  @author Oliver Ebeling-Koning (odek)
+ *  @author Linsay Boylan (lindsb7)
+ *  @version 2013.12.08
  */
 
 public class Parser implements Serializable {

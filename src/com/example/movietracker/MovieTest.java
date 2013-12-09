@@ -9,8 +9,10 @@ import junit.framework.TestCase;
  *  This class tests the Movie data model to ensure that it meets project
  *  specifications
  *
- *  @author jayanth
- *  @version Dec 4, 2013
+ *  @author Jayanth Prathipati (jayanth)
+ *  @author Oliver Ebeling-Koning (odek)
+ *  @author Linsay Boylan (lindsb7)
+ *  @version 2013.12.08
  */
 
 public class MovieTest extends TestCase

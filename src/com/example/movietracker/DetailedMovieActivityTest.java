@@ -14,8 +14,10 @@ import android.app.Instrumentation;
  * This method tests the DetailedMovieActivity. It performs normal activities on
  * the detailed view.
  * 
- * @author jayanth
- * @version Dec 4, 2013
+ *  @author Jayanth Prathipati (jayanth)
+ *  @author Oliver Ebeling-Koning (odek)
+ *  @author Linsay Boylan (lindsb7)
+ *  @version 2013.12.08
  */
 
 public class DetailedMovieActivityTest extends

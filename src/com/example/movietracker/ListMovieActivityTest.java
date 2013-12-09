@@ -15,8 +15,10 @@ import junit.framework.TestCase;
  * Write a one-sentence summary of your class here. Follow it with additional
  * details about its purpose, what abstraction it represents, and how to use it.
  * 
- * @author jayanthprathipati
- * @version Dec 4, 2013
+ *  @author Jayanth Prathipati (jayanth)
+ *  @author Oliver Ebeling-Koning (odek)
+ *  @author Linsay Boylan (lindsb7)
+ *  @version 2013.12.08
  */
 
 public class ListMovieActivityTest extends
