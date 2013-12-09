@@ -1,6 +1,8 @@
 package com.example.movietracker;
 
+import android.os.Parcel;
 import junit.framework.TestCase;
+
 
 // -------------------------------------------------------------------------
 /**
@@ -18,34 +20,46 @@ public class ParcelableImplementationTest
     extends TestCase
 {
 
+    private ParcelableImplementation test;
+    private String                   toMove;
+
+
     // ----------------------------------------------------------
     protected void setUp()
         throws Exception
     {
         super.setUp();
+        toMove = "test";
+        test = new ParcelableImplementation(toMove);
     }
 
 
     /**
-     * Test method for {@link com.example.movietracker.ParcelableImplementation#ParcelableImplementation(java.lang.String)}.
+     * Test method for
+     * {@link com.example.movietracker.ParcelableImplementation#ParcelableImplementation(java.lang.String)}
+     * .
      */
     public void testParcelableImplementation()
     {
-        fail("Not yet implemented");
+        assertEquals("test", test.getString());
     }
 
 
     /**
-     * Test method for {@link com.example.movietracker.ParcelableImplementation#describeContents()}.
+     * Test method for
+     * {@link com.example.movietracker.ParcelableImplementation#describeContents()}
+     * .
      */
     public void testDescribeContents()
     {
-        fail("Not yet implemented");
+        assertEquals(0, test.describeContents());
     }
 
 
     /**
-     * Test method for {@link com.example.movietracker.ParcelableImplementation#writeToParcel(android.os.Parcel, int)}.
+     * Test method for
+     * {@link com.example.movietracker.ParcelableImplementation#writeToParcel(android.os.Parcel, int)}
+     * .
      */
     public void testWriteToParcel()
     {
@@ -54,16 +68,21 @@ public class ParcelableImplementationTest
 
 
     /**
-     * Test method for {@link com.example.movietracker.ParcelableImplementation#getString()}.
+     * Test method for
+     * {@link com.example.movietracker.ParcelableImplementation#getString()}.
      */
     public void testGetString()
     {
-        fail("Not yet implemented");
+        toMove = "move";
+        test = new ParcelableImplementation(toMove);
+        assertEquals("move", test.getString());
     }
 
 
     /**
-     * Test method for {@link com.example.movietracker.ParcelableImplementation#stringArrayToString(java.lang.String[])}.
+     * Test method for
+     * {@link com.example.movietracker.ParcelableImplementation#stringArrayToString(java.lang.String[])}
+     * .
      */
     public void testStringArrayToString()
     {
