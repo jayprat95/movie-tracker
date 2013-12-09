@@ -28,12 +28,12 @@ import android.app.Activity;
 /**
  * This class displays details of a movie. The class has the ability to add and
  * remove the movie from stored lists.
- * 
+ *
  * @author Jayanth Prathipati (jayanth)
  * @author Oliver Ebeling-Koning (odek)
  * @author Linsay Boylan (lindsb7)
  * @version 2013.12.08
- * 
+ *
  */
 public class DetailedMovieActivity extends Activity {
 
@@ -186,7 +186,7 @@ public class DetailedMovieActivity extends Activity {
 
 	/**
 	 * This method converts a picture url to a bitmap to display.
-	 * 
+	 *
 	 * @param url
 	 *            the picture url
 	 * @return the Bitmap created
@@ -257,7 +257,7 @@ public class DetailedMovieActivity extends Activity {
 	/**
 	 * This method formats the title. It just changes the first letter to a
 	 * capital.
-	 * 
+	 *
 	 * @return the capitalized title
 	 */
 	public String formatTitle() {
@@ -271,7 +271,7 @@ public class DetailedMovieActivity extends Activity {
 	/**
 	 * This method shows the runtime in hours and minutes instead of just
 	 * minutes
-	 * 
+	 *
 	 * @param rt
 	 *            the string in minutes
 	 * @return the string in hours and minutes
@@ -293,7 +293,7 @@ public class DetailedMovieActivity extends Activity {
 
 	/**
 	 * This converts the release date to a readable format
-	 * 
+	 *
 	 * @param string
 	 *            the string of the release date
 	 * @return the formatted release date
@@ -384,6 +384,7 @@ public class DetailedMovieActivity extends Activity {
 		movieData = (ParcelableImplementation) movieDataParcelable[5];
 		runtime = new TextView(this);
 		runtime = (TextView) findViewById(R.id.runtime);
+		System.out.println("AAAAAAAAA: "+movieData.getString());
 		runtime.setText(this.formatRuntime(movieData.getString()));
 
 		// New piece of Data: Imdb url
@@ -436,7 +437,7 @@ public class DetailedMovieActivity extends Activity {
 
 	/**
 	 * This method displays a toast pop up quickly
-	 * 
+	 *
 	 * @param string
 	 *            the text to show
 	 */

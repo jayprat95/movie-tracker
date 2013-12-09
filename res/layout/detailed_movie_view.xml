@@ -47,20 +47,12 @@
         android:scrollbars="vertical" />
 
     <TextView
-        android:id="@+id/directors"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/actors"
-        android:layout_below="@+id/actors"
-        android:text="Directors" />
-
-    <TextView
         android:id="@+id/plotSimple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/pictureImdb"
         android:layout_alignRight="@+id/title"
-        android:layout_below="@+id/runtime"
+        android:layout_below="@+id/pictureImdb"
         android:layout_marginTop="25dp"
         android:text="Simple Plot" />
 
@@ -127,10 +119,17 @@
         android:id="@+id/runtime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/pictureImdb"
-        android:layout_alignRight="@+id/pictureImdb"
-        android:layout_below="@+id/pictureImdb"
-        android:textSize="8sp"
+        android:layout_alignLeft="@+id/directors"
+        android:layout_below="@+id/directors"
         android:text="Runtime" />
+
+    <TextView
+        android:id="@+id/directors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/actors"
+        android:layout_below="@+id/actors"
+        android:maxLines="4"
+        android:text="Directors" />
 
 </RelativeLayout>
