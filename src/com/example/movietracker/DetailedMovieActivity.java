@@ -286,7 +286,7 @@ public class DetailedMovieActivity extends Activity {
 			hours++;
 			time -= 60;
 		}
-		return Integer.toString(hours) + " hours " + Integer.toString(time)
+		return "Runtime: " + Integer.toString(hours) + " hours " + Integer.toString(time)
 				+ " minutes";
 
 	}
